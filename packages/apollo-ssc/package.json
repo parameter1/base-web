@@ -1,0 +1,38 @@
+{
+  "name": "@parameter1/marko-base-cms-apollo-ssc",
+  "version": "0.0.0",
+  "type": "module",
+  "description": "Apollo server-side client (SSC).",
+  "author": "Jacob Bare <jacob@parameter1.com>",
+  "homepage": "https://github.com/parameter1/marko-base-cms/tree/main/packages/apollo-ssc#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/parameter1/marko-base-cms.git",
+    "directory": "packages/apollo-ssc"
+  },
+  "private": true,
+  "license": "MIT",
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./express": "./src/middleware/express.js"
+  },
+  "scripts": {
+    "lint": "eslint --ext .js ./",
+    "test": "yarn lint"
+  },
+  "engines": {
+    "node": ">=14.0"
+  },
+  "os": [
+    "darwin",
+    "linux",
+    "win32"
+  ],
+  "dependencies": {
+    "@apollo/client": "^3.4.16",
+    "@parameter1/marko-base-cms-utils": "^0.0.0",
+    "graphql": "^15.6.1",
+    "node-fetch": "^3.0.0"
+  }
+}
