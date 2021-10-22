@@ -10,9 +10,9 @@
     "url": "git+https://github.com/parameter1/marko-base-cms.git",
     "directory": "packages/object-path"
   },
+  "private": true,
   "license": "MIT",
   "main": "src/index.js",
-  "private": true,
   "scripts": {
     "lint": "eslint --ext .js ./",
     "test": "yarn lint"
