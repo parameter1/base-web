@@ -1,0 +1,27 @@
+{
+  "name": "@parameter1/marko-base-cms-web-server-fastify",
+  "version": "0.0.0",
+  "type": "module",
+  "description": "BaseCMS+Marko website server using Fastify.",
+  "author": "Jacob Bare <jacob@parameter1.com>",
+  "homepage": "https://github.com/parameter1/marko-base-cms/tree/main/packages/web-server-fastify#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/parameter1/marko-base-cms.git",
+    "directory": "packages/web-server-fastify"
+  },
+  "license": "MIT",
+  "main": "src/index.js",
+  "scripts": {
+    "lint": "eslint --ext .js ./",
+    "test": "yarn lint"
+  },
+  "dependencies": {
+    "@parameter1/marko-base-cms-utils": "^0.0.0",
+    "envalid": "^7.2.1",
+    "fastify": "^3.22.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
