@@ -17,6 +17,14 @@
     "lint": "eslint --ext .js ./",
     "test": "yarn lint"
   },
+  "engines": {
+    "node": ">=14.0"
+  },
+  "os": [
+    "darwin",
+    "linux",
+    "win32"
+  ],
   "dependencies": {
     "@parameter1/marko-base-cms-utils": "^0.0.0",
     "object-path": "^0.11.8"

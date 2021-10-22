@@ -16,5 +16,13 @@
   "scripts": {
     "lint": "eslint --ext .js ./",
     "test": "yarn lint"
-  }
+  },
+  "engines": {
+    "node": ">=14.0"
+  },
+  "os": [
+    "darwin",
+    "linux",
+    "win32"
+  ]
 }
