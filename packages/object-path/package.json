@@ -10,7 +10,6 @@
     "url": "git+https://github.com/parameter1/marko-base-cms.git",
     "directory": "packages/object-path"
   },
-  "private": true,
   "license": "MIT",
   "main": "src/index.js",
   "scripts": {
@@ -28,5 +27,8 @@
   "dependencies": {
     "@parameter1/marko-base-cms-utils": "^0.0.0",
     "object-path": "^0.11.8"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
