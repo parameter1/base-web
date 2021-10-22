@@ -1,0 +1,24 @@
+{
+  "name": "@parameter1/marko-base-cms-object-path",
+  "version": "0.0.0",
+  "type": "module",
+  "description": "Retrieves values based on path name.",
+  "author": "Jacob Bare <jacob@parameter1.com>",
+  "homepage": "https://github.com/parameter1/marko-base-cms/tree/main/packages/object-path#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/parameter1/marko-base-cms.git",
+    "directory": "packages/object-path"
+  },
+  "license": "MIT",
+  "main": "src/index.js",
+  "private": true,
+  "scripts": {
+    "lint": "eslint --ext .js ./",
+    "test": "yarn lint"
+  },
+  "dependencies": {
+    "@parameter1/marko-base-cms-utils": "^0.0.0",
+    "object-path": "^0.11.8"
+  }
+}
