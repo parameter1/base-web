@@ -1,3 +1,5 @@
 import run from '../src/index.js';
 
-run();
+run({
+  baseCMSGraphQLURL: 'https://graphql.virgon.base.parameter1.com',
+});

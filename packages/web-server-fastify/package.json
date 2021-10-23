@@ -17,8 +17,9 @@
     "test": "yarn lint"
   },
   "dependencies": {
+    "@parameter1/joi": "^1.2.10",
+    "@parameter1/marko-base-cms-apollo-ssc-fastify": "^0.0.0",
     "@parameter1/marko-base-cms-utils": "^0.0.0",
-    "envalid": "^7.2.1",
     "fastify": "^3.22.1"
   },
   "publishConfig": {
