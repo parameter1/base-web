@@ -1,5 +1,5 @@
+import createApolloClient from '@parameter1/marko-base-cms-apollo-ssc';
 import { isFunction as isFn } from '@parameter1/marko-base-cms-utils';
-import create from '../create.js';
 
 /**
  * Provides the Express Apollo middleware.
@@ -16,7 +16,7 @@ import create from '../create.js';
  * @returns {function}
  */
 export default ({ prop = '$apollo', contextFn, ...config } = {}) => (req, res, next) => {
-  const client = create({
+  const client = createApolloClient({
     ...config,
     contextFn: (ctx) => {
       if (isFn(contextFn)) return contextFn({ req, res, ctx });

@@ -1,14 +1,14 @@
 {
-  "name": "@parameter1/marko-base-cms-apollo-ssc",
+  "name": "@parameter1/marko-base-cms-apollo-ssc-fastify",
   "version": "0.0.0",
   "type": "module",
-  "description": "Apollo server-side client (SSC).",
+  "description": "Apollo server-side client (SSC) Fastify plugin.",
   "author": "Jacob Bare <jacob@parameter1.com>",
-  "homepage": "https://github.com/parameter1/marko-base-cms/tree/main/packages/apollo-ssc#readme",
+  "homepage": "https://github.com/parameter1/marko-base-cms/tree/main/packages/apollo-ssc-fastify#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/parameter1/marko-base-cms.git",
-    "directory": "packages/apollo-ssc"
+    "directory": "packages/apollo-ssc-fastify"
   },
   "license": "MIT",
   "main": "src/index.js",
@@ -25,13 +25,9 @@
     "win32"
   ],
   "dependencies": {
+    "@parameter1/marko-base-cms-apollo-ssc": "^0.0.0",
     "@parameter1/marko-base-cms-utils": "^0.0.0",
-    "apollo-cache-inmemory": "^1.6.6",
-    "apollo-client": "^2.6.10",
-    "apollo-link-context": "^1.0.20",
-    "apollo-link-http": "^1.5.17",
-    "graphql": "^15.6.1",
-    "node-fetch": "^3.0.0"
+    "fastify-plugin": "^3.0.0"
   },
   "publishConfig": {
     "access": "public"
