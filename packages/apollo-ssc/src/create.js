@@ -1,12 +1,14 @@
 import fetch from 'node-fetch';
-import {
-  ApolloClient,
-  InMemoryCache,
-  HttpLink,
-  concat,
-} from '@apollo/client';
-import { setContext } from '@apollo/client/link/context';
+import apolloClient from 'apollo-client';
+import apolloCache from 'apollo-cache-inmemory';
+import apolloLink from 'apollo-link-http';
+import apolloContext from 'apollo-link-context';
 import { isFunction as isFn } from '@parameter1/marko-base-cms-utils';
+
+const { ApolloClient } = apolloClient;
+const { InMemoryCache } = apolloCache;
+const { createHttpLink } = apolloLink;
+const { setContext } = apolloContext;
 
 /**
  * Creates an Apollo GraphQL client optimized for use on the server.
@@ -37,7 +39,7 @@ export default ({
     if (isFn(contextFn)) return contextFn(ctx);
     return undefined;
   });
-  const http = new HttpLink({
+  const http = createHttpLink({
     fetch,
     ...link,
     uri,
@@ -45,7 +47,7 @@ export default ({
 
   return new ApolloClient({
     ...rest,
-    link: concat(context, http),
+    link: context.concat(http),
     cache: new InMemoryCache(cache),
     ssrMode: true,
     connectToDevTools: false,
