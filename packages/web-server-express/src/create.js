@@ -2,6 +2,7 @@ import express from 'express';
 import Joi from '@parameter1/joi';
 import { validateAsync } from '@parameter1/joi/utils.js';
 import apollo from '@parameter1/marko-base-cms-apollo-ssc-express';
+import cookieParser from 'cookie-parser';
 
 const { env } = process;
 
@@ -22,6 +23,9 @@ export default async (params = {}) => {
   }).required(), params);
 
   const server = express();
+  // Add cookie parsing.
+  server.use(cookieParser());
+
   // Set BaseCMS Apollo client.
   server.use(apollo({ prop: '$apolloBaseCMS', uri: baseCMSGraphQLURL }));
 

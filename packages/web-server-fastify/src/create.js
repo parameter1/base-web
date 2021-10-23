@@ -2,6 +2,7 @@ import fastify from 'fastify';
 import Joi from '@parameter1/joi';
 import { validateAsync } from '@parameter1/joi/utils.js';
 import apollo from '@parameter1/marko-base-cms-apollo-ssc-fastify';
+import cookieParser from 'fastify-cookie';
 
 const { env } = process;
 
@@ -22,6 +23,9 @@ export default async (params = {}) => {
   }).required(), params);
 
   const server = fastify();
+  // Add cookie parsing
+  server.register(cookieParser);
+
   // Set BaseCMS Apollo client.
   server.register(apollo, { prop: '$apolloBaseCMS', uri: baseCMSGraphQLURL });
 
