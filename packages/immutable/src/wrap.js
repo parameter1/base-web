@@ -1,9 +1,12 @@
 import { fromJS, List, Map } from 'immutable';
 
+const { log } = console;
+
 export default (obj) => {
   const map = fromJS(obj);
   const get = (path) => map.getIn(path.split('.'));
   return {
+    log: log(obj),
     map,
     get,
     getAsList: (path) => {
