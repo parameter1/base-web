@@ -17,8 +17,15 @@ export default Joi.object({
     host: Joi.string().trim().hostname().required(),
     imageHost: Joi.string().trim().hostname().required(),
     assetHost: Joi.string().trim().hostname().required(),
-    date: {},
-    language: {},
+    date: Joi.object({
+      timezone: Joi.string().trim().default('America/Chicago'),
+      format: Joi.string().trim().default('MMM Do, YYYY'),
+      locale: Joi.string().trim().default('en'),
+    }).default({ timezone: 'America/Chicago', format: 'MMM Do, YYYY', locale: 'en' }),
+    language: Joi.object({
+      primaryCode: Joi.string().trim().default('en'),
+      subCode: Joi.string().trim().default('us'),
+    }).default({ primaryCode: 'en', subCode: 'us' }),
     config: Joi.object().unknown().default(), // @todo wrap with getters
   }).required(),
   tenant: Joi.object({
