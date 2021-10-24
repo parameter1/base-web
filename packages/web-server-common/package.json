@@ -1,0 +1,26 @@
+{
+  "name": "@parameter1/marko-base-cms-web-server-common",
+  "version": "0.0.0",
+  "type": "module",
+  "description": "Common elements for BaseCMS web servers.",
+  "author": "Jacob Bare <jacob@parameter1.com>",
+  "homepage": "https://github.com/parameter1/marko-base-cms/tree/main/packages/web-server-common#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/parameter1/marko-base-cms.git",
+    "directory": "packages/web-server-common"
+  },
+  "license": "MIT",
+  "main": "src/index.js",
+  "scripts": {
+    "lint": "eslint --ext .js ./",
+    "test": "yarn lint"
+  },
+  "dependencies": {
+    "@parameter1/joi": "^1.2.10",
+    "@parameter1/marko-base-cms-object-path": "^0.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

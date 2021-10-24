@@ -1,10 +1,7 @@
 import express from 'express';
-import Joi from '@parameter1/joi';
-import { validateAsync } from '@parameter1/joi/utils.js';
 import apollo from '@parameter1/marko-base-cms-apollo-ssc-express';
+import { buildServerConfig } from '@parameter1/marko-base-cms-web-server-common';
 import cookieParser from 'cookie-parser';
-
-const { env } = process;
 
 /**
  * Boots the BaseCMS web server.
@@ -18,25 +15,11 @@ const { env } = process;
  */
 export default async (params = {}) => {
   const {
-    baseCMSGraphQLURL,
-    cacheGraphQLResponses,
-    cacheSiteContext,
-    siteId,
-    tenantKey,
-  } = await validateAsync(Joi.object({
-    baseCMSGraphQLURL: Joi.string().trim().uri().required(),
-    cacheGraphQLResponses: Joi.boolean().truthy('1').falsy('0'),
-    cacheSiteContext: Joi.boolean().truthy('1').falsy('0'),
-    siteId: Joi.string().trim().pattern(/^[a-f0-9]{24}$/).required(),
-    tenantKey: Joi.string().trim().pattern(/^[a-z0-9]+_[a-z0-9]+$/).required(),
-  }).required(), {
-    ...params,
-    baseCMSGraphQLURL: params.baseCMSGraphQLURL || env.BASE_CMS_GRAPHQL_URL,
-    siteId: params.siteId || env.SITE_ID,
-    tenantKey: params.tenantKey || env.TENANT_KEY,
-    ...(params.cacheGraphQLResponses == null && { cacheGraphQLResponses: env.CACHE_GQL_RESPONSES }),
-    ...(params.cacheSiteContext == null && { cacheSiteContext: env.CACHE_GQL_SITE_CONTEXT }),
-  });
+    app,
+    baseCMSGraphQL,
+    site,
+    tenant,
+  } = await buildServerConfig(params);
 
   const server = express();
   // Add cookie parsing.
@@ -45,13 +28,14 @@ export default async (params = {}) => {
   // Set BaseCMS Apollo client.
   server.use(apollo({
     prop: '$apolloBaseCMS',
-    uri: baseCMSGraphQLURL,
+    name: app.name,
+    version: app.version,
+    uri: baseCMSGraphQL.url,
     link: {
       headers: {
-        'x-tenant-key': tenantKey,
-        'x-site-id': siteId,
-        ...(cacheGraphQLResponses && { 'x-cache-responses': true }),
-        ...(cacheSiteContext && { 'x-cache-site-context': true }),
+        'x-tenant-key': tenant.key,
+        'x-site-id': site.id,
+        ...(baseCMSGraphQL.cacheResponses && { 'x-cache-responses': true }),
       },
     },
   }));
