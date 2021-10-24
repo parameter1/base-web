@@ -14,28 +14,22 @@ import cookieParser from 'cookie-parser';
  * @param {string} params.tenantKey
  */
 export default async (params = {}) => {
-  const {
-    app,
-    baseCMSGraphQL,
-    site,
-    tenant,
-  } = await buildServerConfig(params);
-
+  const conf = await buildServerConfig(params);
   const server = express();
   // Add cookie parsing.
   server.use(cookieParser());
 
   // Set BaseCMS Apollo client.
   server.use(apollo({
-    prop: '$apolloBaseCMS',
-    name: app.name,
-    version: app.version,
-    uri: baseCMSGraphQL.url,
+    prop: conf.get('baseCMSGraphQL.prop'),
+    name: conf.get('app.name'),
+    version: conf.get('app.version'),
+    uri: conf.get('baseCMSGraphQL.url'),
     link: {
       headers: {
-        'x-tenant-key': tenant.key,
-        'x-site-id': site.id,
-        ...(baseCMSGraphQL.cacheResponses && { 'x-cache-responses': true }),
+        'x-tenant-key': conf.get('tenant.key'),
+        'x-site-id': conf.get('site.id'),
+        ...(conf.get('baseCMSGraphQL.cacheResponses') && { 'x-cache-responses': true }),
       },
     },
   }));
