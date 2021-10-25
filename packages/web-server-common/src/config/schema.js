@@ -8,7 +8,7 @@ export default Joi.object({
   baseCMSGraphQL: Joi.object({
     prop: Joi.string().trim().default('$apolloBaseCMS'),
     url: Joi.string().trim().uri().required(),
-    cacheResponses: Joi.boolean().truthy('1').falsy('0'),
+    cacheResponses: Joi.boolean().truthy('1').falsy('0').default(false),
   }).required(),
   site: Joi.object({
     id: Joi.string().trim().pattern(/^[a-f0-9]{24}$/).required(),
