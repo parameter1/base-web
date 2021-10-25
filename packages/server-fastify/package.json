@@ -1,14 +1,14 @@
 {
-  "name": "@parameter1/marko-base-cms-web-server-fastify",
+  "name": "@parameter1/base-web-server-fastify",
   "version": "0.0.0",
   "type": "module",
   "description": "BaseCMS+Marko website server using Fastify.",
   "author": "Jacob Bare <jacob@parameter1.com>",
-  "homepage": "https://github.com/parameter1/marko-base-cms/tree/main/packages/web-server-fastify#readme",
+  "homepage": "https://github.com/parameter1/base-web/tree/main/packages/server-fastify#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/parameter1/marko-base-cms.git",
-    "directory": "packages/web-server-fastify"
+    "url": "git+https://github.com/parameter1/base-web.git",
+    "directory": "packages/server-fastify"
   },
   "license": "MIT",
   "main": "src/index.js",
@@ -17,9 +17,9 @@
     "test": "yarn lint"
   },
   "dependencies": {
-    "@parameter1/marko-base-cms-apollo-ssc-fastify": "^0.0.0",
-    "@parameter1/marko-base-cms-utils": "^0.0.0",
-    "@parameter1/marko-base-cms-web-server-common": "^0.0.0",
+    "@parameter1/base-web-apollo-ssc-fastify": "^0.0.0",
+    "@parameter1/base-web-server-common": "^0.0.0",
+    "@parameter1/base-web-utils": "^0.0.0",
     "fastify": "^3.22.1",
     "fastify-cookie": "^5.3.1",
     "fastify-etag": "^2.1.0",

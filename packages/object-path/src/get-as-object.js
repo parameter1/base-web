@@ -1,4 +1,4 @@
-import { asObject } from '@parameter1/marko-base-cms-utils';
+import { asObject } from '@parameter1/base-web-utils';
 import get from './get.js';
 
 /**

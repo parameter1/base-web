@@ -1,13 +1,13 @@
 {
-  "name": "@parameter1/marko-base-cms-utils",
+  "name": "@parameter1/base-web-utils",
   "version": "0.0.0",
   "type": "module",
   "description": "Generic utility functions.",
   "author": "Jacob Bare <jacob@parameter1.com>",
-  "homepage": "https://github.com/parameter1/marko-base-cms/tree/main/packages/utils#readme",
+  "homepage": "https://github.com/parameter1/base-web/tree/main/packages/utils#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/parameter1/marko-base-cms.git",
+    "url": "git+https://github.com/parameter1/base-web.git",
     "directory": "packages/utils"
   },
   "license": "MIT",

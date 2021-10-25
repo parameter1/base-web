@@ -1,5 +1,5 @@
 import fp from 'fastify-plugin';
-import { createVersionHeader } from '@parameter1/marko-base-cms-web-server-common';
+import { createVersionHeader } from '@parameter1/base-web-server-common';
 
 const plugin = (fastify, { conf, pkg } = {}, next) => {
   fastify.addHook('preHandler', (_, reply, done) => {

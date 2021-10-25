@@ -1,11 +1,11 @@
-import { immediatelyThrow } from '@parameter1/marko-base-cms-utils';
+import { immediatelyThrow } from '@parameter1/base-web-utils';
 import createServer from './create.js';
 
 const { log } = console;
 const { env } = process;
 process.on('unhandledRejection', immediatelyThrow);
 
-const defaults = { HOST: 'localhost', PORT: 45894 };
+const defaults = { HOST: 'localhost', PORT: 45893 };
 
 export { default as createServer } from './create.js';
 
@@ -20,7 +20,12 @@ export default ({
     log('Booting server...');
     const { conf, server } = await createServer(options);
 
-    await server.listen({ host, port });
+    await new Promise((resolve, reject) => {
+      server.listen({ host, port }, (err) => {
+        if (err) { reject(err); return; }
+        resolve();
+      });
+    });
     log(`App: ${conf.get('app.name')} v${conf.get('app.version')}`);
     log(`Tenant: ${conf.get('tenant.key')}`);
     log(`Site ID: ${conf.get('site.id')}`);

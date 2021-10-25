@@ -1,6 +1,6 @@
 import { validateAsync } from '@parameter1/joi/utils.js';
-import { get } from '@parameter1/marko-base-cms-object-path';
-import { wrap } from '@parameter1/marko-base-cms-immutable';
+import { get } from '@parameter1/base-web-object-path';
+import { wrap } from '@parameter1/base-web-immutable';
 import schema from './schema.js';
 
 const { env } = process;

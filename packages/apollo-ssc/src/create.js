@@ -3,7 +3,7 @@ import apolloClient from 'apollo-client';
 import apolloCache from 'apollo-cache-inmemory';
 import apolloLink from 'apollo-link-http';
 import apolloContext from 'apollo-link-context';
-import { isFunction as isFn } from '@parameter1/marko-base-cms-utils';
+import { isFunction as isFn } from '@parameter1/base-web-utils';
 
 const { ApolloClient } = apolloClient;
 const { InMemoryCache } = apolloCache;

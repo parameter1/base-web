@@ -1,5 +1,5 @@
-import createApolloClient from '@parameter1/marko-base-cms-apollo-ssc';
-import { isFunction as isFn } from '@parameter1/marko-base-cms-utils';
+import createApolloClient from '@parameter1/base-web-apollo-ssc';
+import { isFunction as isFn } from '@parameter1/base-web-utils';
 import fp from 'fastify-plugin';
 
 /**

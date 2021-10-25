@@ -1,13 +1,13 @@
 {
-  "name": "@parameter1/marko-base-cms-immutable",
+  "name": "@parameter1/base-web-immutable",
   "version": "0.0.0",
   "type": "module",
   "description": "Wrapper for ImmutableJS.",
   "author": "Jacob Bare <jacob@parameter1.com>",
-  "homepage": "https://github.com/parameter1/marko-base-cms/tree/main/packages/immutable#readme",
+  "homepage": "https://github.com/parameter1/base-web/tree/main/packages/immutable#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/parameter1/marko-base-cms.git",
+    "url": "git+https://github.com/parameter1/base-web.git",
     "directory": "packages/immutable"
   },
   "license": "MIT",

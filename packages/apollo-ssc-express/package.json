@@ -1,13 +1,13 @@
 {
-  "name": "@parameter1/marko-base-cms-apollo-ssc-express",
+  "name": "@parameter1/base-web-apollo-ssc-express",
   "version": "0.0.0",
   "type": "module",
   "description": "Apollo server-side client (SSC) Express middleware.",
   "author": "Jacob Bare <jacob@parameter1.com>",
-  "homepage": "https://github.com/parameter1/marko-base-cms/tree/main/packages/apollo-ssc-express#readme",
+  "homepage": "https://github.com/parameter1/base-web/tree/main/packages/apollo-ssc-express#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/parameter1/marko-base-cms.git",
+    "url": "git+https://github.com/parameter1/base-web.git",
     "directory": "packages/apollo-ssc-express"
   },
   "license": "MIT",
@@ -25,8 +25,8 @@
     "win32"
   ],
   "dependencies": {
-    "@parameter1/marko-base-cms-apollo-ssc": "^0.0.0",
-    "@parameter1/marko-base-cms-utils": "^0.0.0"
+    "@parameter1/base-web-apollo-ssc": "^0.0.0",
+    "@parameter1/base-web-utils": "^0.0.0"
   },
   "publishConfig": {
     "access": "public"
