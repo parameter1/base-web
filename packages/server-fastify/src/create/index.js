@@ -1,11 +1,11 @@
-import fastify from 'fastify';
-import { buildServerConfig } from '@parameter1/base-web-server-common';
+import build from './build.js';
 import baseBrowseGraphql from './base-browse-graphql.js';
 import baseCMSGraphql from './base-cms-graphql.js';
 import cookies from './cookies.js';
 import etags from './etags.js';
 import helmet from './helmet.js';
 import requestOrigin from './request-origin.js';
+import routes from './routes.js';
 import versionsHeader from './versions-header.js';
 import pkg from '../../package.js';
 
@@ -17,10 +17,7 @@ import pkg from '../../package.js';
  * @param {object} params
  */
 export default async (params = {}) => {
-  const conf = await buildServerConfig(params);
-  const server = fastify({
-    trustProxy: conf.getAsList('trustProxy').toArray(),
-  });
+  const { server, conf } = await build(params);
   etags({ server, conf });
   cookies({ server, conf });
   helmet({ server, conf });
@@ -28,6 +25,7 @@ export default async (params = {}) => {
   baseBrowseGraphql({ server, conf });
   versionsHeader({ server, conf, pkg });
   requestOrigin({ server });
-  conf.get('routes')(server);
+
+  routes({ server, conf });
   return { conf, server };
 };
