@@ -49,6 +49,8 @@ export default async (params = {}) => {
     next();
   });
 
-  server.get('/', (_, res) => res.json({ hello: 'world' }));
+  // Set site routes.
+  conf.get('routes')(server);
+
   return { conf, server };
 };

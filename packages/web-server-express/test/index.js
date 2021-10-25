@@ -9,6 +9,10 @@ run({
   baseCMSGraphQL: {
     url: 'https://graphql.virgon.base.parameter1.com',
   },
+  // would normally be loaded from the site
+  routes: (server) => {
+    server.get('/', (_, res) => res.set('Content-Type', 'text/html; charset=UTF-8').send('<h1>Home Page (Express)</h1>'));
+  },
   site: {
     id: '5fce561dd28860bc33b823ce',
     name: 'Overdrive',

@@ -49,6 +49,8 @@ export default async (params = {}) => {
     done();
   });
 
-  server.get('/', (_, reply) => reply.send({ hello: 'world' }));
+  // Set site routes.
+  conf.get('routes')(server);
+
   return { conf, server };
 };

@@ -11,6 +11,7 @@ export default Joi.object({
     cacheResponses: Joi.boolean().truthy('1').falsy('0').default(false),
   }).required(),
   helmet: Joi.object().unknown().default({}),
+  routes: Joi.function().minArity(1).required(),
   site: Joi.object({
     id: Joi.string().trim().pattern(/^[a-f0-9]{24}$/).required(),
     name: Joi.string().trim().required(),
