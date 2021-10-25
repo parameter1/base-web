@@ -22,7 +22,8 @@ export default ({
     log(`App: ${conf.get('app.name')} v${conf.get('app.version')}`);
     log(`Tenant: ${conf.get('tenant.key')}`);
     log(`Site ID: ${conf.get('site.id')}`);
-    log(`BaseCMS GraphQL URL: ${conf.get('baseCMSGraphQL.url')}`);
+    log(`BaseBrowse GraphQL URI: ${conf.get('baseBrowseGraphQL.uri')}`);
+    log(`BaseCMS GraphQL URI: ${conf.get('baseCMSGraphQL.uri')}`);
     log(`Ready on http://${exposedHost}:${exposedPort}`);
   })().catch(immediatelyThrow);
 };

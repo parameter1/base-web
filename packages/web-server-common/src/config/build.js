@@ -8,10 +8,14 @@ const { env } = process;
 export default async (params = {}) => {
   const validated = await validateAsync(schema, {
     ...params,
+    baseBrowseGraphQL: {
+      ...params.baseBrowseGraphQL,
+      uri: get(params, 'baseBrowseGraphQL.uri') || env.BASE_BROWSE_GRAPHQL_URI,
+    },
     baseCMSGraphQL: {
       ...params.baseCMSGraphQL,
-      url: get(params, 'baseCMSGraphQL.url') || env.BASE_CMS_GRAPHQL_URL,
-      ...(get(params, 'baseCMSGraphQL.cacheResponses') == null && { cacheResponses: env.CACHE_GQL_RESPONSES }),
+      uri: get(params, 'baseCMSGraphQL.uri') || env.BASE_CMS_GRAPHQL_URI,
+      ...(get(params, 'baseCMSGraphQL.cacheResponses') == null && { cacheResponses: env.BASE_CMS_GRAPHQL_CACHE_RESPONSES }),
     },
     site: {
       ...params.site,

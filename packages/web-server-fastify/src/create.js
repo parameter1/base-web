@@ -33,7 +33,7 @@ export default async (params = {}) => {
     prop: conf.get('baseCMSGraphQL.prop'),
     name: conf.get('app.name'),
     version: conf.get('app.version'),
-    uri: conf.get('baseCMSGraphQL.url'),
+    uri: conf.get('baseCMSGraphQL.uri'),
     link: {
       headers: {
         'x-tenant-key': conf.get('tenant.key'),
@@ -41,6 +41,15 @@ export default async (params = {}) => {
         ...(conf.get('baseCMSGraphQL.cacheResponses') && { 'x-cache-responses': true }),
       },
     },
+  });
+
+  // Set BaseBrowse Apollo client.
+  server.register(apollo, {
+    prop: conf.get('baseBrowseGraphQL.prop'),
+    name: conf.get('app.name'),
+    version: conf.get('app.version'),
+    uri: conf.get('baseBrowseGraphQL.uri'),
+    link: { headers: { 'x-tenant-key': conf.get('tenant.key') } },
   });
 
   // Set versions.

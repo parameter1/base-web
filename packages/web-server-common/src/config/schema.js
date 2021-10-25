@@ -5,9 +5,13 @@ export default Joi.object({
     name: Joi.string().trim().required(),
     version: Joi.string().trim().required(),
   }).required(),
+  baseBrowseGraphQL: Joi.object({
+    prop: Joi.string().trim().default('$apolloBaseBrowse'),
+    uri: Joi.string().trim().uri().required(),
+  }).required(),
   baseCMSGraphQL: Joi.object({
     prop: Joi.string().trim().default('$apolloBaseCMS'),
-    url: Joi.string().trim().uri().required(),
+    uri: Joi.string().trim().uri().required(),
     cacheResponses: Joi.boolean().truthy('1').falsy('0').default(false),
   }).required(),
   helmet: Joi.object().unknown().default({}),

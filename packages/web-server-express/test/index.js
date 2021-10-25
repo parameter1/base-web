@@ -6,8 +6,11 @@ run({
     name: '@randall-reilly/overdriveonline.com',
     version: '1.19.9',
   },
+  baseBrowseGraphQL: {
+    uri: 'https://base-browse.virgon.base.parameter1.com/graphql',
+  },
   baseCMSGraphQL: {
-    url: 'https://graphql.virgon.base.parameter1.com',
+    uri: 'https://graphql.virgon.base.parameter1.com',
   },
   // would normally be loaded from the site
   routes: (server) => {
