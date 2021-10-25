@@ -21,7 +21,8 @@
     "@parameter1/marko-base-cms-utils": "^0.0.0",
     "@parameter1/marko-base-cms-web-server-common": "^0.0.0",
     "fastify": "^3.22.1",
-    "fastify-cookie": "^5.3.1"
+    "fastify-cookie": "^5.3.1",
+    "fastify-helmet": "^5.3.2"
   },
   "publishConfig": {
     "access": "public"

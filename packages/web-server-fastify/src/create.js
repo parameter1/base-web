@@ -2,6 +2,7 @@ import fastify from 'fastify';
 import apollo from '@parameter1/marko-base-cms-apollo-ssc-fastify';
 import { buildServerConfig } from '@parameter1/marko-base-cms-web-server-common';
 import cookieParser from 'fastify-cookie';
+import helmet from 'fastify-helmet';
 import pkg from '../package.js';
 
 /**
@@ -19,6 +20,13 @@ export default async (params = {}) => {
   const server = fastify();
   // Add cookie parsing
   server.register(cookieParser);
+
+  // Add helmet.
+  server.register(helmet, {
+    frameguard: false,
+    referrerPolicy: { policy: 'strict-origin-when-cross-origin' },
+    ...conf.get('helmet').toObject(),
+  });
 
   // Set BaseCMS Apollo client.
   server.register(apollo, {
