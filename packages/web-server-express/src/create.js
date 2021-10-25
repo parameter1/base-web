@@ -8,6 +8,7 @@ import {
 } from '@parameter1/marko-base-cms-web-server-common';
 import cookieParser from 'cookie-parser';
 import helmet from 'helmet';
+import etags from './etags.js';
 import requestOrigin from './request-origin.js';
 import versions from './versions.js';
 import pkg from '../package.js';
@@ -24,6 +25,8 @@ export default async (params = {}) => {
   const server = express();
   server
     .set('trust proxy', conf.getAsList('trustProxy').toArray());
+  // Handle etags.
+  etags(server, conf);
   // Add cookie parsing.
   server.use(cookieParser());
   // Add helmet.

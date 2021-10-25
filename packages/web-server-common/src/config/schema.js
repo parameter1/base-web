@@ -14,6 +14,11 @@ export default Joi.object({
     uri: Joi.string().trim().uri().required(),
     cacheResponses: Joi.boolean().truthy('1').falsy('0').default(false),
   }).required(),
+  etag: Joi.object({
+    enabled: Joi.boolean().truthy('1').falsy('0').default(true),
+    mode: Joi.string().trim().lowercase().valid('weak', 'strong')
+      .default('weak'),
+  }).default({ enabled: true, mode: 'weak' }),
   helmet: Joi.object().unknown().default({}),
   routes: Joi.function().minArity(1).required(),
   site: Joi.object({

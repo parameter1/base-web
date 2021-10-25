@@ -17,6 +17,11 @@ export default async (params = {}) => {
       uri: get(params, 'baseCMSGraphQL.uri') || env.BASE_CMS_GRAPHQL_URI,
       ...(get(params, 'baseCMSGraphQL.cacheResponses') == null && { cacheResponses: env.BASE_CMS_GRAPHQL_CACHE_RESPONSES }),
     },
+    etag: {
+      ...params.etag,
+      ...(env.ETAG_ENABLED && { enabled: env.ETAG_ENABLED }),
+      ...(env.ETAG_MODE && { mode: env.ETAG_MODE }),
+    },
     site: {
       ...params.site,
       id: get(params, 'site.id') || env.SITE_ID,
