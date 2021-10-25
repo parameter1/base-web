@@ -20,7 +20,9 @@ import pkg from '../package.js';
  */
 export default async (params = {}) => {
   const conf = await buildServerConfig(params);
-  const server = fastify();
+  const server = fastify({
+    trustProxy: conf.getAsList('trustProxy').toArray(),
+  });
   // Add cookie parsing
   server.register(cookieParser);
   // Add helmet.

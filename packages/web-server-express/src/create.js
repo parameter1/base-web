@@ -21,6 +21,8 @@ import pkg from '../package.js';
 export default async (params = {}) => {
   const conf = await buildServerConfig(params);
   const server = express();
+  server.set('trust proxy', conf.getAsList('trustProxy').toArray());
+
   // Add cookie parsing.
   server.use(cookieParser());
   // Add helmet.

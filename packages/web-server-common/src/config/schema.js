@@ -37,4 +37,5 @@ export default Joi.object({
   tenant: Joi.object({
     key: Joi.string().trim().pattern(/^[a-z0-9]+_[a-z0-9]+$/).required(),
   }).required(),
+  trustProxy: Joi.array().items(Joi.string().trim()).default(['loopback', 'linklocal', 'uniquelocal']),
 }).required();
