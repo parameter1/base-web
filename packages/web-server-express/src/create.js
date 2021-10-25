@@ -4,6 +4,7 @@ import {
   buildServerConfig,
   createBaseBrowseOptions,
   createBaseCMSOptions,
+  createHelmetOptions,
   createVersionHeader,
 } from '@parameter1/marko-base-cms-web-server-common';
 import cookieParser from 'cookie-parser';
@@ -22,28 +23,18 @@ export default async (params = {}) => {
   const server = express();
   // Add cookie parsing.
   server.use(cookieParser());
-
   // Add helmet.
-  server.use(helmet({
-    frameguard: false,
-    referrerPolicy: { policy: 'strict-origin-when-cross-origin' },
-    ...conf.get('helmet').toObject(),
-  }));
-
+  server.use(helmet(createHelmetOptions(conf)));
   // Set BaseCMS Apollo client.
   server.use(apollo(createBaseCMSOptions(conf)));
-
   // Set BaseBrowse Apollo client.
   server.use(apollo(createBaseBrowseOptions(conf)));
-
   // Set versions.
   server.use((_, res, next) => {
     res.set(...createVersionHeader(conf, pkg));
     next();
   });
-
   // Set site routes.
   conf.get('routes')(server);
-
   return { conf, server };
 };
