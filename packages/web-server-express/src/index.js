@@ -16,7 +16,8 @@ export default ({
   ...options
 } = {}) => {
   (async () => {
-    const server = await createServer(options);
+    log('Booting server...');
+    const { conf, server } = await createServer(options);
 
     await new Promise((resolve, reject) => {
       server.listen({ host, port }, (err) => {
@@ -24,6 +25,10 @@ export default ({
         resolve();
       });
     });
+    log(`App: ${conf.get('app.name')} v${conf.get('app.version')}`);
+    log(`Tenant: ${conf.get('tenant.key')}`);
+    log(`Site ID: ${conf.get('site.id')}`);
+    log(`BaseCMS GraphQL URL: ${conf.get('baseCMSGraphQL.url')}`);
     log(`Ready on http://${exposedHost}:${exposedPort}`);
   })().catch(immediatelyThrow);
 };

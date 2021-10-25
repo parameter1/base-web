@@ -50,5 +50,5 @@ export default async (params = {}) => {
   });
 
   server.get('/', (_, res) => res.json({ hello: 'world' }));
-  return server;
+  return { conf, server };
 };

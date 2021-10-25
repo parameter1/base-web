@@ -50,5 +50,5 @@ export default async (params = {}) => {
   });
 
   server.get('/', (_, reply) => reply.send({ hello: 'world' }));
-  return server;
+  return { conf, server };
 };
