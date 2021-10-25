@@ -1,3 +1,5 @@
+import { buildRobotsTxt } from '@parameter1/base-web-server-common';
+
 const isDevelopment = process.env.NODE_ENV === 'development';
 
 export default ({ server, conf } = {}) => {
@@ -9,4 +11,7 @@ export default ({ server, conf } = {}) => {
       res.json(conf.map.toObject());
     });
   }
+  server.get('/robots.txt', (_, res) => {
+    res.type('text/plain').send(buildRobotsTxt({ conf }));
+  });
 };

@@ -3,3 +3,4 @@ export { default as createBaseBrowseOptions } from './config/create-base-browse-
 export { default as createBaseCMSOptions } from './config/create-base-cms-options.js';
 export { default as createVersionHeader } from './config/create-version-header.js';
 export { default as serverConfigSchema } from './config/schema.js';
+export { default as buildRobotsTxt } from './route-utils/build-robots.js';

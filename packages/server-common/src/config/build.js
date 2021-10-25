@@ -31,6 +31,10 @@ export default async (params = {}) => {
       ...params.helmet,
       ...(fromEnv({ enabled: 'HELMET_ENABLED' })),
     },
+    robots: {
+      ...params.robots,
+      ...(fromEnv({ enabled: 'ROBOTS_ENABLED' })),
+    },
     site: {
       ...params.site,
       ...(fromEnv({

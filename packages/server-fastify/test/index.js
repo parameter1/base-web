@@ -12,6 +12,9 @@ run({
   baseCMSGraphQL: {
     uri: 'https://graphql.virgon.base.parameter1.com',
   },
+  robots: {
+    directives: [{ agent: '*', value: 'Disallow: /search' }],
+  },
   // would normally be loaded from the site
   routes: (server) => {
     server.get('/', (_, reply) => reply.header('Content-Type', 'text/html; charset=UTF-8').send('<h1>Home Page (Fastify)</h1>'));

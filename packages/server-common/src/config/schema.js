@@ -1,5 +1,7 @@
 import Joi from '@parameter1/joi';
 
+const isProduction = process.env.NODE_ENV === 'production';
+
 export default Joi.object({
   app: Joi.object({
     name: Joi.string().trim().required(),
@@ -32,6 +34,20 @@ export default Joi.object({
       policy: Joi.string().default('strict-origin-when-cross-origin'),
     }).default({ policy: 'strict-origin-when-cross-origin' }),
   }).unknown().default({ enabled: true, frameguard: false, referrerPolicy: {} }),
+  robots: Joi.object({
+    enabled: Joi.boolean().truthy('1').falsy('0').default(isProduction),
+    directives: Joi.array().items(
+      Joi.object({ agent: Joi.string().trim().required(), value: Joi.string().trim().required() }),
+    ).default([]).external((v) => {
+      // ensure unique list of directives per agent (including defaults)
+      const mapped = [...v, { agent: '*', value: 'Disallow: /__' }].reduce((map, o) => {
+        if (!map.has(o.agent)) map.set(o.agent, new Set());
+        map.get(o.agent).add(o.value);
+        return map;
+      }, new Map());
+      return mapped;
+    }),
+  }).default({ enabled: isProduction, directives: [] }),
   routes: Joi.function().minArity(1).required(),
   site: Joi.object({
     id: Joi.string().trim().pattern(/^[a-f0-9]{24}$/).required(),
