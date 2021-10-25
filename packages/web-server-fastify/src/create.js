@@ -31,9 +31,11 @@ export default async (params = {}) => {
   server.register(apollo, createBaseCMSOptions(conf));
   // Set BaseBrowse Apollo client.
   server.register(apollo, createBaseBrowseOptions(conf));
-  // Set versions.
-  server.addHook('preHandler', (_, reply, done) => {
+  // Set versions and request origin.
+  server.decorateRequest('requestOrigin', '');
+  server.addHook('preHandler', (req, reply, done) => {
     reply.header(...createVersionHeader(conf, pkg));
+    req.requestOrigin = `${req.protocol}://${req.hostname}`;
     done();
   });
   // Set site routes.
