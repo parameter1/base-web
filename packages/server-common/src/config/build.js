@@ -33,7 +33,7 @@ export default async (params = {}) => {
     },
     robots: {
       ...params.robots,
-      ...(fromEnv({ enabled: 'ROBOTS_ENABLED' })),
+      ...(fromEnv({ enabled: 'ROBOTS_ENABLED', disallowAll: 'ROBOTS_DISALLOW_ALL' })),
     },
     site: {
       ...params.site,

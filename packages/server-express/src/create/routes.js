@@ -11,7 +11,9 @@ export default ({ server, conf } = {}) => {
       res.json(conf.map.toObject());
     });
   }
-  server.get('/robots.txt', (_, res) => {
-    res.type('text/plain').send(buildRobotsTxt({ conf }));
-  });
+  if (conf.get('robots.enabled')) {
+    server.get('/robots.txt', (_, res) => {
+      res.type('text/plain').send(buildRobotsTxt({ conf }));
+    });
+  }
 };

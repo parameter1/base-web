@@ -35,7 +35,7 @@ export default Joi.object({
     }).default({ policy: 'strict-origin-when-cross-origin' }),
   }).unknown().default({ enabled: true, frameguard: false, referrerPolicy: {} }),
   robots: Joi.object({
-    enabled: Joi.boolean().truthy('1').falsy('0').default(isProduction),
+    enabled: Joi.boolean().truthy('1').falsy('0').default(true),
     directives: Joi.array().items(
       Joi.object({ agent: Joi.string().trim().required(), value: Joi.string().trim().required() }),
     ).default([]).external((v) => {
@@ -47,7 +47,8 @@ export default Joi.object({
       }, new Map());
       return mapped;
     }),
-  }).default({ enabled: isProduction, directives: [] }),
+    disallowAll: Joi.boolean().truthy('1').falsy('0').default(!isProduction),
+  }).default({ enabled: true, directives: [], disallowAll: !isProduction }),
   routes: Joi.function().minArity(1).required(),
   site: Joi.object({
     id: Joi.string().trim().pattern(/^[a-f0-9]{24}$/).required(),
