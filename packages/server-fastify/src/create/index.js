@@ -1,4 +1,4 @@
-import build from './build.js';
+import init from './init.js';
 import baseBrowseGraphql from './base-browse-graphql.js';
 import baseCMSGraphql from './base-cms-graphql.js';
 import cookies from './cookies.js';
@@ -17,7 +17,7 @@ import pkg from '../../package.js';
  * @param {object} params
  */
 export default async (params = {}) => {
-  const { server, conf } = await build(params);
+  const { server, conf } = await init(params);
   etags({ server, conf });
   cookies({ server, conf });
   helmet({ server, conf });
