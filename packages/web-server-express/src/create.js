@@ -11,9 +11,6 @@ import pkg from '../package.js';
  * @todo at this point, Marko does not need to be involved.
  *
  * @param {object} params
- * @param {string} params.baseCMSGraphQLURL
- * @param {string} params.siteId
- * @param {string} params.tenantKey
  */
 export default async (params = {}) => {
   const conf = await buildServerConfig(params);
