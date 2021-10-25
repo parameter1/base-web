@@ -1,5 +1,4 @@
 import { immediatelyThrow } from '@parameter1/marko-base-cms-utils';
-
 import createServer from './create.js';
 
 const { log } = console;
@@ -7,6 +6,8 @@ const { env } = process;
 process.on('unhandledRejection', immediatelyThrow);
 
 const defaults = { HOST: 'localhost', PORT: 45893 };
+
+export { default as createServer } from './create.js';
 
 export default ({
   exposedHost = env.EXPOSED_HOST || env.HOST || defaults.HOST,

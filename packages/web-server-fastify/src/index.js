@@ -7,6 +7,8 @@ process.on('unhandledRejection', immediatelyThrow);
 
 const defaults = { HOST: 'localhost', PORT: 45894 };
 
+export { default as createServer } from './create.js';
+
 export default ({
   exposedHost = env.EXPOSED_HOST || env.HOST || defaults.HOST,
   exposedPort = env.EXPOSED_PORT || env.PORT || defaults.PORT,
