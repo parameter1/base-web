@@ -12,7 +12,11 @@ export default async (params = {}) => {
     },
     baseCMSGraphQL: {
       ...params.baseCMSGraphQL,
-      ...(fromEnv({ uri: 'BASE_CMS_GRAPHQL_URI', cacheResponses: 'BASE_CMS_GRAPHQL_CACHE_RESPONSES' })),
+      ...(fromEnv({
+        uri: 'BASE_CMS_GRAPHQL_URI',
+        cacheResponses: 'BASE_CMS_GRAPHQL_CACHE_RESPONSES',
+        cacheSiteContext: 'BASE_CMS_GRAPHQL_CACHE_SITE_CONTEXT',
+      })),
     },
     etag: {
       ...params.etag,

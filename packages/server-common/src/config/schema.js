@@ -12,7 +12,8 @@ export default Joi.object({
   baseCMSGraphQL: Joi.object({
     prop: Joi.string().trim().default('$apolloBaseCMS'),
     uri: Joi.string().trim().uri().required(),
-    cacheResponses: Joi.boolean().truthy('1').falsy('0').default(false),
+    cacheResponses: Joi.boolean().truthy('1').falsy('0').default(true),
+    cacheSiteContext: Joi.boolean().truthy('1').falsy('0').default(true),
   }).required(),
   etag: Joi.object({
     enabled: Joi.boolean().truthy('1').falsy('0').default(true),

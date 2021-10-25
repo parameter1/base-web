@@ -7,7 +7,8 @@ export default (conf) => ({
     headers: {
       'x-tenant-key': conf.get('tenant.key'),
       'x-site-id': conf.get('site.id'),
-      ...(conf.get('baseCMSGraphQL.cacheResponses') && { 'x-cache-responses': true }),
+      'x-cache-responses': conf.get('baseCMSGraphQL.cacheResponses'),
+      'x-cache-site-context': conf.get('baseCMSGraphQL.cacheSiteContext'),
     },
   },
 });
