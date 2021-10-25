@@ -11,7 +11,7 @@ export default (obj) => {
    */
   const get = (path) => map.getIn(path.split('.'));
   return {
-    log: log(obj),
+    log: () => log(obj),
     map,
     get,
 
