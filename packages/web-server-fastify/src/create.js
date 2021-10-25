@@ -45,7 +45,7 @@ export default async (params = {}) => {
 
   // Set versions.
   server.addHook('preHandler', (_, reply, done) => {
-    reply.header('x-versions', `site=${conf.get('app.version')}; core=${pkg.version}`);
+    reply.header('X-Versions', `site=${conf.get('app.version')}; core=${pkg.version}`);
     done();
   });
 

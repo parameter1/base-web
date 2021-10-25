@@ -45,7 +45,7 @@ export default async (params = {}) => {
 
   // Set versions.
   server.use((_, res, next) => {
-    res.set('x-versions', `site=${conf.get('app.version')}; core=${pkg.version}`);
+    res.set('X-Versions', `site=${conf.get('app.version')}; core=${pkg.version}`);
     next();
   });
 
