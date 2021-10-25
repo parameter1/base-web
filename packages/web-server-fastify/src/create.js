@@ -2,6 +2,7 @@ import fastify from 'fastify';
 import apollo from '@parameter1/marko-base-cms-apollo-ssc-fastify';
 import { buildServerConfig } from '@parameter1/marko-base-cms-web-server-common';
 import cookieParser from 'fastify-cookie';
+import pkg from '../package.js';
 
 /**
  * Boots the BaseCMS web server.
@@ -32,6 +33,12 @@ export default async (params = {}) => {
         ...(conf.get('baseCMSGraphQL.cacheResponses') && { 'x-cache-responses': true }),
       },
     },
+  });
+
+  // Set versions.
+  server.addHook('preHandler', (_, reply, done) => {
+    reply.header('x-versions', `site=${conf.get('app.version')}; core=${pkg.version}`);
+    done();
   });
 
   server.get('/', (_, reply) => reply.send({ hello: 'world' }));

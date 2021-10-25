@@ -2,6 +2,7 @@ import express from 'express';
 import apollo from '@parameter1/marko-base-cms-apollo-ssc-express';
 import { buildServerConfig } from '@parameter1/marko-base-cms-web-server-common';
 import cookieParser from 'cookie-parser';
+import pkg from '../package.js';
 
 /**
  * Boots the BaseCMS web server.
@@ -33,6 +34,12 @@ export default async (params = {}) => {
       },
     },
   }));
+
+  // Set versions.
+  server.use((_, res, next) => {
+    res.set('x-versions', `site=${conf.get('app.version')}; core=${pkg.version}`);
+    next();
+  });
 
   server.get('/', (_, res) => res.json({ hello: 'world' }));
   return server;
