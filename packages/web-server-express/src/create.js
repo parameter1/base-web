@@ -5,10 +5,11 @@ import {
   createBaseBrowseOptions,
   createBaseCMSOptions,
   createHelmetOptions,
-  createVersionHeader,
 } from '@parameter1/marko-base-cms-web-server-common';
 import cookieParser from 'cookie-parser';
 import helmet from 'helmet';
+import requestOrigin from './request-origin.js';
+import versions from './versions.js';
 import pkg from '../package.js';
 
 /**
@@ -21,22 +22,20 @@ import pkg from '../package.js';
 export default async (params = {}) => {
   const conf = await buildServerConfig(params);
   const server = express();
-  server.set('trust proxy', conf.getAsList('trustProxy').toArray());
-
+  server
+    .set('trust proxy', conf.getAsList('trustProxy').toArray());
   // Add cookie parsing.
   server.use(cookieParser());
   // Add helmet.
   server.use(helmet(createHelmetOptions(conf)));
   // Set BaseCMS Apollo client.
   server.use(apollo(createBaseCMSOptions(conf)));
-  // Set BaseBrowse Apollo client.
+  // Set BaseBrowse Apollo client (is this needed globally?).
   server.use(apollo(createBaseBrowseOptions(conf)));
-  // Set versions and request origin.
-  server.use((req, res, next) => {
-    res.set(...createVersionHeader(conf, pkg));
-    res.locals.requestOrigin = `${req.protocol}://${req.get('host')}`;
-    next();
-  });
+  // Set versions.
+  server.use(versions({ conf, pkg }));
+  // Set (relative-to-server) request origin.
+  server.use(requestOrigin());
   // Set site routes.
   conf.get('routes')(server);
   return { conf, server };

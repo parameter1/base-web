@@ -5,10 +5,11 @@ import {
   createBaseBrowseOptions,
   createBaseCMSOptions,
   createHelmetOptions,
-  createVersionHeader,
 } from '@parameter1/marko-base-cms-web-server-common';
 import cookieParser from 'fastify-cookie';
 import helmet from 'fastify-helmet';
+import requestOrigin from './request-origin.js';
+import versions from './versions.js';
 import pkg from '../package.js';
 
 /**
@@ -29,15 +30,12 @@ export default async (params = {}) => {
   server.register(helmet, createHelmetOptions(conf));
   // Set BaseCMS Apollo client.
   server.register(apollo, createBaseCMSOptions(conf));
-  // Set BaseBrowse Apollo client.
+  // Set BaseBrowse Apollo client (is this needed globally?).
   server.register(apollo, createBaseBrowseOptions(conf));
-  // Set versions and request origin.
-  server.decorateRequest('requestOrigin', '');
-  server.addHook('preHandler', (req, reply, done) => {
-    reply.header(...createVersionHeader(conf, pkg));
-    req.requestOrigin = `${req.protocol}://${req.hostname}`;
-    done();
-  });
+  // Set versions.
+  server.register(versions, { conf, pkg });
+  // Set (relative-to-server) request origin.
+  server.register(requestOrigin);
   // Set site routes.
   conf.get('routes')(server);
   return { conf, server };
