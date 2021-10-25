@@ -1,6 +1,9 @@
 import express from 'express';
 import apollo from '@parameter1/marko-base-cms-apollo-ssc-express';
-import { buildServerConfig } from '@parameter1/marko-base-cms-web-server-common';
+import {
+  buildServerConfig,
+  createVersionHeader,
+} from '@parameter1/marko-base-cms-web-server-common';
 import cookieParser from 'cookie-parser';
 import helmet from 'helmet';
 import pkg from '../package.js';
@@ -51,7 +54,7 @@ export default async (params = {}) => {
 
   // Set versions.
   server.use((_, res, next) => {
-    res.set('X-Versions', `site=${conf.get('app.version')}; core=${pkg.version}`);
+    res.set(...createVersionHeader(conf, pkg));
     next();
   });
 

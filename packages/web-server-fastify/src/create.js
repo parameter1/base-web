@@ -1,6 +1,9 @@
 import fastify from 'fastify';
 import apollo from '@parameter1/marko-base-cms-apollo-ssc-fastify';
-import { buildServerConfig } from '@parameter1/marko-base-cms-web-server-common';
+import {
+  buildServerConfig,
+  createVersionHeader,
+} from '@parameter1/marko-base-cms-web-server-common';
 import cookieParser from 'fastify-cookie';
 import helmet from 'fastify-helmet';
 import pkg from '../package.js';
@@ -51,7 +54,7 @@ export default async (params = {}) => {
 
   // Set versions.
   server.addHook('preHandler', (_, reply, done) => {
-    reply.header('X-Versions', `site=${conf.get('app.version')}; core=${pkg.version}`);
+    reply.header(...createVersionHeader(conf, pkg));
     done();
   });
 
