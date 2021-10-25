@@ -27,7 +27,11 @@ export default Joi.object({
   }).default({ enabled: true, mode: 'weak' }),
   helmet: Joi.object({
     enabled: Joi.boolean().truthy('1').falsy('0').default(true),
-  }).unknown().default({ enabled: true }),
+    frameguard: Joi.boolean().default(false),
+    referrerPolicy: Joi.object({
+      policy: Joi.string().default('strict-origin-when-cross-origin'),
+    }).default({ policy: 'strict-origin-when-cross-origin' }),
+  }).unknown().default({ enabled: true, frameguard: false, referrerPolicy: {} }),
   routes: Joi.function().minArity(1).required(),
   site: Joi.object({
     id: Joi.string().trim().pattern(/^[a-f0-9]{24}$/).required(),
