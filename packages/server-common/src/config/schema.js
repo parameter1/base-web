@@ -6,21 +6,28 @@ export default Joi.object({
     version: Joi.string().trim().required(),
   }).required(),
   baseBrowseGraphQL: Joi.object({
+    enabled: Joi.boolean().truthy('1').falsy('0').default(true),
     prop: Joi.string().trim().default('$apolloBaseBrowse'),
     uri: Joi.string().trim().uri().required(),
   }).required(),
   baseCMSGraphQL: Joi.object({
+    enabled: Joi.boolean().truthy('1').falsy('0').default(true),
     prop: Joi.string().trim().default('$apolloBaseCMS'),
     uri: Joi.string().trim().uri().required(),
     cacheResponses: Joi.boolean().truthy('1').falsy('0').default(true),
     cacheSiteContext: Joi.boolean().truthy('1').falsy('0').default(true),
   }).required(),
+  cookie: Joi.object({
+    enabled: Joi.boolean().truthy('1').falsy('0').default(true),
+  }).default({ enabled: true }),
   etag: Joi.object({
     enabled: Joi.boolean().truthy('1').falsy('0').default(true),
     mode: Joi.string().trim().lowercase().valid('weak', 'strong')
       .default('weak'),
   }).default({ enabled: true, mode: 'weak' }),
-  helmet: Joi.object().unknown().default({}),
+  helmet: Joi.object({
+    enabled: Joi.boolean().truthy('1').falsy('0').default(true),
+  }).unknown().default({ enabled: true }),
   routes: Joi.function().minArity(1).required(),
   site: Joi.object({
     id: Joi.string().trim().pattern(/^[a-f0-9]{24}$/).required(),

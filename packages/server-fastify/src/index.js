@@ -1,5 +1,5 @@
 import { immediatelyThrow } from '@parameter1/base-web-utils';
-import createServer from './create.js';
+import createServer from './create/index.js';
 
 const { log } = console;
 const { env } = process;
@@ -7,7 +7,7 @@ process.on('unhandledRejection', immediatelyThrow);
 
 const defaults = { HOST: 'localhost', PORT: 45894 };
 
-export { default as createServer } from './create.js';
+export { default as createServer } from './create/index.js';
 
 export default ({
   exposedHost = env.EXPOSED_HOST || env.HOST || defaults.HOST,

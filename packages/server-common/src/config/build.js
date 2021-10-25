@@ -8,19 +8,28 @@ export default async (params = {}) => {
     ...params,
     baseBrowseGraphQL: {
       ...params.baseBrowseGraphQL,
-      ...(fromEnv({ uri: 'BASE_BROWSE_GRAPHQL_URI' })),
+      ...(fromEnv({ enabled: 'BASE_BROWSE_GRAPHQL_ENABLED', uri: 'BASE_BROWSE_GRAPHQL_URI' })),
     },
     baseCMSGraphQL: {
       ...params.baseCMSGraphQL,
       ...(fromEnv({
+        enabled: 'BASE_CMS_GRAPHQL_ENABLED',
         uri: 'BASE_CMS_GRAPHQL_URI',
         cacheResponses: 'BASE_CMS_GRAPHQL_CACHE_RESPONSES',
         cacheSiteContext: 'BASE_CMS_GRAPHQL_CACHE_SITE_CONTEXT',
       })),
     },
+    cookie: {
+      ...params.cookie,
+      ...(fromEnv({ enabled: 'COOKIE_ENABLED' })),
+    },
     etag: {
       ...params.etag,
       ...(fromEnv({ enabled: 'ETAG_ENABLED', mode: 'ETAG_MODE' })),
+    },
+    helmet: {
+      ...params.helmet,
+      ...(fromEnv({ enabled: 'HELMET_ENABLED' })),
     },
     site: {
       ...params.site,
