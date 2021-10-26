@@ -1,5 +1,5 @@
 export default (conf) => ({
-  prop: 'baseCMSGraphQLClient',
+  prop: '$baseCMSGraphQLClient',
   name: conf.get('app.name'),
   version: conf.get('app.version'),
   uri: conf.get('baseCMSGraphQLClient.uri'),
