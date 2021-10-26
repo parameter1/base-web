@@ -9,12 +9,10 @@ export default Joi.object({
   }).required(),
   baseBrowseGraphQLClient: Joi.object({
     enabled: Joi.boolean().truthy('1').falsy('0').default(true),
-    prop: Joi.string().trim().default('$baseBrowseGraphQLClient'),
     uri: Joi.string().trim().uri().required(),
   }).required(),
   baseCMSGraphQLClient: Joi.object({
     enabled: Joi.boolean().truthy('1').falsy('0').default(true),
-    prop: Joi.string().trim().default('$baseCMSGraphQLClient'),
     uri: Joi.string().trim().uri().required(),
     cacheServerResponses: Joi.boolean().truthy('1').falsy('0').default(true),
     cacheServerSiteContext: Joi.boolean().truthy('1').falsy('0').default(true),
