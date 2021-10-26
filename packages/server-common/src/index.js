@@ -1,3 +1,4 @@
+export { default as createError } from 'http-errors';
 export { default as buildServerConfig } from './config/build.js';
 export { default as createBaseBrowseOptions } from './config/create-base-browse-options.js';
 export { default as createBaseCMSOptions } from './config/create-base-cms-options.js';
