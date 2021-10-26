@@ -1,6 +1,6 @@
-import run from '../src/index.js';
+import { bootServer } from '../src/index.js';
 
-run({
+bootServer({
   app: {
     // normally would come from the site's package.json
     name: '@randall-reilly/overdriveonline.com',
