@@ -51,6 +51,13 @@ export async function loadWebsiteSection({
   throw createError(404, `No website section was found for alias '${cleanedAlias}'`);
 }
 
+const signalRedirect = ({ section, redirectTo }) => {
+  if (cleanPath(section.alias) === cleanPath(redirectTo)) {
+    throw createError(500, 'An infinite section redirect was detected.');
+  }
+  return { section, redirectTo };
+};
+
 /**
  * @param {object} params
  * @param {ApolloClient} params.graphqlClient The BaseCMS GraphQL Apollo client.
@@ -81,9 +88,9 @@ export default async ({
     fragment: loaderQueryFragment,
   });
   const { redirectTo, canonicalPath } = section;
-  if (redirectTo) return { section, redirectTo };
+  if (redirectTo) return signalRedirect({ section, redirectTo });
   if (redirectOnPathMismatch && canonicalPath !== requestPath) {
-    return { section, redirectTo: canonicalPath };
+    return signalRedirect({ section, redirectTo: canonicalPath });
   }
 
   // @todo determine if a second query should be executed.
