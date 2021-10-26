@@ -5,7 +5,7 @@ import { buildGraphQLOperation as buildSectionOperation } from '../block-loaders
 import RouteDataNode from './-node.js';
 
 export const defaultFragment = gql`
-  fragment WebsiteSectionAliasPageLoaderFragment on WebsiteSection {
+  fragment WebsiteSectionRouteDataFromAliasFragment on WebsiteSection {
     id
     alias
     name
@@ -17,13 +17,13 @@ export const defaultFragment = gql`
 export function buildGraphQLOperation({ fragment } = {}) {
   const { spreadFragmentName, processedFragment } = extractFragmentData(fragment);
   return gql`
-    query WebsiteSectionAliasPageLoader($input: WebsiteSectionAliasQueryInput!, $redirect: WebsiteSectionRedirectQueryInput!) {
+    query WebsiteSectionRouteDataFromAlias($input: WebsiteSectionAliasQueryInput!, $redirect: WebsiteSectionRedirectQueryInput!) {
       section: websiteSectionAlias(input: $input) {
-        ...WebsiteSectionAliasPageLoaderFragment
+        ...WebsiteSectionRouteDataFromAliasFragment
         ${spreadFragmentName}
       }
       redirect: websiteSectionRedirect(input: $redirect) {
-        ...WebsiteSectionAliasPageLoaderFragment
+        ...WebsiteSectionRouteDataFromAliasFragment
         ${spreadFragmentName}
       }
     }
