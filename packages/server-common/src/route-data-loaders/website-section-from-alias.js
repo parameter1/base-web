@@ -37,7 +37,7 @@ export async function executeQuery({
   alias,
   additionalInput,
   fragment,
-}) {
+} = {}) {
   const cleanedAlias = cleanPath(alias);
   if (!cleanedAlias) throw createError(400, 'No website section alias was provided.');
   const input = { ...additionalInput, alias: cleanedAlias };
