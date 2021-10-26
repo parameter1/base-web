@@ -38,4 +38,9 @@ export default (obj) => ({
    * @param {string} path The dot-notated path.
    */
   getAsObject: (path) => getAsObject(obj, path),
+
+  /**
+   * Returns the original object as-is.
+   */
+  unwrap: () => obj,
 });
