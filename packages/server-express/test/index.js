@@ -1,5 +1,5 @@
 import { bootServer } from '../src/index.js';
-import { loadWebsiteSectionByAlias } from '../src/page-loaders/index.js';
+import { websiteSectionFromAlias } from '../src/route-handlers/index.js';
 
 bootServer({
   app: {
@@ -18,11 +18,11 @@ bootServer({
   },
   // would normally be loaded from the site
   routes: (server) => {
-    server.get('/', loadWebsiteSectionByAlias({
+    server.get('/', websiteSectionFromAlias({
       aliasResolver: () => 'home',
       render: ({ section, res }) => res.json({ server: 'express', section }),
     }));
-    server.get('/:alias', loadWebsiteSectionByAlias({
+    server.get('/:alias', websiteSectionFromAlias({
       render: async ({ section, node, res }) => {
         const resolved = await node.toObject();
         return res.json({ section, resolved });

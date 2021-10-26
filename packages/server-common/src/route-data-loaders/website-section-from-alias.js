@@ -2,7 +2,7 @@ import createError from 'http-errors';
 import { cleanPath } from '@parameter1/base-web-utils';
 import { extractFragmentData, gql } from '@parameter1/base-web-graphql';
 import { buildGraphQLOperation as buildSectionOperation } from '../block-loaders/website-section-alias.js';
-import PageNode from './-node.js';
+import RouteDataNode from './-node.js';
 
 export const defaultFragment = gql`
   fragment WebsiteSectionAliasPageLoaderFragment on WebsiteSection {
@@ -32,7 +32,7 @@ export function buildGraphQLOperation({ fragment } = {}) {
   `;
 }
 
-export async function loadWebsiteSection({
+export async function executeQuery({
   graphqlClient,
   alias,
   additionalInput,
@@ -78,7 +78,7 @@ export default async ({
   redirectOnPathMismatch = true,
   loaderQueryFragment,
 } = {}) => {
-  const section = await loadWebsiteSection({ graphqlClient, alias, fragment: loaderQueryFragment });
+  const section = await executeQuery({ graphqlClient, alias, fragment: loaderQueryFragment });
   const { redirectTo, canonicalPath } = section;
   if (redirectTo) return signalRedirect({ section, redirectTo });
   if (redirectOnPathMismatch && canonicalPath !== requestPath) {
@@ -86,7 +86,7 @@ export default async ({
   }
 
   // @todo determine if a second query should be executed.
-  const node = PageNode({
+  const node = RouteDataNode({
     graphqlClient,
     variables: { input: { alias: section.alias } },
     operationBuilder: buildSectionOperation,

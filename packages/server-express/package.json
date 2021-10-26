@@ -14,7 +14,7 @@
   "main": "src/index.js",
   "exports": {
     ".": "./src/index.js",
-    "./page-loaders": "./src/page-loaders/index.js"
+    "./route-handlers": "./src/route-handlers/index.js"
   },
   "scripts": {
     "lint": "eslint --ext .js ./",

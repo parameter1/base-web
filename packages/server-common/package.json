@@ -14,7 +14,7 @@
   "main": "src/index.js",
   "exports": {
     ".": "./src/index.js",
-    "./page-loaders": "./src/page-loaders/index.js",
+    "./route-data-loaders": "./src/route-data-loaders/index.js",
     "./utils": "./src/utils/index.js"
   },
   "scripts": {

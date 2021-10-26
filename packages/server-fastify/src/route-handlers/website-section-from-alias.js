@@ -1,4 +1,4 @@
-import { loadWebsiteSectionPageByAlias } from '@parameter1/base-web-server-common/page-loaders';
+import { websiteSectionRouteDataFromAlias } from '@parameter1/base-web-server-common/route-data-loaders';
 import { redirectWithQuery } from '@parameter1/base-web-server-common/utils';
 import { isFunction as isFn } from '@parameter1/base-web-utils';
 
@@ -9,7 +9,7 @@ export default ({
   redirectOnPathMismatch = true,
   loaderQueryFragment,
 } = {}) => async (req, reply) => {
-  const { node, section, redirectTo } = await loadWebsiteSectionPageByAlias({
+  const { node, section, redirectTo } = await websiteSectionRouteDataFromAlias({
     graphqlClient: req.$baseCMSGraphQLClient,
     alias: isFn(aliasResolver) ? await aliasResolver({ req, reply }) : req.params.alias,
     requestPath: req.url,
