@@ -6,6 +6,6 @@ export default async (params = {}) => {
   const server = express();
 
   server.set('trust proxy', conf.getAsList('trustProxy').toArray());
-  server.locals.conf = conf;
+  server.$conf = conf;
   return { server, conf };
 };

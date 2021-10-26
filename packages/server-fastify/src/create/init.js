@@ -6,7 +6,7 @@ export default async (params) => {
   const server = fastify({
     trustProxy: conf.getAsList('trustProxy').toArray(),
   });
-  server.decorate('locals', { conf: null });
-  server.locals.conf = conf;
+  server.decorate('$conf', null);
+  server.$conf = conf;
   return { server, conf };
 };
