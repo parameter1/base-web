@@ -48,7 +48,7 @@ export async function loadWebsiteSection({
   const { section, redirect } = data;
   if (section && section.alias) return section;
   if (redirect && redirect.alias) return redirect;
-  throw createError(404, `No website section was found for alias '${cleanedAlias}'`);
+  throw createError(404, `No website section was found for '${cleanedAlias}'`);
 }
 
 const signalRedirect = ({ section, redirectTo }) => {
