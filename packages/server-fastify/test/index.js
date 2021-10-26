@@ -18,7 +18,10 @@ bootServer({
   },
   // would normally be loaded from the site
   routes: (server) => {
-    server.get('/', (_, reply) => reply.header('Content-Type', 'text/html; charset=UTF-8').send('<h1>Home Page (Fastify)</h1>'));
+    server.get('/', loadWebsiteSectionByAlias({
+      aliasResolver: () => 'home',
+      render: ({ section, reply }) => reply.send({ server: 'fastify', section }),
+    }));
     server.get('/:alias', loadWebsiteSectionByAlias({
       render: async ({ section, node, reply }) => {
         const resolved = await node.toObject();

@@ -18,7 +18,10 @@ bootServer({
   },
   // would normally be loaded from the site
   routes: (server) => {
-    server.get('/', (_, res) => res.set('Content-Type', 'text/html; charset=UTF-8').send('<h1>Home Page (Express)</h1>'));
+    server.get('/', loadWebsiteSectionByAlias({
+      aliasResolver: () => 'home',
+      render: ({ section, res }) => res.json({ server: 'express', section }),
+    }));
     server.get('/:alias', loadWebsiteSectionByAlias({
       render: async ({ section, node, res }) => {
         const resolved = await node.toObject();
