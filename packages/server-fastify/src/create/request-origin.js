@@ -1,7 +1,7 @@
 export default ({ server } = {}) => {
-  server.decorateRequest('requestOrigin', '');
+  server.decorateRequest('$requestOrigin', '');
   server.addHook('preHandler', (req, _, done) => {
-    req.requestOrigin = `${req.protocol}://${req.hostname}`;
+    req.$requestOrigin = `${req.protocol}://${req.hostname}`;
     done();
   });
 };
