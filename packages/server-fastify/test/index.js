@@ -1,4 +1,5 @@
 import { bootServer } from '../src/index.js';
+import { loadWebsiteSectionByAlias } from '../src/page-loaders/index.js';
 
 bootServer({
   app: {
@@ -18,6 +19,12 @@ bootServer({
   // would normally be loaded from the site
   routes: (server) => {
     server.get('/', (_, reply) => reply.header('Content-Type', 'text/html; charset=UTF-8').send('<h1>Home Page (Fastify)</h1>'));
+    server.get('/:alias', loadWebsiteSectionByAlias({
+      render: async ({ section, node, reply }) => {
+        const resolved = await node.toObject();
+        return reply.send({ section, resolved });
+      },
+    }));
   },
   site: {
     id: '5fce561dd28860bc33b823ce',

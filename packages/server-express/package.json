@@ -12,6 +12,10 @@
   },
   "license": "MIT",
   "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./page-loaders": "./src/page-loaders/index.js"
+  },
   "scripts": {
     "lint": "eslint --ext .js ./",
     "test": "yarn lint"
