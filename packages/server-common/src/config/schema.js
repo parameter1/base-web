@@ -7,17 +7,17 @@ export default Joi.object({
     name: Joi.string().trim().required(),
     version: Joi.string().trim().required(),
   }).required(),
-  baseBrowseGraphQL: Joi.object({
+  baseBrowseGraphQLClient: Joi.object({
     enabled: Joi.boolean().truthy('1').falsy('0').default(true),
-    prop: Joi.string().trim().default('$apolloBaseBrowse'),
+    prop: Joi.string().trim().default('$baseBrowseGraphQLClient'),
     uri: Joi.string().trim().uri().required(),
   }).required(),
-  baseCMSGraphQL: Joi.object({
+  baseCMSGraphQLClient: Joi.object({
     enabled: Joi.boolean().truthy('1').falsy('0').default(true),
-    prop: Joi.string().trim().default('$apolloBaseCMS'),
+    prop: Joi.string().trim().default('$baseCMSGraphQLClient'),
     uri: Joi.string().trim().uri().required(),
-    cacheResponses: Joi.boolean().truthy('1').falsy('0').default(true),
-    cacheSiteContext: Joi.boolean().truthy('1').falsy('0').default(true),
+    cacheServerResponses: Joi.boolean().truthy('1').falsy('0').default(true),
+    cacheServerSiteContext: Joi.boolean().truthy('1').falsy('0').default(true),
   }).required(),
   cookie: Joi.object({
     enabled: Joi.boolean().truthy('1').falsy('0').default(true),

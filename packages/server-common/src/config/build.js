@@ -6,17 +6,17 @@ import schema from './schema.js';
 export default async (params = {}) => {
   const validated = await validateAsync(schema, {
     ...params,
-    baseBrowseGraphQL: {
-      ...params.baseBrowseGraphQL,
-      ...(fromEnv({ enabled: 'BASE_BROWSE_GRAPHQL_ENABLED', uri: 'BASE_BROWSE_GRAPHQL_URI' })),
+    baseBrowseGraphQLClient: {
+      ...params.baseBrowseGraphQLClient,
+      ...(fromEnv({ enabled: 'BASE_BROWSE_GRAPHQL_CLIENT_ENABLED', uri: 'BASE_BROWSE_GRAPHQL_CLIENT_URI' })),
     },
-    baseCMSGraphQL: {
-      ...params.baseCMSGraphQL,
+    baseCMSGraphQLClient: {
+      ...params.baseCMSGraphQLClient,
       ...(fromEnv({
-        enabled: 'BASE_CMS_GRAPHQL_ENABLED',
-        uri: 'BASE_CMS_GRAPHQL_URI',
-        cacheResponses: 'BASE_CMS_GRAPHQL_CACHE_RESPONSES',
-        cacheSiteContext: 'BASE_CMS_GRAPHQL_CACHE_SITE_CONTEXT',
+        enabled: 'BASE_CMS_GRAPHQL_CLIENT_ENABLED',
+        uri: 'BASE_CMS_GRAPHQL_CLIENT_URI',
+        cacheServerResponses: 'BASE_CMS_GRAPHQL_CLIENT_CACHE_SERVER_RESPONSES',
+        cacheServerSiteContext: 'BASE_CMS_GRAPHQL_CLIENT_CACHE_SERVER_SITE_CONTEXT',
       })),
     },
     cookie: {

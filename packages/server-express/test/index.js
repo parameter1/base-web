@@ -6,10 +6,10 @@ bootServer({
     name: '@randall-reilly/overdriveonline.com',
     version: '1.19.9',
   },
-  baseBrowseGraphQL: {
+  baseBrowseGraphQLClient: {
     uri: 'https://base-browse.virgon.base.parameter1.com/graphql',
   },
-  baseCMSGraphQL: {
+  baseCMSGraphQLClient: {
     uri: 'https://graphql.virgon.base.parameter1.com',
   },
   robots: {
