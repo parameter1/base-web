@@ -12,7 +12,6 @@ export default ({
   aliasResolver,
   nodeQueryFragment,
   redirectOnPathMismatch = true,
-  loaderAdditionalInput,
   loaderQueryFragment,
 } = {}) => asyncRoute(async (req, res) => {
   const { node, section, redirectTo } = await loadWebsiteSectionPageByAlias({
@@ -21,7 +20,6 @@ export default ({
     requestPath: req.path,
     nodeQueryFragment,
     redirectOnPathMismatch,
-    loaderAdditionalInput,
     loaderQueryFragment,
   });
   if (redirectTo) {

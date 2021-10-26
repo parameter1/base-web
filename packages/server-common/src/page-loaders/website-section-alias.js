@@ -67,8 +67,6 @@ const signalRedirect = ({ section, redirectTo }) => {
  * @param {boolean} [params.redirectOnPathMismatch=true] Whether to signal a redirect when the
  *                                                       the current request path does not equal the
  *                                                       section alias.
- * @param {object} [params.loaderAdditionalInput] Additional query input to pass to the website
- *                                                section query loader.
  * @param {object} [params.loaderQueryFragment] A WebsiteSection fragment to apply to the _loader_.
  * @returns {Promise<object>}
  */
@@ -78,15 +76,9 @@ export default async ({
   requestPath,
   nodeQueryFragment,
   redirectOnPathMismatch = true,
-  loaderAdditionalInput,
   loaderQueryFragment,
 } = {}) => {
-  const section = await loadWebsiteSection({
-    graphqlClient,
-    alias,
-    additionalInput: loaderAdditionalInput,
-    fragment: loaderQueryFragment,
-  });
+  const section = await loadWebsiteSection({ graphqlClient, alias, fragment: loaderQueryFragment });
   const { redirectTo, canonicalPath } = section;
   if (redirectTo) return signalRedirect({ section, redirectTo });
   if (redirectOnPathMismatch && canonicalPath !== requestPath) {
