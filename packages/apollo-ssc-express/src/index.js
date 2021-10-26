@@ -16,6 +16,7 @@ import { isFunction as isFn } from '@parameter1/base-web-utils';
  * @returns {function}
  */
 export default ({ prop = '$apollo', contextFn, ...config } = {}) => (req, res, next) => {
+  if (req[prop]) throw new Error(`An Apollo GraphQL client (or other value) has already been registered to prop ${prop}`);
   const client = createApolloClient({
     ...config,
     contextFn: (ctx) => {
@@ -23,8 +24,6 @@ export default ({ prop = '$apollo', contextFn, ...config } = {}) => (req, res, n
       return undefined;
     },
   });
-
   req[prop] = client;
-  res.locals[prop] = client;
   next();
 };

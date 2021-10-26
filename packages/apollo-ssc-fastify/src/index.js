@@ -18,6 +18,7 @@ import fp from 'fastify-plugin';
  * @param {function} next
  */
 const plugin = (fastify, { prop = '$apollo', contextFn, ...config }, next) => {
+  if (fastify.hasRequestDecorator(prop)) throw new Error(`An Apollo GraphQL client (or other value) has already been registered to prop ${prop}`);
   fastify.decorateRequest(prop, null);
   fastify.addHook('onRequest', (req, reply, done) => {
     const client = createApolloClient({
