@@ -57,12 +57,12 @@ export default Joi.object({
       Joi.object({ agent: Joi.string().trim().required(), value: Joi.string().trim().required() }),
     ).default([]).external((v) => {
       // ensure unique list of directives per agent (including defaults)
-      const mapped = [...v, { agent: '*', value: 'Disallow: /__' }].reduce((map, o) => {
+      const defaults = [{ agent: '*', value: 'Disallow: /__' }];
+      return [...defaults, ...v].reduce((map, o) => {
         if (!map.has(o.agent)) map.set(o.agent, new Set());
         map.get(o.agent).add(o.value);
         return map;
       }, new Map());
-      return mapped;
     }),
     disallowAll: Joi.boolean().truthy('1').falsy('0').default(!isProduction),
   }).default({ enabled: true, directives: [], disallowAll: !isProduction }),
