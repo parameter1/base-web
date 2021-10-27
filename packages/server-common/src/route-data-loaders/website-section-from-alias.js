@@ -32,15 +32,10 @@ export function buildGraphQLOperation({ fragment } = {}) {
   `;
 }
 
-export async function executeQuery({
-  graphqlClient,
-  alias,
-  additionalInput,
-  fragment,
-} = {}) {
+export async function executeQuery({ graphqlClient, alias, fragment } = {}) {
   const cleanedAlias = cleanPath(alias);
   if (!cleanedAlias) throw createError(400, 'No website section alias was provided.');
-  const input = { ...additionalInput, alias: cleanedAlias };
+  const input = { alias: cleanedAlias };
   const { data } = await graphqlClient.query({
     query: buildGraphQLOperation({ fragment }),
     variables: { input, redirect: input },
