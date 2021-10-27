@@ -18,9 +18,9 @@ import pkg from '../../package.js';
  */
 export default async (params = {}) => {
   const { server, conf } = await init(params);
+  helmet({ server, conf });
   etags({ server, conf });
   cookies({ server, conf });
-  helmet({ server, conf });
   baseCMSGraphql({ server, conf });
   baseBrowseGraphql({ server, conf });
   versionsHeader({ server, conf, pkg });
