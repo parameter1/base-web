@@ -30,7 +30,7 @@
     "apollo-client": "^2.6.10",
     "apollo-link-context": "^1.0.20",
     "apollo-link-http": "^1.5.17",
-    "graphql": "^15.6.1",
+    "graphql": "^15.7.0",
     "node-fetch": "^3.0.0"
   },
   "publishConfig": {
