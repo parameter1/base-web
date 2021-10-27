@@ -17,6 +17,9 @@ export default Joi.object({
     cacheServerResponses: Joi.boolean().truthy('1').falsy('0').default(true),
     cacheServerSiteContext: Joi.boolean().truthy('1').falsy('0').default(true),
   }).required(),
+  contentPreviewMode: Joi.object({
+    param: Joi.string().trim().default('preview-mode'),
+  }).default({ param: 'preview-mode' }),
   cookie: Joi.object({
     enabled: Joi.boolean().truthy('1').falsy('0').default(true),
   }).default({ enabled: true }),
