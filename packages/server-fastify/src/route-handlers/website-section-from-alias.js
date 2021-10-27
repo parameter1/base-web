@@ -9,10 +9,11 @@ export default ({
   redirectOnPathMismatch = true,
   loaderQueryFragment,
 } = {}) => async (req, reply) => {
+  const { path } = req.urlData();
   const { node, section, redirectTo } = await websiteSectionRouteDataFromAlias({
     graphqlClient: req.$baseCMSGraphQLClient,
     alias: isFn(aliasResolver) ? await aliasResolver({ req, reply }) : req.params.alias,
-    requestPath: req.url,
+    requestPath: path,
     nodeQueryFragment,
     redirectOnPathMismatch,
     loaderQueryFragment,
