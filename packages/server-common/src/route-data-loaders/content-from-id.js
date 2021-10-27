@@ -4,7 +4,7 @@ import { isFunction as isFn } from '@parameter1/base-web-utils';
 import RouteDataNode from './-node.js';
 
 export const defaultFragment = gql`
-  fragment ContentRouteDataFromIdFragment on WebsiteSection {
+  fragment ContentRouteDataFromIdFragment on Content {
     id
     type
     redirectTo
@@ -41,7 +41,7 @@ export async function executeQuery({
 } = {}) {
   const contentId = parseInt(id, 10);
   if (!contentId) throw createError(400, 'No content ID was provided.');
-  const input = buildInput({ id, previewMode });
+  const input = buildInput({ id: contentId, previewMode });
   const { data } = await graphqlClient.query({
     query: buildGraphQLOperation({ fragment }),
     variables: { input },
@@ -62,7 +62,12 @@ export default async ({
   redirectToFn,
   canonicalPathFn,
 } = {}) => {
-  const content = await executeQuery({ graphqlClient, id, fragment: loaderQueryFragment });
+  const content = await executeQuery({
+    graphqlClient,
+    id,
+    previewMode,
+    fragment: loaderQueryFragment,
+  });
   const redirectTo = isFn(redirectToFn) ? redirectToFn({ content }) : content.redirectTo;
   if (redirectTo) return { content, redirectTo };
 
