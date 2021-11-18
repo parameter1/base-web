@@ -25,6 +25,7 @@ module.exports = Joi.object({
     enabled: Joi.boolean().truthy('1').falsy('0').default(true),
   }).default({ enabled: true }),
   cwd: Joi.string().trim().required(),
+  env: Joi.string().trim().default(process.env.NODE_ENV || ''),
   etag: Joi.object({
     enabled: Joi.boolean().truthy('1').falsy('0').default(true),
     mode: Joi.string().trim().lowercase().valid('weak', 'strong')
@@ -78,6 +79,12 @@ module.exports = Joi.object({
     disallowAll: Joi.boolean().truthy('1').falsy('0').default(!isProduction),
   }).default({ enabled: true, directives: [], disallowAll: !isProduction }),
   routes: Joi.function().minArity(1).required(),
+  server: Joi.object({
+    host: Joi.string().trim().default('localhost'),
+    exposedHost: Joi.string().trim().default((parent) => parent.host),
+    port: Joi.number().port().default(45893),
+    exposedPort: Joi.number().port().default((parent) => parent.port),
+  }).required(),
   site: Joi.object({
     id: Joi.string().trim().pattern(/^[a-f0-9]{24}$/).required(),
     name: Joi.string().trim().required(),

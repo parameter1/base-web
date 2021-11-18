@@ -38,6 +38,15 @@ module.exports = async (params = {}) => {
       ...params.robots,
       ...(fromEnv({ enabled: 'ROBOTS_ENABLED', disallowAll: 'ROBOTS_DISALLOW_ALL' })),
     },
+    server: {
+      ...params.server,
+      ...(fromEnv({
+        host: 'HOST',
+        port: 'PORT',
+        exposedHost: ['EXPOSED_HOST', 'HOST'],
+        exposedPort: ['EXPOSED_PORT', 'PORT'],
+      })),
+    },
     site: {
       ...params.site,
       ...(fromEnv({

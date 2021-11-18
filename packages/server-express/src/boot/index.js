@@ -18,10 +18,10 @@ module.exports = (params = {}) => {
       name: conf.get('app.name'),
       version: conf.get('app.version'),
       server,
-      host: config.host,
-      exposedHost: config.exposedHost,
-      port: config.port,
-      exposedPort: config.exposedPort,
+      host: conf.get('server.host'),
+      exposedHost: conf.get('server.exposedHost'),
+      port: conf.get('server.port'),
+      exposedPort: conf.get('server.exposedPort'),
 
       healthCheckPath: config.healthCheckPath,
 
