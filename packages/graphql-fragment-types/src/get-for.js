@@ -2,7 +2,7 @@ const fetch = require('node-fetch');
 
 module.exports = async ({ uri, headers } = {}) => {
   if (!uri) throw new Error('A GraphQL URI is required to generate possibe types.');
-  const res = fetch(uri, {
+  const res = await fetch(uri, {
     method: 'POST',
     headers: { 'content-type': 'application/json', ...headers },
     body: JSON.stringify({
