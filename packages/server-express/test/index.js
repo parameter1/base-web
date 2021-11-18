@@ -5,12 +5,13 @@ process.env.BASE_BROWSE_GRAPHQL_URI = 'http://base-browse';
 process.env.GRAPHQL_URI = 'http://base-cms';
 process.env.SITE_ID = '5fce561dd28860bc33b823ce';
 process.env.TENANT_KEY = 'randallreilly_all';
+process.env.COMPAT_ENABLED = 1;
 
 const config = {
   cwd: __dirname,
   app: { name: pkg.name, version: pkg.version },
   routes: (server) => {
-    server.get('/', (_, res) => res.json({ hello: 'world' }));
+    server.get('/', (req, res) => res.json({ hello: 'world' }));
   },
   site: {
     name: 'Overdrive',

@@ -34,6 +34,7 @@ module.exports = (params = {}) => {
 
       onListen: () => {
         if (process.send) process.send({ event: 'ready', conf });
+        if (conf.get('compat.enabled')) log('RUNNING IN COMPATIBILITY MODE!');
         log(`Env: ${process.env.NODE_ENV || '(not specified)'}`);
         log(`App: ${conf.get('app.name')} v${conf.get('app.version')}`);
         log(`Tenant: ${conf.get('tenant.key')}`);

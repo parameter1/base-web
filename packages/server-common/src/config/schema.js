@@ -4,6 +4,9 @@ const isProduction = process.env.NODE_ENV === 'production';
 
 module.exports = Joi.object({
   cwd: Joi.string().trim().required(),
+  compat: Joi.object({
+    enabled: Joi.boolean().truthy('1').falsy('0').default(true),
+  }).default({ enabled: false }),
   app: Joi.object({
     name: Joi.string().trim().required(),
     version: Joi.string().trim().required(),

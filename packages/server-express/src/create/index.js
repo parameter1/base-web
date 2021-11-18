@@ -1,4 +1,5 @@
 const { createServer } = require('http');
+const compat = require('./compat');
 const cookies = require('./cookies');
 const etags = require('./etags');
 const helmet = require('./helmet');
@@ -17,6 +18,8 @@ module.exports = async (params = {}) => {
   cookies({ server, conf });
   versionsHeader({ server, conf, pkg });
   requestOrigin({ server });
+
+  compat({ server, conf });
 
   // preRoutes
   routes({ server, conf });

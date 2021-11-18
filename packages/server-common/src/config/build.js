@@ -18,6 +18,10 @@ module.exports = async (params = {}) => {
         cacheServerSiteContext: ['BASE_CMS_GRAPHQL_CLIENT_CACHE_SERVER_SITE_CONTEXT', 'CACHE_GQL_SITE_CONTEXT'],
       })),
     },
+    compat: {
+      ...params.compat,
+      ...(fromEnv({ enabled: 'COMPAT_ENABLED' })),
+    },
     cookie: {
       ...params.cookie,
       ...(fromEnv({ enabled: 'COOKIE_ENABLED' })),
