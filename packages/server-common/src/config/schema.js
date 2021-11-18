@@ -56,6 +56,11 @@ module.exports = Joi.object({
       policy: Joi.string().default('strict-origin-when-cross-origin'),
     }).default({ policy: 'strict-origin-when-cross-origin' }),
   }).unknown().default({ enabled: true, frameguard: false, referrerPolicy: {} }),
+  hooks: Joi.object({
+    postInit: Joi.function(),
+    preRoutes: Joi.function(),
+    postRoutes: Joi.function(),
+  }),
   robots: Joi.object({
     enabled: Joi.boolean().truthy('1').falsy('0').default(true),
     directives: Joi.array().items(

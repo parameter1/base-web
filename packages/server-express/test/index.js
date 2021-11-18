@@ -1,6 +1,8 @@
 const bootServer = require('../boot');
 const pkg = require('../package.json');
 
+const { log } = console;
+
 process.env.BASE_BROWSE_GRAPHQL_URI = 'http://base-browse';
 process.env.GRAPHQL_URI = 'http://base-cms';
 process.env.SITE_ID = '5fce561dd28860bc33b823ce';
@@ -13,6 +15,11 @@ const config = {
   routes: (server) => {
     server.get('/', (req, res) => res.json({ hello: 'world' }));
   },
+  hooks: {
+    postInit: () => log('test postInit hook'),
+    preRoutes: () => log('test preRoutes hook'),
+    postRoutes: () => log('test postRoutes hook'),
+  },
   site: {
     name: 'Overdrive',
     host: 'www.overdriveonline.com',
@@ -21,4 +28,7 @@ const config = {
   },
 };
 
-bootServer({ server: config });
+bootServer({
+  onBoot: () => log('test onBoot'),
+  server: config,
+});

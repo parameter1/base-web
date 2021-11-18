@@ -1,6 +1,7 @@
 require('@parameter1/base-web-marko/require');
 const { createServer } = require('http');
 const marko = require('@parameter1/base-web-marko/express');
+const callHook = require('./call-hook');
 const compat = require('./compat');
 const cookies = require('./cookies');
 const etags = require('./etags');
@@ -12,9 +13,9 @@ const routes = require('./routes');
 const versionsHeader = require('./versions-header');
 
 module.exports = async (params = {}) => {
-  // preInit
   const { server, conf } = await init(params);
-  // postInit
+  await callHook('postInit', { server, conf });
+
   helmet({ server, conf });
   etags({ server, conf });
   cookies({ server, conf });
@@ -26,8 +27,9 @@ module.exports = async (params = {}) => {
   // @todo determine if response bodies need cleaning
   server.use(marko());
 
-  // preRoutes
+  await callHook('preRoutes', { server, conf });
   routes({ server, conf });
-  // postRoutes
+  await callHook('postRoutes', { server, conf });
+
   return { server: createServer(server), conf };
 };
