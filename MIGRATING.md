@@ -47,7 +47,7 @@
     - [x] The remaining functions were removed (they don't appear to be in use): `elementClassNames`, `linkClassNames`, `modelClassNames`, `objectTypeName`, `sectionPath`
 
 ## Removed
-The following packages were removed completely. Alternatives must be found.
+The following packages were removed completely. Alternatives must be found, though these shouldn't be used anywhere.
 - `@parameter1/base-cms-env`
 - `@parameter1/base-cms-micro`
 - `@parameter1/base-cms-tooling`
