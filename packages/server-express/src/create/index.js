@@ -3,7 +3,10 @@ const cookies = require('./cookies');
 const etags = require('./etags');
 const helmet = require('./helmet');
 const init = require('./init');
+const pkg = require('../../package.json');
+const requestOrigin = require('./request-origin');
 const routes = require('./routes');
+const versionsHeader = require('./versions-header');
 
 module.exports = async (params = {}) => {
   // preInit
@@ -12,6 +15,8 @@ module.exports = async (params = {}) => {
   helmet({ server, conf });
   etags({ server, conf });
   cookies({ server, conf });
+  versionsHeader({ server, conf, pkg });
+  requestOrigin({ server });
 
   // preRoutes
   routes({ server, conf });
