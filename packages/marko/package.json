@@ -1,7 +1,6 @@
 {
   "name": "@parameter1/base-web-marko",
   "version": "0.0.0",
-  "type": "module",
   "description": "Core Marko compiling and require functions.",
   "author": "Jacob Bare <jacob@parameter1.com>",
   "homepage": "https://github.com/parameter1/base-web/tree/main/packages/marko#readme",

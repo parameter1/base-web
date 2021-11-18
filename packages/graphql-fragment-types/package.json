@@ -1,7 +1,6 @@
 {
   "name": "@parameter1/base-web-graphql-fragment-types",
   "version": "0.0.0",
-  "type": "module",
   "description": "GraphQL fragment types for common APIs used by BaseWeb.",
   "author": "Jacob Bare <jacob@parameter1.com>",
   "homepage": "https://github.com/parameter1/base-web/tree/main/packages/graphql-fragment-types#readme",
