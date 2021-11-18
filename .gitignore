@@ -117,3 +117,11 @@ dist
 .yarn/install-state.gz
 .pnp.*
 .DS_Store
+
+# Marko
+*.marko.js
+.marko-cli
+.marko-devtools
+
+# Build assets
+**/dist/
