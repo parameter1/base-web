@@ -1,7 +1,7 @@
-import { inspect } from 'util';
-import get from './get.js';
-import getAsArray from './get-as-array.js';
-import getAsObject from './get-as-object.js';
+const { inspect } = require('util');
+const get = require('./get');
+const getAsArray = require('./get-as-array');
+const getAsObject = require('./get-as-object');
 
 /**
  * Wraps an object with path getters.
@@ -9,7 +9,7 @@ import getAsObject from './get-as-object.js';
  * @param {object} obj
  * @returns {object} The wrapped object.
  */
-export default (obj) => ({
+module.exports = (obj) => ({
   /**
    * Inspects the wrapped object.
    *
