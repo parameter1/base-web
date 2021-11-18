@@ -3,7 +3,7 @@ const Joi = require('@parameter1/joi');
 const isProduction = process.env.NODE_ENV === 'production';
 
 module.exports = Joi.object({
-  rootDir: Joi.string().trim().required(),
+  cwd: Joi.string().trim().required(),
   app: Joi.object({
     name: Joi.string().trim().required(),
     version: Joi.string().trim().required(),
