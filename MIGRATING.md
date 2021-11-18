@@ -6,14 +6,40 @@
   - Renamed to `@parameter1/base-web-object-path`
   - [x] All exports rename the same
 - `@parameter1/base-cms-utils`
+  - Renamed to `@parameter1/base-web-utils`
+  - Maintained
+    - [x] `asArray`
+    - [x] `asObject`
+    - [x] `cleanPath`
+    - [x] `isFunction`
+    - [x] `isObject`
+  - Renamed
+    - [x] `sleep` is now `wait`
+  - Removed
+    - [x] `isDev`
+  - Added
+    - [x] `immediatelyThrow`
   - Moved
+    - [ ] `contentTypes`
     - [ ] `getDefaultContentTypes`
     - [ ] `getDefaultTaxonomyTypes`
     - [ ] `getPublishedContentCriteria`
-  - Removed
-    - [x] `isDev`
-  - Renamed
-    - [x] `sleep` is now `wait`
+  - Still need a home
+    - [ ] `asyncRoute`
+    - [ ] `bem`
+    - [ ] `callOnce`
+    - [ ] `compareNumbers`
+    - [ ] `parseBooleanHeader`
+    - [ ] `parseDelimitedString`
+    - [ ] `profiler`
+    - [ ] `randomElementId`
+    - [ ] `warn`
+
+- `@parameter1/base-cms-web-common`
+  - [ ] Moved factories and loaders to `@parameter1/loaders` (@todo determine where to move these)
+  - Utils
+    - [x] `extractFragmentData` and `extractFragmentName` moved to `@parameter1/graphql/fragment` as `extractData` and `extractName`
+    - [x] The remaining functions were removed (they don't appear to be in use): `elementClassNames`, `linkClassNames`, `modelClassNames`, `objectTypeName`, `sectionPath`
 
 ## Removed
 The following packages were removed completely. Alternatives must be found.
