@@ -1,4 +1,5 @@
 /* eslint-disable no-param-reassign */
+const { wrap } = require('@parameter1/base-web-object-path');
 
 const { log } = console;
 
@@ -10,7 +11,6 @@ module.exports = ({ server, conf }) => {
   if (!conf.get('compat.enabled')) return;
   server.locals.tenantKey = conf.get('tenant.key');
   log('@todo compat app.locals.config');
-  log('@todo compat app.locals.site');
   server.use((req, res, next) => {
     const {
       $baseBrowseGraphQLClient,
@@ -24,6 +24,13 @@ module.exports = ({ server, conf }) => {
     res.locals.apollo = $baseCMSGraphQLClient;
 
     res.locals.requestOrigin = $requestOrigin;
+
+    // site config
+    const site = conf.getAsObject('site.config');
+    res.locals.site = {
+      config: site,
+      ...wrap(site),
+    };
 
     next();
   });

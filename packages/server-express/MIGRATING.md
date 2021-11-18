@@ -45,6 +45,7 @@ The `site` config is now embedded within the server config, accesible via `serve
 ## Globals (req, res.locals, app.locals)
 Enabling compatibility mode (via `config.server.compat.enabled` or the `COMPAT_ENABLED` env variable) will also apply the legacy values. This should be avoided if possible.
 
+- `res.locals.site` changed to `server.$conf.get('site.config')`
 - `app.locals.tenantKey` changed to `server.$conf.get('tenant.key')`
 - `res.locals.requestOrigin` changed to `req.$requestOrigin`
 - `req.$baseBrowse` and `res.locals.$baseBrowse` changed to `req.$baseBrowseGraphQLClient`
