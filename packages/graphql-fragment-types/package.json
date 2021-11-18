@@ -1,0 +1,33 @@
+{
+  "name": "@parameter1/base-web-graphql-fragment-types",
+  "version": "0.0.0",
+  "type": "module",
+  "description": "GraphQL fragment types for common APIs used by BaseWeb.",
+  "author": "Jacob Bare <jacob@parameter1.com>",
+  "homepage": "https://github.com/parameter1/base-web/tree/main/packages/graphql-fragment-types#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/parameter1/base-web.git",
+    "directory": "packages/graphql-fragment-types"
+  },
+  "license": "MIT",
+  "main": "src/index.js",
+  "scripts": {
+    "lint": "eslint --ext .js ./",
+    "test": "yarn lint"
+  },
+  "dependencies": {
+    "node-fetch": "^2.6.6"
+  },
+  "engines": {
+    "node": ">=14.0"
+  },
+  "os": [
+    "darwin",
+    "linux",
+    "win32"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}

@@ -2,6 +2,8 @@
 
 ## Packages
 ### Changed
+- `@parameter1/base-cms-graphql-fragment-types`
+  - Renamed to `@parameter1/base-web-graphql-fragment-types`
 - `@parameter1/base-cms-object-path`
   - Renamed to `@parameter1/base-web-object-path`
   - [x] All exports rename the same
