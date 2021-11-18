@@ -1,4 +1,4 @@
-const { ApolloClient, InMemoryCache, createHttpLink } = require('@apollo/client');
+const { ApolloClient, InMemoryCache, createHttpLink } = require('@apollo/client/core');
 const { setContext } = require('@apollo/client/link/context');
 const { isFunction: isFn } = require('@parameter1/base-web-utils');
 const fetch = require('node-fetch');
