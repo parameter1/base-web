@@ -4,4 +4,4 @@
  * @param {*} v The value to process.
  * @returns {array}
  */
-export default (v) => (Array.isArray(v) ? v : []);
+module.exports = (v) => (Array.isArray(v) ? v : []);

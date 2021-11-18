@@ -4,4 +4,4 @@
  * @param {*} v The value to test
  * @returns {boolean}
  */
-export default (v) => v && typeof v === 'object';
+module.exports = (v) => v && typeof v === 'object';

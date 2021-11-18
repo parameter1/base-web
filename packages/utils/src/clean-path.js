@@ -1,4 +1,4 @@
-export default (v) => {
+module.exports = (v) => {
   if (!v) return '';
   const trimmed = `${v}`.trim();
   if (!trimmed) return '';
