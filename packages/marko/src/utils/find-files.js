@@ -2,6 +2,17 @@ const fg = require('fast-glob');
 
 const extensionPattern = '**/*.marko';
 
+/**
+ *
+ * @param {string} cwd The current working directory
+ * @param {object} options
+ * @param {string[]} [options.dirs=[]] Additional directories to find files in
+ * @param {boolean} [options.stats=false] Whether to include stats with the found files
+ * @param {boolean} [options.compiled=false] Whether to only return compiled files.
+ *                                           Otherwise template files are returned (default).
+ * @param {string[]} [options.ignorePackages=[]] Package names to ignore
+ * @param {...object} [options.rest] Additional options to pass to fast-glob
+ */
 module.exports = async (cwd, {
   dirs = [],
   stats = false,
