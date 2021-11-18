@@ -1,4 +1,4 @@
-const findFiles = require('../find-files');
+const findFiles = require('../utils/find-files');
 const compileMany = require('./many');
 
 module.exports = async (cwd, {

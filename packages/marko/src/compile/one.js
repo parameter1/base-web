@@ -2,7 +2,7 @@ const path = require('path');
 const { readFile, writeFile, rename } = require('fs').promises;
 const { getProfileMS } = require('@parameter1/base-web-utils');
 const runCompile = require('./run');
-const stat = require('../stat');
+const stat = require('../utils/stat');
 
 const encoding = 'utf8';
 const { log, warn } = console;

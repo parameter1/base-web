@@ -2,7 +2,7 @@ const path = require('path');
 const { readFileSync, writeFileSync, renameSync } = require('fs');
 const { getProfileMS } = require('@parameter1/base-web-utils');
 const runCompile = require('./run');
-const stat = require('../stat');
+const stat = require('../utils/stat');
 
 const encoding = 'utf8';
 const { log } = console;
