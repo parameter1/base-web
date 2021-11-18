@@ -42,6 +42,7 @@ export async function executeQuery({
   const contentId = parseInt(id, 10);
   if (!contentId) throw createError(400, 'No content ID was provided.');
   const input = buildInput({ id: contentId, previewMode });
+  console.log({ previewMode, input });
   const { data } = await graphqlClient.query({
     query: buildGraphQLOperation({ fragment }),
     variables: { input },
