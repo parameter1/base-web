@@ -11,10 +11,14 @@
     "directory": "packages/graphql"
   },
   "license": "MIT",
-  "main": "src/index.js",
+  "main": "index.js",
   "scripts": {
     "lint": "eslint --ext .js ./",
     "test": "yarn lint"
+  },
+  "dependencies": {
+    "graphql": "^16.0.1",
+    "graphql-tag": "^2.12.6"
   },
   "engines": {
     "node": ">=14.0"
@@ -26,9 +30,5 @@
   ],
   "publishConfig": {
     "access": "public"
-  },
-  "dependencies": {
-    "graphql": "^15.7.0",
-    "graphql-tag": "^2.12.5"
   }
 }

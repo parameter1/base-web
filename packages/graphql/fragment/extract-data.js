@@ -1,6 +1,6 @@
-import extractFragmentName from './extract-fragment-name.js';
+const extractFragmentName = require('./extract-fragment-name');
 
-export default (fragment) => {
+module.exports = (fragment) => {
   let spreadFragmentName = '';
   let processedFragment = '';
   if (fragment) {
