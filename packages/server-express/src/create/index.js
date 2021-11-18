@@ -1,4 +1,5 @@
 const { createServer } = require('http');
+const marko = require('@parameter1/base-web-marko/express');
 const compat = require('./compat');
 const cookies = require('./cookies');
 const etags = require('./etags');
@@ -20,6 +21,8 @@ module.exports = async (params = {}) => {
   requestOrigin({ server });
 
   compat({ server, conf });
+
+  server.use(marko());
 
   // preRoutes
   routes({ server, conf });
