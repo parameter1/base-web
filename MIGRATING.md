@@ -55,8 +55,22 @@
     - [x] `extractFragmentData` and `extractFragmentName` moved to `@parameter1/graphql/fragment` as `extractData` and `extractName`
     - [x] The remaining functions were removed (they don't appear to be in use): `elementClassNames`, `linkClassNames`, `modelClassNames`, `objectTypeName`, `sectionPath`
 
-## Removed
-The following packages were removed completely. Alternatives must be found, though these shouldn't be used anywhere.
+## Needs Review
+- [ ] `@parameter1/base-cms-dependency-tool`
+
+## Not Migrated
+The following packages weren't migrated. If they still need to be used they should use the old package names or integrate the functionality directly.
+- `@parameter1/base-cms-async`
+  - should now use the `async` lib directly
+  - only internally used by the `db` package and the `graphql-server` and `hooks` services
+- `@parameter1/base-cms-base4-rest-api`
+  - only internally used by the `graphql-server`
+- `@parameter1/base-cms-canonical-path`
+  - only internally used by the `graphql-server`
+- `@parameter1/base-cms-cli-utils`
+  - enveloped by the new web cli
+- `@parameter1/base-cms-db`
+  - only internaly used by `canonical-path` and services
 - `@parameter1/base-cms-env`
 - `@parameter1/base-cms-micro`
 - `@parameter1/base-cms-tooling`
