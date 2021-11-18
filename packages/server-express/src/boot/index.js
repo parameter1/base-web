@@ -33,6 +33,8 @@ module.exports = (params = {}) => {
       onError: config.onError,
 
       onListen: () => {
+        if (process.send) process.send({ event: 'ready', conf });
+        log(`Env: ${process.env.NODE_ENV || '(not specified)'}`);
         log(`App: ${conf.get('app.name')} v${conf.get('app.version')}`);
         log(`Tenant: ${conf.get('tenant.key')}`);
         log(`Site ID: ${conf.get('site.id')}`);
