@@ -1,4 +1,4 @@
-const extractFragmentName = require('./extract-fragment-name');
+const extractFragmentName = require('./extract-name');
 
 module.exports = (fragment) => {
   let spreadFragmentName = '';
