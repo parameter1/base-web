@@ -1,3 +1,4 @@
+const { createServer } = require('http');
 const init = require('./init');
 const routes = require('./routes');
 
@@ -6,5 +7,5 @@ module.exports = async (params = {}) => {
 
   routes({ server, conf });
 
-  return { server, conf };
+  return { server: createServer(server), conf };
 };

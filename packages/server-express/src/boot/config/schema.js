@@ -11,4 +11,14 @@ module.exports = Joi.object({
   exposedPort: Joi.number().port().default((parent) => parent.port),
   // server config object
   server: Joi.object().unknown().default({}),
+  // path to run health checks on
+  healthCheckPath: Joi.string().trim().default('/__health'),
+
+  // terminus hooks
+  onStart: Joi.function(),
+  onHealthCheck: Joi.function(),
+  onSignal: Joi.function(),
+  onShutdown: Joi.function(),
+  beforeShutdown: Joi.function(),
+  onError: Joi.function(),
 }).required();
