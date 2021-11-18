@@ -84,6 +84,10 @@ module.exports = Joi.object({
     exposedHost: Joi.string().trim().default((parent) => parent.host),
     port: Joi.number().port().default(45893),
     exposedPort: Joi.number().port().default((parent) => parent.port),
+    livereload: Joi.object({
+      enabled: Joi.boolean().truthy('1').falsy('0').default(!isProduction),
+      port: Joi.number().port().default(55893),
+    }).required(),
   }).required(),
   site: Joi.object({
     id: Joi.string().trim().pattern(/^[a-f0-9]{24}$/).required(),

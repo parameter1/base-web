@@ -46,6 +46,10 @@ module.exports = async (params = {}) => {
         exposedHost: ['EXPOSED_HOST', 'HOST'],
         exposedPort: ['EXPOSED_PORT', 'PORT'],
       })),
+      livereload: {
+        ...(params.server && params.server.livereload),
+        ...(fromEnv({ port: 'LIVERELOAD_PORT' })),
+      },
     },
     site: {
       ...params.site,
