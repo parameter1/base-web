@@ -1,6 +1,8 @@
 require('@parameter1/base-web-marko/require');
 const { createServer } = require('http');
 const marko = require('@parameter1/base-web-marko/express');
+const baseBrowseGraphql = require('./base-browse-graphql');
+const baseCMSGraphql = require('./base-cms-graphql');
 const callHook = require('./call-hook');
 const compat = require('./compat');
 const cookies = require('./cookies');
@@ -19,6 +21,8 @@ module.exports = async (params = {}) => {
   helmet({ server, conf });
   etags({ server, conf });
   cookies({ server, conf });
+  baseBrowseGraphql({ server, conf });
+  baseCMSGraphql({ server, conf });
   versionsHeader({ server, conf, pkg });
   requestOrigin({ server });
 
