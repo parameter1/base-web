@@ -10,6 +10,29 @@ const { log } = console;
 module.exports = ({ server, conf }) => {
   if (!conf.get('compat.enabled')) return;
   server.locals.tenantKey = conf.get('tenant.key');
+
+  // "core" config
+  server.locals.config = {
+    setWebsiteContext: () => {},
+    website: (path, def) => conf.get(`site.${path}`, def),
+    locale: () => conf.get('site.language.code'),
+    lazyloadImages: () => true,
+    fallbackImage: () => null,
+    siteName: () => conf.get('site.name'),
+    sources: () => ([]),
+    styles: () => ([]),
+    get: (path, def) => conf.get(path, def),
+    getAsArray: (path, def) => conf.getAsArray(path, def),
+    getAsObject: (path, def) => conf.getAsObject(path, def),
+  };
+
+  // site config
+  const site = conf.getAsObject('site.config');
+  server.locals.site = {
+    config: site,
+    ...wrap(site),
+  };
+
   log('@todo compat app.locals.config');
   server.use((req, res, next) => {
     const {
@@ -24,13 +47,6 @@ module.exports = ({ server, conf }) => {
     res.locals.apollo = $baseCMSGraphQLClient;
 
     res.locals.requestOrigin = $requestOrigin;
-
-    // site config
-    const site = conf.getAsObject('site.config');
-    res.locals.site = {
-      config: site,
-      ...wrap(site),
-    };
 
     next();
   });

@@ -19,19 +19,28 @@ const config = {
   routes: (server) => {
     server.get('/', (req, res) => res.json({ hello: 'world' }));
     server.get('/compat', (req, res) => {
-      const { $conf } = req.app;
+      const { app } = req;
+      const { $conf } = app;
       if (!$conf.get('compat.enabled')) return res.json(null);
-      const toCheck = { req, res };
+      const toCheck = { app, req, res };
       const check = [
+        'app.locals.tenantKey',
+        'app.locals.config',
+        'app.locals.site',
         'req.$baseBrowse',
         'res.locals.$baseBrowse',
         'req.apollo',
         'res.locals.apollo',
         'res.locals.requestOrigin',
       ];
-      return res.json(check.reduce((o, path) => ({
-        ...o, [path]: Boolean(get(toCheck, path)),
-      }), {}));
+      return res.json({
+        props: check.reduce((o, path) => ({
+          ...o, [path]: Boolean(get(toCheck, path)),
+        }), {}),
+        website: {
+          name: app.locals.config.website('name'),
+        },
+      });
     });
   },
   hooks: {
