@@ -1,5 +1,5 @@
 const express = require('express');
-const buildServerConfig = require('@parameter1/base-web-server-common/build-config');
+const { build: buildServerConfig } = require('@parameter1/base-web-server-common/config');
 
 module.exports = async (params = {}) => {
   const conf = await buildServerConfig(params);
