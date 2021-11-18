@@ -1,7 +1,6 @@
 {
   "name": "base-web",
   "author": "Jacob Bare <jacob@parameter1.com>",
-  "type": "module",
   "private": true,
   "repository": "https://github.com/parameter1/base-web.git",
   "license": "MIT",
