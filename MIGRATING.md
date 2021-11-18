@@ -18,14 +18,16 @@
   - Removed
     - [x] `isDev`
   - Added
+    - [x] `getProfileMS`
     - [x] `immediatelyThrow`
+    - [x] `round`
   - Moved
     - [ ] `contentTypes`
     - [ ] `getDefaultContentTypes`
     - [ ] `getDefaultTaxonomyTypes`
     - [ ] `getPublishedContentCriteria`
   - Still need a home
-    - [ ] `asyncRoute`
+    - [ ] `asyncRoute` (should likely move to express server as a single export)
     - [ ] `bem`
     - [ ] `callOnce`
     - [ ] `compareNumbers`
