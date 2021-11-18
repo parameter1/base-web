@@ -1,6 +1,7 @@
 const bootService = require('@parameter1/terminus/boot-service');
 const { log } = require('@parameter1/terminus/utils');
 const { immediatelyThrow } = require('@parameter1/base-web-utils');
+const { emitReady } = require('@parameter1/base-web-server-common/config');
 const buildBootConfig = require('./config/build');
 const createServer = require('../create');
 
@@ -32,16 +33,7 @@ module.exports = (params = {}) => {
       beforeShutdown: config.beforeShutdown,
       onError: config.onError,
 
-      onListen: () => {
-        if (process.send) process.send({ event: 'ready', conf });
-        if (conf.get('compat.enabled')) log('RUNNING IN COMPATIBILITY MODE!');
-        log(`Env: ${process.env.NODE_ENV || '(not specified)'}`);
-        log(`App: ${conf.get('app.name')} v${conf.get('app.version')}`);
-        log(`Tenant: ${conf.get('tenant.key')}`);
-        log(`Site ID: ${conf.get('site.id')}`);
-        log(`BaseBrowse GraphQL URI: ${conf.get('baseBrowseGraphQLClient.uri')}`);
-        log(`BaseCMS GraphQL URI: ${conf.get('baseCMSGraphQLClient.uri')}`);
-      },
+      onListen: () => emitReady({ conf, log }),
     });
   })().catch(immediatelyThrow);
 };
