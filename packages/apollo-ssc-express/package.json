@@ -1,7 +1,6 @@
 {
   "name": "@parameter1/base-web-apollo-ssc-express",
   "version": "0.0.0",
-  "type": "module",
   "description": "Apollo server-side client (SSC) Express middleware.",
   "author": "Jacob Bare <jacob@parameter1.com>",
   "homepage": "https://github.com/parameter1/base-web/tree/main/packages/apollo-ssc-express#readme",

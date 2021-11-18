@@ -11,6 +11,9 @@
     - `cacheConfig` is now `cache`
     - `linkConfig` is now `link`
     - `config` is now `...rest`
+- `@parameter1/base-cms-express-apollo`
+  - [x] Renamed to `@parameter1/base-web-apollo-ssc-express`
+  - API shape is completely new: now only exports the Express middleware
 - `@parameter1/base-cms-graphql-fragment-types`
   - [x] Renamed to `@parameter1/base-web-graphql-fragment-types`
   - [x] BaseCMS types can now be included require via `@parameter1/base-web-graphql-fragment-types/base-cms` instead of `@parameter1/base-cms-graphql-fragment-types`

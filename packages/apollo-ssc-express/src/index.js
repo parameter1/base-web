@@ -1,5 +1,5 @@
-import createApolloClient from '@parameter1/base-web-apollo-ssc';
-import { isFunction as isFn } from '@parameter1/base-web-utils';
+const createApolloClient = require('@parameter1/base-web-apollo-ssc');
+const { isFunction: isFn } = require('@parameter1/base-web-utils');
 
 /**
  * Provides the Express Apollo middleware.
@@ -15,7 +15,7 @@ import { isFunction as isFn } from '@parameter1/base-web-utils';
  * @param {...object} [params.config.rest]
  * @returns {function}
  */
-export default ({ prop = '$apollo', contextFn, ...config } = {}) => (req, res, next) => {
+module.exports = ({ prop = '$apollo', contextFn, ...config } = {}) => (req, res, next) => {
   if (req[prop]) throw new Error(`An Apollo GraphQL client (or other value) has already been registered to prop ${prop}`);
   const client = createApolloClient({
     ...config,
