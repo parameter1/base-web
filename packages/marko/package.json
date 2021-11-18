@@ -1,0 +1,33 @@
+{
+  "name": "@parameter1/base-web-marko",
+  "version": "0.0.0",
+  "type": "module",
+  "description": "Core Marko compiling and require functions.",
+  "author": "Jacob Bare <jacob@parameter1.com>",
+  "homepage": "https://github.com/parameter1/base-web/tree/main/packages/marko#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/parameter1/base-web.git",
+    "directory": "packages/marko"
+  },
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint --ext .js ./",
+    "test": "yarn lint"
+  },
+  "dependencies": {
+    "marko": "~4.20.0"
+  },
+  "engines": {
+    "node": ">=14.0"
+  },
+  "os": [
+    "darwin",
+    "linux",
+    "win32"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}
