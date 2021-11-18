@@ -9,6 +9,8 @@ module.exports = ({ server, conf }) => {
   if (!conf.get('compat.enabled')) return;
   server.locals.tenantKey = conf.get('tenant.key');
 
+  server.locals.onAsyncBlockError = conf.get('hooks.onAsyncBlockError');
+
   // "core" config
   server.locals.config = {
     setWebsiteContext: () => {},

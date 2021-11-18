@@ -57,6 +57,7 @@ module.exports = Joi.object({
     }).default({ policy: 'strict-origin-when-cross-origin' }),
   }).unknown().default({ enabled: true, frameguard: false, referrerPolicy: {} }),
   hooks: Joi.object({
+    onAsyncBlockError: Joi.function(),
     postInit: Joi.function(),
     preRoutes: Joi.function(),
     postRoutes: Joi.function(),
