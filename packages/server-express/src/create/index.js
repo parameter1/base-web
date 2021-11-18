@@ -1,3 +1,4 @@
+require('@parameter1/base-web-marko/require');
 const { createServer } = require('http');
 const marko = require('@parameter1/base-web-marko/express');
 const compat = require('./compat');
@@ -22,6 +23,7 @@ module.exports = async (params = {}) => {
 
   compat({ server, conf });
 
+  // @todo determine if response bodies need cleaning
   server.use(marko());
 
   // preRoutes
