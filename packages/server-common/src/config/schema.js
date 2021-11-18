@@ -3,10 +3,6 @@ const Joi = require('@parameter1/joi');
 const isProduction = process.env.NODE_ENV === 'production';
 
 module.exports = Joi.object({
-  cwd: Joi.string().trim().required(),
-  compat: Joi.object({
-    enabled: Joi.boolean().truthy('1').falsy('0').default(true),
-  }).default({ enabled: false }),
   app: Joi.object({
     name: Joi.string().trim().required(),
     version: Joi.string().trim().required(),
@@ -19,12 +15,16 @@ module.exports = Joi.object({
     cacheServerResponses: Joi.boolean().truthy('1').falsy('0').default(true),
     cacheServerSiteContext: Joi.boolean().truthy('1').falsy('0').default(true),
   }).required(),
+  compat: Joi.object({
+    enabled: Joi.boolean().truthy('1').falsy('0').default(true),
+  }).default({ enabled: false }),
   contentPreviewMode: Joi.object({
     param: Joi.string().trim().default('preview-mode'),
   }).default({ param: 'preview-mode' }),
   cookie: Joi.object({
     enabled: Joi.boolean().truthy('1').falsy('0').default(true),
   }).default({ enabled: true }),
+  cwd: Joi.string().trim().required(),
   etag: Joi.object({
     enabled: Joi.boolean().truthy('1').falsy('0').default(true),
     mode: Joi.string().trim().lowercase().valid('weak', 'strong')
