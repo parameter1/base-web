@@ -37,13 +37,13 @@ bootServer({
 ## Boot Config
 See `./src/boot/config/schema.js` for complete list of fields. Note that `onError` is used for handling internal service errors, not for handling errors inside the server code itself.
 
-## Server Config
+## Server/Site Config
 Passed from `boot` via `config.server`. The config object is wrapped with `object-path` helpers (such as `get`, `set`, `getAsArray` etc), which must be used when accessing values. The config is set globally to the `server.$conf` property (when accessing via an Express route) or `out.global.$conf` when in a Marko template.
 
-The `site` config is now embedded within the server config, accesible via `server.$conf.get('site.config')` or `out.global.$conf.get('site.config')`. This (along with GraphQL) is probably the largest change.
+The `site` config is now embedded within the server config, accesible via `server.$conf.get('site.config')` or `out.global.$conf.get('site.config')`. This (along with GraphQL) is probably the largest change. The core site values (such as name, host, imageHost, etc) must now be set at boot time. This prevents the web server from having to make a website context query on _every_ request.
 
 ## Globals (req, res.locals, app.locals)
 Enabling compatibility mode (via `config.server.compat.enabled` or the `COMPAT_ENABLED` env variable) will also apply the legacy values. This should be avoided if possible.
 
-- `app.locals.tenantKey` changed to `app.locals.$conf.get('tenant.key')`
+- `app.locals.tenantKey` changed to `server.$conf.get('tenant.key')`
 - `res.locals.requestOrigin` changed to `req.$requestOrigin`
