@@ -1,0 +1,28 @@
+{
+  "name": "@parameter1/base-web-server-express",
+  "version": "0.0.0",
+  "description": "BaseCMS+Marko website server using Express.",
+  "author": "Jacob Bare <jacob@parameter1.com>",
+  "homepage": "https://github.com/parameter1/base-web/tree/main/packages/server-express#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/parameter1/base-web.git",
+    "directory": "packages/server-express"
+  },
+  "license": "MIT",
+  "main": "src/index.js",
+  "scripts": {
+    "lint": "eslint --ext .js ./",
+    "test": "yarn lint"
+  },
+  "dependencies": {
+    "@parameter1/base-web-apollo-ssc-express": "^0.0.0",
+    "@parameter1/base-web-utils": "^0.0.0",
+    "cookie-parser": "^1.4.6",
+    "express": "^4.17.1",
+    "helmet": "^4.6.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
