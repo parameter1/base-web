@@ -11,7 +11,8 @@ module.exports = async ({ uri, headers } = {}) => {
     }),
   });
 
-  const { data } = await res.json();
+  const { data, errors } = await res.json();
+  if (errors) throw new Error(`GraphQL response error: ${errors[0].message}`);
   const possibleTypes = {};
   // eslint-disable-next-line no-underscore-dangle
   data.__schema.types.forEach((supertype) => {
