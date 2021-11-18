@@ -12,7 +12,19 @@ module.exports = ({ server, conf }) => {
   log('@todo compat app.locals.config');
   log('@todo compat app.locals.site');
   server.use((req, res, next) => {
-    res.locals.requestOrigin = req.$requestOrigin;
+    const {
+      $baseBrowseGraphQLClient,
+      $baseCMSGraphQLClient,
+      $requestOrigin,
+    } = req;
+    req.$baseBrowse = $baseBrowseGraphQLClient;
+    res.locals.$baseBrowse = $baseBrowseGraphQLClient;
+
+    req.apollo = $baseCMSGraphQLClient;
+    res.locals.apollo = $baseCMSGraphQLClient;
+
+    res.locals.requestOrigin = $requestOrigin;
+
     next();
   });
 };

@@ -1,3 +1,4 @@
+const { get } = require('@parameter1/base-web-object-path');
 const bootServer = require('../boot');
 
 const { log } = console;
@@ -17,6 +18,21 @@ const config = {
   },
   routes: (server) => {
     server.get('/', (req, res) => res.json({ hello: 'world' }));
+    server.get('/compat', (req, res) => {
+      const { $conf } = req.app;
+      if (!$conf.get('compat.enabled')) return res.json(null);
+      const toCheck = { req, res };
+      const check = [
+        'req.$baseBrowse',
+        'res.locals.$baseBrowse',
+        'req.apollo',
+        'res.locals.apollo',
+        'res.locals.requestOrigin',
+      ];
+      return res.json(check.reduce((o, path) => ({
+        ...o, [path]: Boolean(get(toCheck, path)),
+      }), {}));
+    });
   },
   hooks: {
     postInit: () => log('test postInit hook'),

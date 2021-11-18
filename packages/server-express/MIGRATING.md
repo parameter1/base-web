@@ -47,3 +47,5 @@ Enabling compatibility mode (via `config.server.compat.enabled` or the `COMPAT_E
 
 - `app.locals.tenantKey` changed to `server.$conf.get('tenant.key')`
 - `res.locals.requestOrigin` changed to `req.$requestOrigin`
+- `req.$baseBrowse` and `res.locals.$baseBrowse` changed to `req.$baseBrowseGraphQLClient`
+- `req.apollo` and 1res.locals.apollo` changed to
