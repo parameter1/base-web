@@ -1,8 +1,6 @@
 /* eslint-disable no-param-reassign */
 const { wrap } = require('@parameter1/base-web-object-path');
 
-const { log } = console;
-
 /**
  * Provides compat with @parameter1/base-cms-marko-web
  * @deprecated These globals should _not_ be used if possible.
@@ -33,7 +31,6 @@ module.exports = ({ server, conf }) => {
     ...wrap(site),
   };
 
-  log('@todo compat app.locals.config');
   server.use((req, res, next) => {
     const {
       $baseBrowseGraphQLClient,
