@@ -15,7 +15,7 @@ module.exports = Joi.object({
   healthCheckPath: Joi.string().trim().default('/__health'),
 
   // terminus hooks
-  onStart: Joi.function(),
+  onBoot: Joi.function(),
   onHealthCheck: Joi.function(),
   onSignal: Joi.function(),
   onShutdown: Joi.function(),

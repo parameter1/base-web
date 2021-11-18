@@ -25,7 +25,7 @@ module.exports = (params = {}) => {
 
       healthCheckPath: config.healthCheckPath,
 
-      onStart: config.onStart,
+      onStart: config.onBoot,
       onHealthCheck: config.onHealthCheck,
       onSignal: config.onSignal,
       onShutdown: config.onShutdown,
