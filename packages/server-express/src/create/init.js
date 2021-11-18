@@ -7,5 +7,7 @@ module.exports = async (params = {}) => {
 
   server.set('trust proxy', conf.getAsArray('trustProxy'));
   server.$conf = conf;
+  // this is only being added to move `$conf` to the root marko out.global
+  server.locals.$conf = conf;
   return { server, conf };
 };
