@@ -2,6 +2,15 @@
 
 ## Packages
 ### Changed
+- `@parameter1/base-cms-apollo-ssr`
+  - [x] Renamed to `@parameter1/base-web-apollo-ssc`
+  - Default export is the same
+  - The `uri` option is the same
+  - Factory options are slightly different
+    - `headers` is now `link.headers`
+    - `cacheConfig` is now `cache`
+    - `linkConfig` is now `link`
+    - `config` is now `...rest`
 - `@parameter1/base-cms-graphql-fragment-types`
   - [x] Renamed to `@parameter1/base-web-graphql-fragment-types`
   - [x] BaseCMS types can now be included require via `@parameter1/base-web-graphql-fragment-types/base-cms` instead of `@parameter1/base-cms-graphql-fragment-types`

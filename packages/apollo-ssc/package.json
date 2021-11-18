@@ -1,7 +1,6 @@
 {
   "name": "@parameter1/base-web-apollo-ssc",
   "version": "0.0.0",
-  "type": "module",
   "description": "Apollo server-side client (SSC).",
   "author": "Jacob Bare <jacob@parameter1.com>",
   "homepage": "https://github.com/parameter1/base-web/tree/main/packages/apollo-ssc#readme",
@@ -25,13 +24,10 @@
     "win32"
   ],
   "dependencies": {
+    "@apollo/client": "^3.5.3",
     "@parameter1/base-web-utils": "^0.0.0",
-    "apollo-cache-inmemory": "^1.6.6",
-    "apollo-client": "^2.6.10",
-    "apollo-link-context": "^1.0.20",
-    "apollo-link-http": "^1.5.17",
-    "graphql": "^15.7.0",
-    "node-fetch": "^3.0.0"
+    "graphql": "^16.0.1",
+    "node-fetch": "^2.6.6"
   },
   "publishConfig": {
     "access": "public"

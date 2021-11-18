@@ -1,14 +1,7 @@
-import fetch from 'node-fetch';
-import apolloClient from 'apollo-client';
-import apolloCache from 'apollo-cache-inmemory';
-import apolloLink from 'apollo-link-http';
-import apolloContext from 'apollo-link-context';
-import { isFunction as isFn } from '@parameter1/base-web-utils';
-
-const { ApolloClient } = apolloClient;
-const { InMemoryCache } = apolloCache;
-const { createHttpLink } = apolloLink;
-const { setContext } = apolloContext;
+const { ApolloClient, InMemoryCache, createHttpLink } = require('@apollo/client');
+const { setContext } = require('@apollo/client/link/context');
+const { isFunction: isFn } = require('@parameter1/base-web-utils');
+const fetch = require('node-fetch');
 
 /**
  * Creates an Apollo GraphQL client optimized for use on the server.
@@ -26,7 +19,7 @@ const { setContext } = apolloContext;
  * @param {...object} [params.rest] Additonal config options passed to the `ApolloClient`
  *                                  constructor.
  */
-export default ({
+module.exports = ({
   uri,
   cache,
   link,
@@ -34,7 +27,6 @@ export default ({
   ...rest
 } = {}) => {
   if (!uri) throw new Error('A GraphQL URI must be provided.');
-
   const context = setContext((ctx) => {
     if (isFn(contextFn)) return contextFn(ctx);
     return undefined;
@@ -44,7 +36,6 @@ export default ({
     ...link,
     uri,
   });
-
   return new ApolloClient({
     ...rest,
     link: context.concat(http),
