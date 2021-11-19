@@ -24,7 +24,7 @@
     "win32"
   ],
   "dependencies": {
-    "@apollo/client": "^3.5.3",
+    "@apollo/client": "^3.5.4",
     "@parameter1/base-web-utils": "^0.0.0",
     "graphql": "^16.0.1",
     "node-fetch": "^2.6.6"
