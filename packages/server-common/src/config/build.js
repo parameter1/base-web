@@ -3,6 +3,8 @@ const { wrap } = require('@parameter1/base-web-object-path');
 const fromEnv = require('./from-env');
 const schema = require('./schema');
 
+const { emitWarning } = process;
+
 module.exports = async (params = {}) => {
   const validated = await validateAsync(schema, {
     ...params,
@@ -18,6 +20,7 @@ module.exports = async (params = {}) => {
         cacheServerSiteContext: ['BASE_CMS_GRAPHQL_CLIENT_CACHE_SERVER_SITE_CONTEXT', 'CACHE_GQL_SITE_CONTEXT'],
       })),
     },
+    // @todo move this to server-express-marko package
     compat: {
       ...params.compat,
       ...(fromEnv({ enabled: 'COMPAT_ENABLED' })),
@@ -66,5 +69,12 @@ module.exports = async (params = {}) => {
       ...(fromEnv({ key: 'TENANT_KEY' })),
     },
   });
-  return wrap(validated);
+  const conf = wrap(validated);
+  if (conf.get('compat.enabled')) {
+    emitWarning('The web server is running in "base-cms-marko-web" compatability mode. Update your site to use the latest features and then remove `compat.enabled: true`', 'DeprecationWarning');
+  }
+  if (!conf.get('env')) {
+    emitWarning('The NodeJS enviroment is unspecified. Please set via NODE_ENV or the `env` config value.');
+  }
+  return conf;
 };
