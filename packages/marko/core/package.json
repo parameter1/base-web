@@ -1,7 +1,7 @@
 {
-  "name": "@parameter1/base-web-marko",
+  "name": "@parameter1/base-web-marko-core",
   "version": "0.0.0",
-  "description": "Core Marko compiling and require functions.",
+  "description": "BaseCMS + Marko core website components.",
   "author": "Jacob Bare <jacob@parameter1.com>",
   "homepage": "https://github.com/parameter1/base-web/tree/main/packages/marko/core#readme",
   "repository": {
@@ -10,24 +10,13 @@
     "directory": "packages/marko/core"
   },
   "license": "MIT",
-  "main": "src/index.js",
+  "main": "index.js",
   "scripts": {
     "lint": "eslint --ext .js ./",
     "test": "yarn lint"
   },
   "dependencies": {
-    "@parameter1/base-web-utils": "^0.0.0",
-    "fast-glob": "^3.2.7",
-    "marko": "~4.20.0"
   },
-  "engines": {
-    "node": ">=14.0"
-  },
-  "os": [
-    "darwin",
-    "linux",
-    "win32"
-  ],
   "publishConfig": {
     "access": "public"
   }

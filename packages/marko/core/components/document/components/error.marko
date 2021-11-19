@@ -1,5 +1,5 @@
-$ const { $conf } = out.global;
-$ const document = $conf.get("marko.document");
+$ const { $conf, $marko } = out.global;
+$ const document = $marko.get("document");
 $ const isDev = $conf.get("env") === "development";
 $ const error = input.error || {};
 

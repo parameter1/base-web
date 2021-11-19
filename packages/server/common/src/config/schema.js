@@ -15,9 +15,6 @@ module.exports = Joi.object({
     cacheServerResponses: Joi.boolean().truthy('1').falsy('0').default(true),
     cacheServerSiteContext: Joi.boolean().truthy('1').falsy('0').default(true),
   }).required(),
-  compat: Joi.object({
-    enabled: Joi.boolean().truthy('1').falsy('0').default(true),
-  }).default({ enabled: false }),
   contentPreviewMode: Joi.object({
     param: Joi.string().trim().default('preview-mode'),
   }).default({ param: 'preview-mode' }),
@@ -58,16 +55,10 @@ module.exports = Joi.object({
     }).default({ policy: 'strict-origin-when-cross-origin' }),
   }).unknown().default({ enabled: true, frameguard: false, referrerPolicy: {} }),
   hooks: Joi.object({
-    onAsyncBlockError: Joi.function(),
     postInit: Joi.function(),
     preRoutes: Joi.function(),
     postRoutes: Joi.function(),
   }),
-  marko: Joi.object({
-    components: Joi.object().unknown().external((v) => (v || {})),
-    document: Joi.any(),
-    fragments: Joi.object().unknown().external((v) => (v || {})),
-  }).default({}),
   robots: Joi.object({
     enabled: Joi.boolean().truthy('1').falsy('0').default(true),
     directives: Joi.array().items(

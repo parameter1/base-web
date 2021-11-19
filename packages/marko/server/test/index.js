@@ -1,5 +1,5 @@
 const { get } = require('@parameter1/base-web-object-path');
-const bootServer = require('../boot');
+const bootServer = require('../src/index');
 
 const homeTemplate = require('./templates/home.marko');
 
@@ -11,7 +11,7 @@ process.env.SITE_ID = '5fce561dd28860bc33b823ce';
 process.env.TENANT_KEY = 'randallreilly_all';
 process.env.COMPAT_ENABLED = 1;
 
-const config = {
+const serverConfig = {
   cwd: __dirname,
   app: {
     // normally would come from the site's package.json
@@ -76,6 +76,9 @@ const config = {
 };
 
 bootServer({
-  onBoot: () => log('test onBoot'),
-  server: config,
+  marko: {},
+  config: {
+    onBoot: () => log('test onBoot'),
+    server: serverConfig,
+  },
 });

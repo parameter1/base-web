@@ -1,6 +1,0 @@
-{
-  "taglib-id": "@parameter1/base-web-server-express",
-  "taglib-imports": [
-    "./src/components/marko.json"
-  ]
-}
