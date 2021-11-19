@@ -3,11 +3,11 @@
   "version": "0.0.0",
   "description": "GraphQL fragment types for common APIs used by BaseWeb.",
   "author": "Jacob Bare <jacob@parameter1.com>",
-  "homepage": "https://github.com/parameter1/base-web/tree/main/packages/graphql-fragment-types#readme",
+  "homepage": "https://github.com/parameter1/base-web/tree/main/packages/graphql/fragment-types#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/parameter1/base-web.git",
-    "directory": "packages/graphql-fragment-types"
+    "directory": "packages/graphql/fragment-types"
   },
   "license": "MIT",
   "main": "src/index.js",

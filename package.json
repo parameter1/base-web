@@ -10,7 +10,8 @@
     "lerna": "lerna"
   },
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "packages/graphql/*"
   ],
   "devDependencies": {
     "eslint": "^8.2.0",
