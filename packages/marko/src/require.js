@@ -9,7 +9,7 @@ const encoding = 'utf8';
 function emitCompileWarning() {
   if (!emitCompileWarning.warned) {
     emitCompileWarning.warned = true;
-    emitWarning('one or more Marko templates were compiled on-the-fly. Preferably, all templates would be compiled before running the server.');
+    emitWarning('One or more Marko templates were compiled on-the-fly. All templates should be compiled before running the server.');
   }
 }
 
@@ -21,7 +21,7 @@ require.extensions['.marko'] = (module, filename) => {
       module._compile(content, target);
     } catch (e) {
       if (e.code === 'ENOENT') {
-        throw new Error(`Marko is running in prebuilt template mode, but no compiled template was found for ${filename}`);
+        throw new Error(`Marko is comfigured to run in prebuilt template mode, but no compiled template was found for ${filename}`);
       }
       throw e;
     }
