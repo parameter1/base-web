@@ -47,7 +47,7 @@ const serverConfig = {
   },
   hooks: {
     postInit: () => log('test postInit hook'),
-    preRoutes: () => log('test preRoutes hook'),
+    preRoutes: ({ conf }) => log(`test preRoutes hook running in env: ${conf.get('env')}`),
     postRoutes: () => log('test postRoutes hook'),
   },
   robots: {
