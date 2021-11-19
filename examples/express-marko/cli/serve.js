@@ -10,7 +10,10 @@ log('Serving...');
 (async () => {
   await serve({
     cwd: path.resolve(__dirname, '../'),
-    serverEntry: 'index.js',
+    entry: {
+      server: './index.js',
+      styles: './server/styles/index.scss',
+    },
     compileDirs: ['../../packages/marko'],
     additionalWatchDirs: ['../../packages/marko/server', '../../packages/marko/core'],
     watchIgnore: ['./cli/**/*.js'],
