@@ -3,11 +3,11 @@
   "version": "0.0.0",
   "description": "Common elements for BaseCMS web servers.",
   "author": "Jacob Bare <jacob@parameter1.com>",
-  "homepage": "https://github.com/parameter1/base-web/tree/main/packages/server-common#readme",
+  "homepage": "https://github.com/parameter1/base-web/tree/main/packages/server/common#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/parameter1/base-web.git",
-    "directory": "packages/server-common"
+    "directory": "packages/server/common"
   },
   "license": "MIT",
   "main": "src/index.js",
