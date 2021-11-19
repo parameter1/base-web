@@ -15,7 +15,12 @@ log('Serving...');
       styles: './server/styles/index.scss',
     },
     compileDirs: ['../../packages/marko'],
-    additionalWatchDirs: ['../../packages/marko/server', '../../packages/marko/core'],
+    additionalWatchDirs: [
+      '../../packages/marko/server',
+      '../../packages/marko/core',
+      '../../packages/server/common',
+      '../../packages/server/express',
+    ],
     watchIgnore: ['./cli/**/*.js'],
   });
 })().catch(immediatelyThrow);
