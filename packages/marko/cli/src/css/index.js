@@ -28,6 +28,10 @@ module.exports = async ({
 } = {}) => {
   const start = process.hrtime();
   log('Building sass...');
+  if (!entry) {
+    log('No style entry was specified. Bailing.');
+    return;
+  }
   await del('dist/css/**/*', { cwd });
   const file = path.resolve(cwd, entry);
 
