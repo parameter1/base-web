@@ -1,0 +1,9 @@
+{
+  "taglib-imports": [
+    "./document/marko.json",
+    "./page/marko.json"
+  ],
+  "<marko-web-test>": {
+    "template": "./test-comp.marko"
+  }
+}

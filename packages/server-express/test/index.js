@@ -1,6 +1,8 @@
 const { get } = require('@parameter1/base-web-object-path');
 const bootServer = require('../boot');
 
+const homeTemplate = require('./templates/home.marko');
+
 const { log } = console;
 
 process.env.BASE_BROWSE_GRAPHQL_URI = 'https://base-browse.virgon.base.parameter1.com/graphql';
@@ -17,7 +19,7 @@ const config = {
     version: '1.19.9',
   },
   routes: (server) => {
-    server.get('/', (req, res) => res.json({ hello: 'world' }));
+    server.get('/', (req, res) => res.marko(homeTemplate));
     server.get('/compat', (req, res) => {
       const { app } = req;
       const { $conf } = app;

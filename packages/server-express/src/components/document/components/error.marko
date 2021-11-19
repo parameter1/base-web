@@ -1,0 +1,26 @@
+$ const { $conf } = out.global;
+$ const document = $conf.get("marko.document");
+$ const isDev = $conf.get("env") === "development";
+$ const error = input.error || {};
+
+<${document}>
+  <@head>
+    <marko-web-page-title value=`${input.statusCode} ${input.statusMessage}` />
+    <if(input.statusCode === 404)>
+      <meta name="robots" content="noindex">
+    </if>
+  </@head>
+  <@container>
+    <@page for="error">
+      <marko-web-page-wrapper>
+        <@section>
+          <h3>${input.statusCode} ${input.statusMessage}</h3>
+          <h4>${error.message}</h4>
+          <if(isDev)>
+            <pre>${error.stack}</pre>
+          </if>
+        </@section>
+      </marko-web-page-wrapper>
+    </@page>
+  </@container>
+</>

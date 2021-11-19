@@ -1,0 +1,9 @@
+$ const { $conf } = out.global;
+
+$ const isDev = $conf.get("env") === "development";
+$ const enabled = $conf.get("server.livereload.enabled");
+$ const port = $conf.get("server.livereload.port")
+
+<if(isDev && enabled && port)>
+  <script src=`http://${$conf.get("server.exposedPort")}:${port}/livereload.js` async></script>
+</if>
