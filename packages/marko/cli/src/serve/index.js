@@ -13,8 +13,10 @@ module.exports = async ({
   additionalWatchDirs = [],
   abortOnInstanceError = false,
   showWatchedFiles = false,
+  forceRequirePrebuiltTemplates = true,
 } = {}) => {
   const start = process.hrtime();
+  if (forceRequirePrebuiltTemplates) process.env.MARKO_REQUIRE_PREBUILT_TEMPLATES = true;
   // compile any uncompiled or out-of-date marko templates before starting the server instance
   await compileMarkoFiles({ cwd, dirs: compileDirs, clean: cleanCompiledFiles });
 
