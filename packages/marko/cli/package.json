@@ -26,8 +26,13 @@
   "dependencies": {
     "@parameter1/base-web-marko-lib": "^0.0.0",
     "@parameter1/base-web-utils": "^0.0.0",
+    "autoprefixer": "^10.4.0",
     "chokidar": "^3.5.2",
-    "livereload": "^0.9.3"
+    "cssnano": "^5.0.11",
+    "cssnano-preset-default": "^5.1.7",
+    "livereload": "^0.9.3",
+    "postcss": "^8.3.11",
+    "sass": "^1.43.4"
   },
   "publishConfig": {
     "access": "public"
