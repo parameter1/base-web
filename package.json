@@ -10,6 +10,7 @@
     "lerna": "lerna"
   },
   "workspaces": [
+    "examples/*",
     "packages/*",
     "packages/apollo-ssr/*",
     "packages/graphql/*",
