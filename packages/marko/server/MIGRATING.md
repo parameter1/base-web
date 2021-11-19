@@ -52,3 +52,6 @@ Enabling compatibility mode (via `config.server.compat.enabled` or the `COMPAT_E
 - `res.locals.requestOrigin` changed to `req.$requestOrigin`
 - `req.$baseBrowse` and `res.locals.$baseBrowse` changed to `req.$baseBrowseGraphQLClient`
 - `req.apollo` and 1res.locals.apollo` changed to
+
+## Browser
+- [ ] the deprecated `CMSBrowserComponents.loadComponent` function is no longer available, use `load` instead

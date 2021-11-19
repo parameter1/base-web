@@ -17,7 +17,7 @@ $ const wrapper = getAsObject(input, "bodyWrapper");
     <script>
       (function(w) {
         w.markoCompQueue = w.markoCompQueue || [];
-        var name = 'CMSBrowserComponents', methods = ['load', 'loadComponent'], queue = function(method) { return function() { w.markoCompQueue.push([method, arguments]) } };
+        var name = 'CMSBrowserComponents', methods = ['load'], queue = function(method) { return function() { w.markoCompQueue.push([method, arguments]) } };
         w[name] = w[name] || {};
         for (var i = 0; i < methods.length; i++) { var method = methods[i]; w[name][method] = w[name][method] || queue(method); }
       })(window);
