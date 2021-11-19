@@ -13,6 +13,7 @@
     "packages/*",
     "packages/apollo-ssc/*",
     "packages/graphql/*",
+    "packages/marko/*",
     "packages/server/*"
   ],
   "devDependencies": {
