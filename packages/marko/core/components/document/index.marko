@@ -1,5 +1,7 @@
 import { getAsObject } from "@parameter1/base-web-object-path";
 
+import loadFromDist from "./load-from-dist";
+
 $ const { $conf } = out.global;
 
 $ const dir = input.dir || "ltr";
@@ -13,6 +15,7 @@ $ const wrapper = getAsObject(input, "bodyWrapper");
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content=viewport>
+    <link rel="stylesheet" href=loadFromDist({ $conf, type: 'css' }) />
     <!-- create browser component queue -->
     <script>
       (function(w) {
