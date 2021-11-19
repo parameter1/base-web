@@ -9,7 +9,7 @@ const { log } = console;
 
 module.exports = async ({
   cwd,
-  entry = {},
+  entries = {},
   compileDirs,
   cleanCompiledFiles = false,
   additionalWatchDirs = [],
@@ -24,7 +24,7 @@ module.exports = async ({
     // compile any uncompiled or out-of-date marko templates before starting the server instance
     compileMarkoFiles({ cwd, dirs: compileDirs, clean: cleanCompiledFiles }),
     // build css
-    entry.styles ? buildCSS({ cwd, entry: entry.styles }) : Promise.resolve(),
+    buildCSS({ cwd, entry: entries.styles }),
   ]);
 
   const livereload = createLivereload();
@@ -34,7 +34,7 @@ module.exports = async ({
   const serverStart = process.hrtime();
   const server = ForkServer({
     cwd,
-    entry: entry.server,
+    entry: entries.server,
     onReady: () => livereload.refresh('/'),
   });
   await server.listen({ rejectOnNonZeroExit: abortOnInstanceError });
@@ -44,6 +44,7 @@ module.exports = async ({
   await watchFiles({
     server,
     cwd,
+    entries,
     livereload,
     additonalDirs: additionalWatchDirs,
     showFiles: showWatchedFiles,
