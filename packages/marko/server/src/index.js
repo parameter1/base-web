@@ -12,7 +12,7 @@ module.exports = async ({
   const $marko = await buildMarkoConfig(marko);
   const hooks = getAsObject(config, 'server.hooks');
 
-  bootServer({
+  await bootServer({
     ...config,
     server: {
       ...getAsObject(config, 'server'),

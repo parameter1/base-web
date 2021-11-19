@@ -10,8 +10,8 @@ process.on('unhandledRejection', immediatelyThrow);
 /**
  *
  */
-module.exports = (params = {}) => {
-  (async () => {
+module.exports = async (params = {}) => {
+  await (async () => {
     const config = await buildBootConfig(params);
     const { server, conf } = await createServer(config.server);
 
