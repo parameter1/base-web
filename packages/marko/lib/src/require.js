@@ -15,13 +15,13 @@ function emitCompileWarning() {
 
 require.extensions['.marko'] = (module, filename) => {
   const target = `${filename}.js`;
-  if (process.env.MARKO_PREBUILT_TEMPLATES) {
+  if (process.env.MARKO_REQUIRE_PREBUILT_TEMPLATES) {
     try {
       const content = readFileSync(target, { encoding });
       module._compile(content, target);
     } catch (e) {
       if (e.code === 'ENOENT') {
-        throw new Error(`Marko is comfigured to run in prebuilt template mode, but no compiled template was found for ${filename}`);
+        throw new Error(`Marko is configured to require prebuilt templates but no compiled template was found for ${filename}`);
       }
       throw e;
     }
