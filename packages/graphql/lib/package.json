@@ -1,13 +1,13 @@
 {
-  "name": "@parameter1/base-web-graphql",
+  "name": "@parameter1/base-web-graphql-lib",
   "version": "0.0.0",
   "description": "GraphQL utility functions.",
   "author": "Jacob Bare <jacob@parameter1.com>",
-  "homepage": "https://github.com/parameter1/base-web/tree/main/packages/graphql/core#readme",
+  "homepage": "https://github.com/parameter1/base-web/tree/main/packages/graphql/lib#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/parameter1/base-web.git",
-    "directory": "packages/graphql/core"
+    "directory": "packages/graphql/lib"
   },
   "license": "MIT",
   "main": "index.js",
