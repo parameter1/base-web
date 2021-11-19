@@ -9,7 +9,7 @@ const encoding = 'utf8';
 function emitCompileWarning() {
   if (!emitCompileWarning.warned) {
     emitCompileWarning.warned = true;
-    emitWarning('Template(s) compiled on-the-fly. Preferably, all templates should be compiled before running the server.');
+    emitWarning('one or more Marko templates were compiled on-the-fly. Preferably, all templates would be compiled before running the server.');
   }
 }
 
