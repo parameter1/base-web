@@ -1,5 +1,6 @@
 const serve = require('@parameter1/base-web-marko-cli/serve');
 const { immediatelyThrow } = require('@parameter1/base-web-utils');
+const path = require('path');
 
 process.on('unhandledRejection', immediatelyThrow);
 
@@ -8,10 +9,10 @@ log('Serving...');
 
 (async () => {
   await serve({
-    cwd: __dirname,
+    cwd: path.resolve(__dirname, '../'),
     serverEntry: 'index.js',
     compileDirs: ['../../packages/marko'],
     additionalWatchDirs: ['../../packages/marko/server', '../../packages/marko/core'],
-    watchIgnore: ['./serve.js'],
+    watchIgnore: ['./cli/**/*.js'],
   });
 })().catch(immediatelyThrow);
