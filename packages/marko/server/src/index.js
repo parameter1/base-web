@@ -1,4 +1,4 @@
-require('@parameter1/base-web-marko/require');
+require('@parameter1/base-web-marko-lib/require');
 const bootServer = require('@parameter1/base-web-server-express');
 const { getAsObject } = require('@parameter1/base-web-object-path');
 const { isFunction: isFn } = require('@parameter1/base-web-utils');

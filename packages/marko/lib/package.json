@@ -1,5 +1,5 @@
 {
-  "name": "@parameter1/base-web-marko",
+  "name": "@parameter1/base-web-marko-lib",
   "version": "0.0.0",
   "description": "Core Marko compiling and require functions.",
   "author": "Jacob Bare <jacob@parameter1.com>",

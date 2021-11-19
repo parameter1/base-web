@@ -1,4 +1,4 @@
-const markoMiddleware = require('@parameter1/base-web-marko/express');
+const markoMiddleware = require('@parameter1/base-web-marko-lib/express');
 const { wrap } = require('@parameter1/base-web-object-path');
 const document = require('@parameter1/base-web-marko-core/components/document/index.marko');
 
