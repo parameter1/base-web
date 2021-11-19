@@ -11,7 +11,7 @@
   },
   "workspaces": [
     "packages/*",
-    "packages/apollo-ssc/*",
+    "packages/apollo-ssr/*",
     "packages/graphql/*",
     "packages/marko/*",
     "packages/server/*"

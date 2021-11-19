@@ -1,13 +1,13 @@
 {
-  "name": "@parameter1/base-web-apollo-ssc-express",
+  "name": "@parameter1/base-web-apollo-ssr-express",
   "version": "0.0.0",
-  "description": "Apollo server-side client (SSC) Express middleware.",
+  "description": "Express middleware for the Apollo SSR client.",
   "author": "Jacob Bare <jacob@parameter1.com>",
-  "homepage": "https://github.com/parameter1/base-web/tree/main/packages/apollo-ssc/express#readme",
+  "homepage": "https://github.com/parameter1/base-web/tree/main/packages/apollo-ssr/express#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/parameter1/base-web.git",
-    "directory": "packages/apollo-ssc/express"
+    "directory": "packages/apollo-ssr/express"
   },
   "license": "MIT",
   "main": "src/index.js",
@@ -24,7 +24,7 @@
     "win32"
   ],
   "dependencies": {
-    "@parameter1/base-web-apollo-ssc": "^0.0.0",
+    "@parameter1/base-web-apollo-ssr-client": "^0.0.0",
     "@parameter1/base-web-utils": "^0.0.0"
   },
   "publishConfig": {

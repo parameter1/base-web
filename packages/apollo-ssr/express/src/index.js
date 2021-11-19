@@ -1,4 +1,4 @@
-const createApolloClient = require('@parameter1/base-web-apollo-ssc');
+const createApolloClient = require('@parameter1/base-web-apollo-ssr-client');
 const { isFunction: isFn } = require('@parameter1/base-web-utils');
 
 /**
