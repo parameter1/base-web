@@ -4,6 +4,7 @@ const getAsArray = require('./get-as-array');
 const getAsMap = require('./get-as-map');
 const getAsObject = require('./get-as-object');
 const getAsSet = require('./get-as-set');
+const set = require('./set');
 
 /**
  * Wraps an object with path getters.
@@ -58,6 +59,13 @@ module.exports = (obj) => ({
    * @returns {Set}
    */
   getAsSet: (path) => getAsSet(obj, path),
+
+  /**
+   * Sets an object path value (via dot-notation).
+   */
+  set: (path, value) => {
+    set(obj, path, value);
+  },
 
   /**
    * Returns the original object as-is.
