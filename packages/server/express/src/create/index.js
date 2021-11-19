@@ -9,6 +9,7 @@ const init = require('./init');
 const pkg = require('../../package.json');
 const requestOrigin = require('./request-origin');
 const routes = require('./routes');
+const staticFiles = require('./static-files');
 const versionsHeader = require('./versions-header');
 
 module.exports = async (params = {}) => {
@@ -26,6 +27,8 @@ module.exports = async (params = {}) => {
   await callHook('preRoutes', { server, conf });
   routes({ server, conf });
   await callHook('postRoutes', { server, conf });
+
+  staticFiles({ server, conf });
 
   return { server: createServer(server), conf };
 };
