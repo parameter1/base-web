@@ -3,7 +3,7 @@ const { wrap } = require('@parameter1/base-web-object-path');
 const document = require('@parameter1/base-web-marko-core/components/document/index.marko');
 
 const compat = ({ server, conf, marko }) => {
-  if (!conf.get('compat.enabled')) return;
+  if (!marko.get('compat.enabled')) return;
   const site = conf.getAsObject('site.config');
 
   server
