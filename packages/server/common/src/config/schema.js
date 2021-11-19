@@ -50,6 +50,8 @@ module.exports = Joi.object({
   helmet: Joi.object({
     enabled: Joi.boolean().truthy('1').falsy('0').default(true),
     frameguard: Joi.boolean().default(false),
+    // @todo enable and re-evaluate
+    contentSecurityPolicy: Joi.boolean().default(false),
     referrerPolicy: Joi.object({
       policy: Joi.string().default('strict-origin-when-cross-origin'),
     }).default({ policy: 'strict-origin-when-cross-origin' }),
