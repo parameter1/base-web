@@ -25,6 +25,7 @@ module.exports = async ({
   additonalDirs = [],
   showFiles,
   rejectOnNonZeroExit = true,
+  ignore = [],
 } = {}) => {
   const start = process.hrtime();
   log('Starting file watcher...');
@@ -44,6 +45,7 @@ module.exports = async ({
         ignored.forEach((ext) => a.push(path.join(dir, ext)));
         return a;
       }, [...ignored]),
+      ...ignore,
     ],
   });
 

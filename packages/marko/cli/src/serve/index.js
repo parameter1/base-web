@@ -11,6 +11,7 @@ module.exports = async ({
   compileDirs,
   cleanCompiledFiles = false,
   additionalWatchDirs = [],
+  watchIgnore = [],
   abortOnInstanceError = false,
   showWatchedFiles = false,
   forceRequirePrebuiltTemplates = true,
@@ -38,6 +39,7 @@ module.exports = async ({
     additonalDirs: additionalWatchDirs,
     showFiles: showWatchedFiles,
     rejectOnNonZeroExit: abortOnInstanceError,
+    ignore: watchIgnore,
   });
   log(`READY in ${getProfileMS(start)}ms`);
 };
