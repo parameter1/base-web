@@ -10,7 +10,7 @@ log('Serving...');
 (async () => {
   await serve({
     cwd: path.resolve(__dirname, '../'),
-    entry: {
+    entries: {
       server: './index.js',
       styles: './server/styles/index.scss',
     },
