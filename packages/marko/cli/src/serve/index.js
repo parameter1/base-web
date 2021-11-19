@@ -3,12 +3,13 @@ const ForkServer = require('./fork-server');
 const compileMarkoFiles = require('./compile-marko-files');
 const watchFiles = require('./watch');
 const createLivereload = require('./create-livereload');
+const buildCSS = require('../css');
 
 const { log } = console;
 
 module.exports = async ({
   cwd,
-  serverEntry,
+  entry = {},
   compileDirs,
   cleanCompiledFiles = false,
   additionalWatchDirs = [],
@@ -19,8 +20,12 @@ module.exports = async ({
 } = {}) => {
   const start = process.hrtime();
   if (forceRequirePrebuiltTemplates) process.env.MARKO_REQUIRE_PREBUILT_TEMPLATES = true;
-  // compile any uncompiled or out-of-date marko templates before starting the server instance
-  await compileMarkoFiles({ cwd, dirs: compileDirs, clean: cleanCompiledFiles });
+  await Promise.all([
+    // compile any uncompiled or out-of-date marko templates before starting the server instance
+    compileMarkoFiles({ cwd, dirs: compileDirs, clean: cleanCompiledFiles }),
+    // build css
+    entry.styles ? buildCSS({ cwd, entry: entry.styles }) : Promise.resolve(),
+  ]);
 
   const livereload = createLivereload();
 
@@ -29,7 +34,7 @@ module.exports = async ({
   const serverStart = process.hrtime();
   const server = ForkServer({
     cwd,
-    entry: serverEntry,
+    entry: entry.server,
     onReady: () => livereload.refresh('/'),
   });
   await server.listen({ rejectOnNonZeroExit: abortOnInstanceError });
@@ -39,6 +44,7 @@ module.exports = async ({
   await watchFiles({
     server,
     cwd,
+    livereload,
     additonalDirs: additionalWatchDirs,
     showFiles: showWatchedFiles,
     rejectOnNonZeroExit: abortOnInstanceError,
