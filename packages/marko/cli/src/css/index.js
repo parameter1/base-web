@@ -32,7 +32,6 @@ module.exports = async ({
     log('No style entry was specified. Bailing.');
     return;
   }
-  await del('dist/css/**/*', { cwd });
   const file = path.resolve(cwd, entry);
 
   const rendered = renderSync({
@@ -80,6 +79,7 @@ module.exports = async ({
   log('Writing files to dist folder...');
   const getFileFor = (name) => path.resolve(cwd, 'dist/css', name);
   await makeDir(path.resolve(cwd, 'dist/css'));
+  await del('dist/css/**/*', { cwd });
   await Promise.all([
     writeFile(getFileFor(`index.${hash}.css`), rendered.css, { encoding: 'utf8' }),
     writeFile(getFileFor(`index.${hash}.css.map`), rendered.map, { encoding: 'utf8' }),
