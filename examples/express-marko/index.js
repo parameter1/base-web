@@ -6,7 +6,7 @@ process.env.NODE_ENV = 'development';
 
 const bootServer = require('@parameter1/base-web-marko-server-express');
 const pkg = require('./package.json');
-const routes = require('./routes');
+const routes = require('./server/routes');
 
 module.exports = bootServer({
   marko: { compat: { enabled: true } },
