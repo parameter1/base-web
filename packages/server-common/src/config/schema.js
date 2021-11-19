@@ -63,6 +63,11 @@ module.exports = Joi.object({
     preRoutes: Joi.function(),
     postRoutes: Joi.function(),
   }),
+  marko: Joi.object({
+    components: Joi.object().unknown().external((v) => (v || {})),
+    document: Joi.any(),
+    fragments: Joi.object().unknown().external((v) => (v || {})),
+  }).default({}),
   robots: Joi.object({
     enabled: Joi.boolean().truthy('1').falsy('0').default(true),
     directives: Joi.array().items(
