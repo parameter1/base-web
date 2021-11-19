@@ -1,6 +1,5 @@
 require('@parameter1/base-web-marko/require');
 const { createServer } = require('http');
-const marko = require('@parameter1/base-web-marko/express');
 const baseBrowseGraphql = require('./base-browse-graphql');
 const baseCMSGraphql = require('./base-cms-graphql');
 const callHook = require('./call-hook');
@@ -9,6 +8,7 @@ const cookies = require('./cookies');
 const etags = require('./etags');
 const helmet = require('./helmet');
 const init = require('./init');
+const marko = require('./marko');
 const pkg = require('../../package.json');
 const requestOrigin = require('./request-origin');
 const routes = require('./routes');
@@ -29,7 +29,7 @@ module.exports = async (params = {}) => {
   compat({ server, conf });
 
   // @todo determine if response bodies need cleaning
-  server.use(marko());
+  marko({ server, conf });
 
   await callHook('preRoutes', { server, conf });
   routes({ server, conf });
