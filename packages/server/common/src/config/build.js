@@ -61,9 +61,6 @@ module.exports = async (params = {}) => {
     },
   });
   const conf = wrap(validated);
-  if (conf.get('compat.enabled')) {
-    emitWarning('The web server is running in "base-cms-marko-web" compatability mode. Update your site to use the latest features and then remove `compat.enabled: true`', 'DeprecationWarning');
-  }
   if (!conf.get('env')) {
     emitWarning('The NodeJS enviroment is unspecified. Please set via NODE_ENV or the `env` config value.');
   }
