@@ -4,6 +4,7 @@ const { getAsObject } = require('@parameter1/base-web-object-path');
 const { isFunction: isFn } = require('@parameter1/base-web-utils');
 const buildMarkoConfig = require('./config/build');
 const { preRoutes } = require('./hooks');
+const distLoader = require('./dist-loader');
 
 module.exports = async ({
   marko,
@@ -20,6 +21,16 @@ module.exports = async ({
         ...hooks,
         preRoutes: async ({ server, conf }) => {
           if (isFn(hooks.preRoutes)) await hooks.preRoutes({ server, conf });
+          // set dist assets before boot to cache the manifest parsing and throw
+          // errors before the server is launched.
+          const dist = {
+            js: distLoader({ conf, type: 'js' }),
+            css: distLoader({ conf, type: 'css' }),
+          };
+          dist.js();
+          dist.css();
+          $marko.set('dist', dist);
+
           preRoutes({ server, conf, marko: $marko });
         },
       },
