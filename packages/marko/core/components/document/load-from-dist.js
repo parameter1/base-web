@@ -10,9 +10,14 @@ const load = (file) => {
   return JSON.parse(json);
 };
 
+/**
+ * @todo Running this before the server boots so errors will "crash" the instnace
+ * instead of throwing an error at runtime (when the site is accessed)
+ */
 module.exports = ({ $conf, type }) => {
   const cwd = $conf.get('cwd');
   const file = path.resolve(cwd, 'dist', type, 'manifest.json');
   const manifest = load(file);
-  return `/dist/css/${manifest.main}`;
+  const key = type === 'js' ? 'main.js' : 'main';
+  return `/dist/${type}/${manifest[key]}`;
 };
