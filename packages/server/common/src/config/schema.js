@@ -99,7 +99,7 @@ module.exports = Joi.object({
       primaryCode: Joi.string().trim().default('en'),
       subCode: Joi.string().trim().default('us'),
     }).default({ primaryCode: 'en', subCode: 'us' }),
-    config: Joi.object().unknown().default(),
+    config: Joi.alternatives().try(Joi.object().unknown(), Joi.function()).default({}),
   }).required(),
   tenant: Joi.object({
     key: Joi.string().trim().pattern(/^[a-z0-9]+_[a-z0-9]+$/).required(),

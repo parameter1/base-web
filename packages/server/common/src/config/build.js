@@ -1,5 +1,6 @@
 const { validateAsync } = require('@parameter1/joi/utils');
 const { wrap } = require('@parameter1/base-web-object-path');
+const { isFunction: isFn } = require('@parameter1/base-web-utils');
 const fromEnv = require('./from-env');
 const schema = require('./schema');
 
@@ -64,5 +65,9 @@ module.exports = async (params = {}) => {
   if (!conf.get('env')) {
     emitWarning('The NodeJS enviroment is unspecified. Please set via NODE_ENV or the `env` config value.');
   }
+
+  // support site config as a function
+  const siteConfig = conf.get('site.config');
+  if (isFn(siteConfig)) conf.set('site.config', await siteConfig({ conf }));
   return conf;
 };
