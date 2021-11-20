@@ -24,17 +24,29 @@
     "win32"
   ],
   "dependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/plugin-transform-runtime": "^7.16.4",
+    "@babel/preset-env": "^7.16.4",
+    "@babel/runtime": "^7.16.3",
     "@parameter1/base-web-marko-lib": "^0.0.0",
     "@parameter1/base-web-utils": "^0.0.0",
     "autoprefixer": "^10.4.0",
+    "babel-loader": "^8.2.3",
     "chokidar": "^3.5.2",
+    "core-js": "^3.19.1",
+    "css-loader": "^6.5.1",
     "cssnano": "^5.0.11",
     "cssnano-preset-default": "^5.1.7",
     "del": "^6.0.0",
+    "file-loader": "^6.2.0",
     "livereload": "^0.9.3",
     "make-dir": "^3.1.0",
     "postcss": "^8.3.11",
-    "sass": "^1.43.4"
+    "sass": "^1.43.4",
+    "vue-loader": "^15.9.8",
+    "vue-template-compiler": "^2.6.14",
+    "webpack": "^5.64.2",
+    "webpack-manifest-plugin": "^4.0.2"
   },
   "publishConfig": {
     "access": "public"
