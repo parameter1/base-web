@@ -8,7 +8,7 @@ const bootServer = require('@parameter1/base-web-marko-server-express');
 const pkg = require('./package.json');
 const routes = require('./server/routes');
 
-module.exports = bootServer({
+bootServer({
   marko: { compat: { enabled: true } },
   config: {
     server: {
