@@ -51,7 +51,10 @@ Enabling compatibility mode (via `config.server.compat.enabled` or the `COMPAT_E
 - `app.locals.tenantKey` changed to `server.$conf.get('tenant.key')`
 - `res.locals.requestOrigin` changed to `req.$requestOrigin`
 - `req.$baseBrowse` and `res.locals.$baseBrowse` changed to `req.$baseBrowseGraphQLClient`
-- `req.apollo` and 1res.locals.apollo` changed to
+- `req.apollo` and `res.locals.apollo` changed to `req.$baseCMSGraphQLClient`
 
 ## Browser
 - [ ] the deprecated `CMSBrowserComponents.loadComponent` function is no longer available, use `load` instead
+
+## Custom Root Document
+CSS and JS asset loading has changed. Use the `$marko.get("dist.css")()` and `$marko.get("dist.js")()` function calls instead. Compat mode will still support the `config.styles()` and `config.sources()` calls.
