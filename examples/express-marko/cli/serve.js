@@ -1,3 +1,11 @@
+process.env.BASE_BROWSE_GRAPHQL_URI = 'https://base-browse.virgon.base.parameter1.com/graphql';
+process.env.GRAPHQL_URI = 'https://graphql.virgon.base.parameter1.com';
+process.env.SITE_ID = '5fce561dd28860bc33b823ce';
+process.env.TENANT_KEY = 'randallreilly_all';
+process.env.NODE_ENV = 'development';
+process.env.TERMINUS_TIMEOUT = 0; // should be 0 on dev.
+process.env.TERMINUS_SILENT = true; // run silently on dev.
+
 const serve = require('@parameter1/base-web-marko-cli/serve');
 const { immediatelyThrow } = require('@parameter1/base-web-utils');
 const path = require('path');
