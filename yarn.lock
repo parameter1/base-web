@@ -974,10 +974,10 @@
   dependencies:
     joi "^17.4.2"
 
-"@parameter1/terminus@^1.9.0":
-  version "1.9.0"
-  resolved "https://registry.yarnpkg.com/@parameter1/terminus/-/terminus-1.9.0.tgz#e2d07dc58ea61d340e43a27d3fbb46f9f160c98c"
-  integrity sha512-49hd/+z9li7JZKVGWYWg21u973RZtkH1rjwgaK0vqJFCwf/VBe+1QKqclQzIiwGS0YnEFuXLH8LQxfj/zSdFnQ==
+"@parameter1/terminus@^1.10.0":
+  version "1.10.0"
+  resolved "https://registry.yarnpkg.com/@parameter1/terminus/-/terminus-1.10.0.tgz#f1e79d54b2fe9982b27ed92e7b666506a2c99ea6"
+  integrity sha512-eMa43RE1LuWnrO33KvkiSaTQQSmxYVG+29JfMi038/tOu5cR9TPG698QLoWvOAcVprngVQSDLcOaB0ueH/yCJA==
   dependencies:
     "@godaddy/terminus" "^4.9.0"
     envalid "^7.2.1"
