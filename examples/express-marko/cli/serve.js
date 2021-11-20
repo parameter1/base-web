@@ -13,6 +13,7 @@ log('Serving...');
     entries: {
       server: './index.js',
       styles: './server/styles/index.scss',
+      browser: './browser/index.js',
     },
     compileDirs: ['../../packages/marko'],
     additionalWatchDirs: [
