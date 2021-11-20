@@ -4,12 +4,17 @@ const compileMarkoFiles = require('./compile-marko-files');
 const watchFiles = require('./watch');
 const createLivereload = require('./create-livereload');
 const buildCSS = require('../css');
+const buildJS = require('../js');
 
 const { log } = console;
 
 module.exports = async ({
   cwd,
-  entries = {},
+  entries = {
+    server: './index.js',
+    browser: './browser/index.js',
+    styles: './server/styles/index.scss',
+  },
   compileDirs,
   cleanCompiledFiles = false,
   additionalWatchDirs = [],
@@ -20,14 +25,21 @@ module.exports = async ({
 } = {}) => {
   const start = process.hrtime();
   if (forceRequirePrebuiltTemplates) process.env.MARKO_REQUIRE_PREBUILT_TEMPLATES = true;
+  const livereload = createLivereload();
+
   await Promise.all([
     // compile any uncompiled or out-of-date marko templates before starting the server instance
     compileMarkoFiles({ cwd, dirs: compileDirs, clean: cleanCompiledFiles }),
     // build css
     buildCSS({ cwd, entry: entries.styles }),
+    // build js
+    buildJS({
+      cwd,
+      entry: entries.browser,
+      watch: true,
+      onFileChange: () => livereload.refresh('/'),
+    }),
   ]);
-
-  const livereload = createLivereload();
 
   // fork and start the server instance
   log('Starting forked server...');
