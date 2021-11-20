@@ -12,12 +12,18 @@ module.exports = ({
 
   const file = path.resolve(cwd, entry);
 
-  const kill = () => {
-    if (proc) proc.kill();
+  const kill = async () => {
+    if (proc) {
+      await new Promise((resolve, reject) => {
+        proc.on('exit', resolve);
+        proc.on('error', reject);
+        proc.kill();
+      });
+    }
   };
 
   const listen = async ({ rejectOnNonZeroExit = true } = {}) => {
-    kill();
+    await kill();
     proc = fork(file, [], { stdio: ['inherit', 'inherit', 'inherit', 'ipc'] });
     await new Promise((resolve, reject) => {
       proc.on('message', (message) => {
