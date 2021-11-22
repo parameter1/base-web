@@ -1,5 +1,5 @@
 const { wrap } = require('@parameter1/base-web-object-path');
-const { deprecated, removed } = require('../deprecate');
+const { deprecated, removed, deprecatedObject } = require('../deprecate');
 
 module.exports = ({ server, conf, marko }) => {
   if (!marko.get('compat.enabled')) return;
@@ -39,11 +39,11 @@ module.exports = ({ server, conf, marko }) => {
       $baseCMSGraphQLClient,
       $requestOrigin,
     } = req;
-    req.$baseBrowse = $baseBrowseGraphQLClient;
-    res.locals.$baseBrowse = $baseBrowseGraphQLClient;
+    req.$baseBrowse = deprecatedObject($baseBrowseGraphQLClient, 'req.$baseBrowse', 'req.$baseBrowseGraphQLClient');
+    res.locals.$baseBrowse = deprecatedObject($baseBrowseGraphQLClient, 'res.locals.$baseBrowse', 'req.$baseBrowseGraphQLClient');
 
-    req.apollo = $baseCMSGraphQLClient;
-    res.locals.apollo = $baseCMSGraphQLClient;
+    req.apollo = deprecatedObject($baseCMSGraphQLClient, 'req.apollo', 'req.$baseCMSGraphQLClient');
+    res.locals.apollo = deprecatedObject($baseCMSGraphQLClient, 'res.locals.apollo', 'req.$baseCMSGraphQLClient');
 
     res.locals.requestOrigin = $requestOrigin;
 
