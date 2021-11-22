@@ -22,11 +22,16 @@ module.exports = ({ server, conf, marko }) => {
       getAsObject: deprecated((path, def) => conf.getAsObject(path, def), 'config.getAsObject', 'conf.getAsObject'),
       styles: deprecated(() => ([marko.get('dist.css')()]), 'config.styles', "marko.get('dist.css')"),
       sources: deprecated(() => ([marko.get('dist.js')()]), 'config.sources', "marko.get('dist.js')"),
-    })
-    .setToLocals('site', {
-      config: site,
-      ...wrap(site),
     });
+
+  const siteConfig = {
+    config: site,
+    ...wrap(site),
+  };
+  siteConfig.get = deprecated(siteConfig.get, 'site.get', '$conf.get(site.[path])');
+  siteConfig.getAsArray = deprecated(siteConfig.getAsArray, 'site.getAsArray', '$conf.getAsArray(site.[path])');
+  siteConfig.getAsObject = deprecated(siteConfig.getAsObject, 'site.getAsObject', '$conf.getAsObject(site.[path])');
+  server.setToLocals('site', siteConfig);
 
   server.use((req, res, next) => {
     const {
