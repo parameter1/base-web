@@ -2,6 +2,7 @@ const { createServer } = require('http');
 const baseBrowseGraphql = require('./base-browse-graphql');
 const baseCMSGraphql = require('./base-cms-graphql');
 const callHook = require('./call-hook');
+const contentPreviewMode = require('./content-preview-mode');
 const cookies = require('./cookies');
 const etags = require('./etags');
 const helmet = require('./helmet');
@@ -23,6 +24,7 @@ module.exports = async (params = {}) => {
   baseCMSGraphql({ server, conf });
   versionsHeader({ server, conf, pkg });
   requestOrigin({ server });
+  contentPreviewMode({ server, conf });
 
   await callHook('preRoutes', { server, conf });
   routes({ server, conf });
