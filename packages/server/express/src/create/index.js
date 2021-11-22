@@ -8,6 +8,7 @@ const etags = require('./etags');
 const helmet = require('./helmet');
 const init = require('./init');
 const pkg = require('../../package.json');
+const redirectsAndErrors = require('./redirects-and-errors');
 const requestOrigin = require('./request-origin');
 const routes = require('./routes');
 const staticFiles = require('./static-files');
@@ -32,5 +33,6 @@ module.exports = async (params = {}) => {
 
   staticFiles({ server, conf });
 
+  redirectsAndErrors({ server, conf });
   return { server: createServer(server), conf };
 };
