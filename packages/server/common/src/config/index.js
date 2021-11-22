@@ -5,6 +5,7 @@ const createBaseCMSOptions = require('./create-base-cms-options');
 const createVersionsHeader = require('./create-versions-header');
 const emitReady = require('./emit-ready');
 const fromEnv = require('./from-env');
+const redirectOrError = require('./redirect-or-error');
 
 module.exports = {
   build,
@@ -14,4 +15,5 @@ module.exports = {
   createVersionsHeader,
   emitReady,
   fromEnv,
+  redirectOrError,
 };
