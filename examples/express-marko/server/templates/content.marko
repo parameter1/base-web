@@ -1,0 +1,18 @@
+$ const {
+  id,
+  type,
+} = input;
+$ const { marko } = out.global;
+$ const document = marko.get("document");
+
+<${document}>
+  <!-- <@head>
+    <marko-web-content-page-metadata id=id />
+    <${head} />
+  </@head> -->
+  <@container>
+    <@page for="content" tag="article" id=id type=type>
+      <h1>Content!</h1>
+    </@page>
+  </@container>
+</>
