@@ -5,6 +5,7 @@ const { isFunction: isFn } = require('@parameter1/base-web-utils');
 const buildMarkoConfig = require('./config/build');
 const { preRoutes } = require('./hooks');
 const distLoader = require('./dist-loader');
+const errorRenderer = require('./error-renderer');
 
 module.exports = async ({
   marko,
@@ -12,11 +13,16 @@ module.exports = async ({
 } = {}) => {
   const $marko = await buildMarkoConfig(marko);
   const hooks = getAsObject(config, 'server.hooks');
+  const error = getAsObject(config, 'server.error');
 
   await bootServer({
     ...config,
     server: {
       ...getAsObject(config, 'server'),
+      error: {
+        renderer: errorRenderer,
+        ...error,
+      },
       hooks: {
         ...hooks,
         preRoutes: async ({ server, conf }) => {

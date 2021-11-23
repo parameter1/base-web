@@ -23,6 +23,10 @@ module.exports = Joi.object({
   }).default({ enabled: true }),
   cwd: Joi.string().trim().required(),
   env: Joi.string().trim().default(process.env.NODE_ENV || ''),
+  error: Joi.object({
+    notifier: Joi.function(),
+    renderer: Joi.function(),
+  }),
   etag: Joi.object({
     enabled: Joi.boolean().truthy('1').falsy('0').default(true),
     mode: Joi.string().trim().lowercase().valid('weak', 'strong')
@@ -61,6 +65,7 @@ module.exports = Joi.object({
     preRoutes: Joi.function(),
     postRoutes: Joi.function(),
   }),
+  redirectHandler: Joi.function(),
   robots: Joi.object({
     enabled: Joi.boolean().truthy('1').falsy('0').default(true),
     directives: Joi.array().items(

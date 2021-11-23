@@ -1,5 +1,6 @@
 const { createError } = require('@parameter1/base-web-server-common/errors');
 const { redirectOrError } = require('@parameter1/base-web-server-common/config');
+const { isFunction: isFn } = require('@parameter1/base-web-utils');
 
 module.exports = ({ server }) => {
   // Force express to throw 404s instead of handling natively.
@@ -9,32 +10,38 @@ module.exports = ({ server }) => {
   });
 
   server.use((err, req, res, next) => {
-    // need to get custom redirect handler from config
-    // need to get error render from config
-    // need to get fatal error??
+    const { $conf } = req.app;
+    const renderError = ({ error } = {}) => {
+      const notify = $conf.get('error.notifier');
+      if (isFn(notify)) notify({ error });
+      const render = $conf.get('error.renderer');
+      if (isFn(render)) {
+        render({ error, req, res });
+      } else {
+        next(error);
+      }
+    };
 
     redirectOrError({
       error: err,
-      conf: req.app.$conf,
+      conf: $conf,
       baseCMSClient: req.$baseCMSGraphQLClient,
       path: req.path,
       cookies: req.cookies,
       queryParams: req.query,
       contentPreviewModeEnabled: req.$contentPreviewModeEnabled,
+      customRedirectHandler: $conf.get('redirectHandler'),
     }).then(({ redirect, error }) => {
-      console.log({ redirect });
       if (redirect && redirect.to) {
         redirect.headers.forEach(({ key, value }) => {
           res.setHeader(key, value);
         });
         res.redirect(redirect.code, redirect.to);
       } else {
-        next(error);
+        renderError({ error });
       }
     }).catch((e) => {
-      // fatal handler??? or do regular render??
-      console.error(e);
-      next(e);
+      renderError({ error: e });
     });
   });
 };

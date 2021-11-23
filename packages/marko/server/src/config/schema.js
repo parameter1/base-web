@@ -6,8 +6,9 @@ module.exports = Joi.object({
   }).default({ enabled: false }),
   components: Joi.object().unknown().external((v) => (v || {})),
   document: Joi.any(),
-  fragments: Joi.object().unknown().external((v) => (v || {})),
-  hooks: Joi.object({
-    onAsyncBlockError: Joi.function(),
+  error: Joi.object({
+    template: Joi.any(),
+    asyncBlockNotifier: Joi.function(),
   }),
+  fragments: Joi.object().unknown().external((v) => (v || {})),
 }).required();
