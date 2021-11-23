@@ -13,7 +13,7 @@ module.exports = ({ server }) => {
     const { $conf } = req.app;
     const renderError = ({ error } = {}) => {
       const notify = $conf.get('error.notifier');
-      if (isFn(notify)) notify({ error });
+      if (isFn(notify)) notify(error);
       const render = $conf.get('error.renderer');
       if (isFn(render)) {
         render({ error, req, res });
