@@ -1,1 +1,72 @@
-{}
+{
+  "<marko-core-img>": {
+    "template": "./img.marko",
+    "<link>": {},
+    "@src": "string",
+    "@srcset": "array",
+    "@alt": "string",
+    "@class": "string",
+    "@attrs": "object"
+  },
+  "<marko-core-obj-value>": {
+    "template": "./obj-value.marko",
+    "@obj": "object",
+    "@field": "string",
+    "@as": "string"
+  },
+  "<marko-core-obj-text>": {
+    "template": "./obj-text.marko",
+    "<link>": {
+      "<before>": {},
+      "<after>": {},
+      "@href": "string",
+      "@target": "string",
+      "@title": "string",
+      "@rel": "string",
+      "@class": "string",
+      "@attrs": "object"
+    },
+    "@obj": "object",
+    "@field": "string",
+    "@html": "boolean",
+    "@tag": "string",
+    "@class": "string",
+    "@attrs": "object"
+  },
+  "<marko-core-obj-date>": {
+    "template": "./obj-date.marko",
+    "<link>": {
+      "<before>": {},
+      "<after>": {},
+      "@href": "string",
+      "@target": "string",
+      "@title": "string",
+      "@rel": "string",
+      "@class": "string",
+      "@attrs": "object"
+    },
+    "@obj": "object",
+    "@field": "string",
+    "@format": "string",
+    "@locale": "string",
+    "@tag": "string",
+    "@class": "string",
+    "@attrs": "object"
+  },
+  "<marko-core-obj-array>": {
+    "template": "./obj-array.marko",
+    "@obj": "object",
+    "@field": "string",
+    "@tag": "string",
+    "@class": "string",
+    "@attrs": "object"
+  },
+  "<marko-core-obj-nodes>": {
+    "template": "./obj-nodes.marko",
+    "@obj": "object",
+    "@field": "string",
+    "@tag": "string",
+    "@class": "string",
+    "@attrs": "object"
+  }
+}
