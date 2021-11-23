@@ -51,5 +51,9 @@
     "@modifiers": "array",
     "@class": "string",
     "@attrs": "object"
+  },
+  "<marko-web-resolve-page>": {
+    "template": "./resolve.marko",
+    "@node": "object"
   }
 }
