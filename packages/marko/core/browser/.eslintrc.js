@@ -6,8 +6,8 @@ module.exports = {
   env: {
     browser: true,
   },
-  parser: '@babel/eslint-parser',
   parserOptions: {
+    parser: '@babel/eslint-parser',
     requireConfigFile: false,
   },
 };
