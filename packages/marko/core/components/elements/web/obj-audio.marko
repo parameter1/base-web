@@ -1,5 +1,5 @@
 import objectLink from "./object-link";
-import extractRender from "./extract-render";
+import extractRenderBody from "../../../utils/extract-render-body";
 
 <marko-web-obj|{ value, classNames, resolvedObj }|
   type=input.type
@@ -13,6 +13,6 @@ import extractRender from "./extract-render";
     src=value
     class=classNames
     attrs=input.attrs
-    ...extractRender(input)
+    ...extractRenderBody(input)
   />
 </marko-web-obj>
