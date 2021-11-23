@@ -4,6 +4,7 @@ const { contentFromId } = require('@parameter1/base-web-server-express/route-han
 
 module.exports = ({
   template,
+  render,
 
   queryFragment,
   idResolver,
@@ -13,7 +14,7 @@ module.exports = ({
   pathFn,
   formatResponse,
 } = {}) => contentFromId({
-  render: async ({ res, node, content }) => {
+  render: isFn(render) ? render : async ({ res, node, content }) => {
     if (isFn(formatResponse)) await formatResponse({ res, content, pageNode: node });
     res.marko(template, { ...content, pageNode: node });
   },
