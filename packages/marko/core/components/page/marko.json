@@ -20,6 +20,15 @@
       "default-value": "|"
     }
   },
+  "<marko-web-page-description>": {
+    "template": "./description.marko",
+    "@value": "string"
+  },
+  "<marko-web-page-rel-canonical>": {
+    "template": "./rel-canonical.marko",
+    "@path": "string",
+    "@url": "string"
+  },
   "<marko-web-page-wrapper>": {
     "template": "./wrapper.marko",
     "@sections <section>[]": {
