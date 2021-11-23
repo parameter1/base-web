@@ -29,7 +29,6 @@ const findRedirect = async ({
     websiteRedirect({ baseCMSClient, from, queryParams }),
     contentByAlias({ baseCMSClient, from, previewModeEnabled: contentPreviewModeEnabled }),
   ]);
-  console.log({ redirect, contentAlias });
   if (contentAlias) return { to: contentAlias, code: 301, headers: redirectHeaders() };
   if (redirect) return { ...redirect, headers: redirectHeaders(redirect.code) };
   if (!isFn(customRedirectHandler)) return null;
