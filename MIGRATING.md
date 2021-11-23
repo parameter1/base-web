@@ -17,6 +17,9 @@
 - `@parameter1/base-cms-graphql-fragment-types`
   - [x] Renamed to `@parameter1/base-web-graphql-fragment-types`
   - [x] BaseCMS types can now be included require via `@parameter1/base-web-graphql-fragment-types/base-cms` instead of `@parameter1/base-cms-graphql-fragment-types`
+- `@parameter1/base-cms-inflector`
+  - [x] Renamed to `@parameter1/base-web-inflector`
+  - [x] Exports are the same
 - `@parameter1/base-cms-object-path`
   - [x] Renamed to `@parameter1/base-web-object-path`
   - [x] All exports rename the same

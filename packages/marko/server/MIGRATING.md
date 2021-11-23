@@ -42,6 +42,10 @@ Passed from `boot` via `config.server`. The config object is wrapped with `objec
 
 The `site` config is now embedded within the server config, accesible via `server.$conf.get('site.config')` or `out.global.$conf.get('site.config')`. This (along with GraphQL) is probably the largest change. The core site values (such as name, host, imageHost, etc) must now be set at boot time. This prevents the web server from having to make a website context query on _every_ request.
 
+## Config Changes
+- `onAsyncBlockError` becomes `marko.error.asyncBlockNotifier`
+- `onFatalError` becomes `error.notifier`
+
 ## Globals (req, res.locals, app.locals)
 Enabling compatibility mode (via `config.server.compat.enabled` or the `COMPAT_ENABLED` env variable) will also apply the legacy values. This should be avoided if possible.
 
@@ -58,3 +62,14 @@ Enabling compatibility mode (via `config.server.compat.enabled` or the `COMPAT_E
 
 ## Custom Root Document
 CSS and JS asset loading has changed. Use the `$marko.get("dist.css")()` and `$marko.get("dist.js")()` function calls instead. Compat mode will still support the `config.styles()` and `config.sources()` calls.
+
+## Marko Core/Web Components
+Some duplicate components existed in both `base-cms-marko-core` and `base-cms-marko-web`
+- `elements`
+  - Both the `<marko-web->` and `<marko-core->` components still exist
+  - Some were merged (but both component names still exist)
+    - array
+    - date
+    - link
+    - text
+  - Otherwise the others were kept under sub-folders `web` and `core` respectively
