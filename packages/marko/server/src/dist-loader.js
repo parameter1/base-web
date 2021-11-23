@@ -8,7 +8,9 @@ const loadFromManifest = ({ conf, type }) => {
   const file = path.resolve(cwd, 'dist', type, 'manifest.json');
   const json = readFileSync(file, { encoding: 'utf8' });
   const manifest = JSON.parse(json);
-  const key = type === 'js' ? 'main.js' : 'main';
+  const key = `main.${type}`;
+  const fileName = manifest[key];
+  if (!fileName) throw new Error(`Unable to extract a file name for type ${type} using manifest key ${key}`);
   return `/dist/${type}/${manifest[key]}`;
 };
 
