@@ -3,7 +3,6 @@ const chokidar = require('chokidar');
 const compile = require('@parameter1/base-web-marko-lib/compile');
 const { deleteCompiledFor } = require('@parameter1/base-web-marko-lib/utils');
 const { getProfileMS } = require('@parameter1/base-web-utils');
-const buildCSS = require('../css');
 
 const { log } = console;
 
@@ -11,8 +10,6 @@ const extensions = [
   '**/*.marko',
   '**/*.js',
   '**/*.json',
-  '**/*.scss',
-  '**/*.css',
 ];
 
 const ignored = [
@@ -25,12 +22,10 @@ const ignored = [
 module.exports = async ({
   server,
   cwd,
-  entries,
   additonalDirs = [],
   showFiles,
   rejectOnNonZeroExit = true,
   ignore = [],
-  livereload,
 } = {}) => {
   const start = process.hrtime();
   log('Starting file watcher...');
@@ -63,10 +58,6 @@ module.exports = async ({
 
   const handleEvent = async ({ event, file }) => {
     const ext = path.extname(file);
-    if (['.css', '.scss'].includes(ext) && event === 'change') {
-      await buildCSS({ cwd, entry: entries.styles });
-      return livereload.refresh('/');
-    }
     if (['.js', '.json'].includes(ext) && event === 'change') {
       return restart();
     }

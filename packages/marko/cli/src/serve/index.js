@@ -13,7 +13,7 @@ module.exports = async ({
   entries = {
     server: './index.js',
     browser: './browser/index.js',
-    styles: './server/styles/index.scss',
+    styles: './server/styles/index.js',
   },
   compileDirs,
   cleanCompiledFiles = false,
@@ -31,7 +31,12 @@ module.exports = async ({
     // compile any uncompiled or out-of-date marko templates before starting the server instance
     compileMarkoFiles({ cwd, dirs: compileDirs, clean: cleanCompiledFiles }),
     // build css
-    buildCSS({ cwd, entry: entries.styles }),
+    buildCSS({
+      cwd,
+      entry: entries.styles,
+      watch: true,
+      onFileChange: () => livereload.refresh('/'),
+    }),
     // build js
     buildJS({
       cwd,
@@ -56,8 +61,6 @@ module.exports = async ({
   await watchFiles({
     server,
     cwd,
-    entries,
-    livereload,
     additonalDirs: additionalWatchDirs,
     showFiles: showWatchedFiles,
     rejectOnNonZeroExit: abortOnInstanceError,
