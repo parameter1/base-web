@@ -2,6 +2,7 @@
   "taglib-imports": [
     "./document/marko.json",
     "./elements/marko.json",
+    "./node-list/marko.json",
     "./page/marko.json"
   ],
   "<marko-web-resolve>": {
