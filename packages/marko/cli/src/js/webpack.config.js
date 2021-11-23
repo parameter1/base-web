@@ -1,6 +1,7 @@
 const path = require('path');
 const { VueLoaderPlugin } = require('vue-loader');
 const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const absoluteRuntime = path.dirname(require.resolve('@babel/runtime/package.json'));
 const imagePattern = /\.(png|svg|jpg|gif|webp)$/;
@@ -21,6 +22,14 @@ const browser = ({ cwd, entry }) => ({
     chunkFilename: '[name].[contenthash:8].js',
     publicPath: '/dist/js/',
   },
+  plugins: [
+    new CleanWebpackPlugin(),
+    new VueLoaderPlugin(),
+    new WebpackManifestPlugin({
+      publicPath: '',
+      filter: ({ name }) => !imagePattern.test(name),
+    }),
+  ],
   module: {
     rules: [
       {
@@ -84,13 +93,6 @@ const browser = ({ cwd, entry }) => ({
       },
     ],
   },
-  plugins: [
-    new VueLoaderPlugin(),
-    new WebpackManifestPlugin({
-      publicPath: '',
-      filter: ({ name }) => !imagePattern.test(name),
-    }),
-  ],
 });
 
 module.exports = { browser };
