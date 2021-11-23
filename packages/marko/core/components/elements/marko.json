@@ -1,0 +1,118 @@
+{
+  "taglib-imports": [
+    "./core/marko.json",
+    "./web/marko.json"
+  ],
+  "<marko-core-array>": {
+    "template": "./array.marko",
+    "@value": "array",
+    "@tag": "string",
+    "@class": "string",
+    "@attrs": "object"
+  },
+  "<marko-web-array>": {
+    "template": "./array.marko",
+    "@value": "array",
+    "@tag": "string",
+    "@class": "string",
+    "@attrs": "object"
+  },
+  "<marko-core-date>": {
+    "template": "./date.marko",
+    "<link>": {
+      "<before>": {},
+      "<after>": {},
+      "@href": "string",
+      "@target": "string",
+      "@title": "string",
+      "@rel": "string",
+      "@class": "string",
+      "@attrs": "object"
+    },
+    "@value": "expression",
+    "@tag": "string",
+    "@format": "string",
+    "@locale": "string",
+    "@timezone": "string",
+    "@class": "string",
+    "@attrs": "object"
+  },
+  "<marko-web-date>": {
+    "template": "./date.marko",
+    "<link>": {
+      "<before>": {},
+      "<after>": {},
+      "@href": "string",
+      "@target": "string",
+      "@title": "string",
+      "@rel": "string",
+      "@class": "string",
+      "@attrs": "object"
+    },
+    "@value": "expression",
+    "@tag": "string",
+    "@format": "string",
+    "@locale": "string",
+    "@timezone": "string",
+    "@class": "string",
+    "@attrs": "object"
+  },
+  "<marko-core-link>": {
+    "template": "./link.marko",
+    "<before>": {},
+    "<after>": {},
+    "@href": "string",
+    "@target": "string",
+    "@title": "string",
+    "@rel": "string",
+    "@class": "string",
+    "@attrs": "object"
+  },
+  "<marko-web-link>": {
+    "template": "./link.marko",
+    "<before>": {},
+    "<after>": {},
+    "@href": "string",
+    "@target": "string",
+    "@title": "string",
+    "@rel": "string",
+    "@class": "string",
+    "@attrs": "object"
+  },
+  "<marko-core-text>": {
+    "template": "./text.marko",
+    "<link>": {
+      "<before>": {},
+      "<after>": {},
+      "@href": "string",
+      "@target": "string",
+      "@title": "string",
+      "@rel": "string",
+      "@class": "string",
+      "@attrs": "object"
+    },
+    "@value": "expression",
+    "@tag": "string",
+    "@html": "boolean",
+    "@class": "string",
+    "@attrs": "object"
+  },
+  "<marko-web-text>": {
+    "template": "./text.marko",
+    "<link>": {
+      "<before>": {},
+      "<after>": {},
+      "@href": "string",
+      "@target": "string",
+      "@title": "string",
+      "@rel": "string",
+      "@class": "string",
+      "@attrs": "object"
+    },
+    "@value": "expression",
+    "@tag": "string",
+    "@html": "boolean",
+    "@class": "string",
+    "@attrs": "object"
+  }
+}

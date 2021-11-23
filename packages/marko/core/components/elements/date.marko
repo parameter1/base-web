@@ -1,0 +1,25 @@
+import { getAsObject } from "@parameter1/base-web-object-path";
+import dayjs from "../../dayjs";
+import defaultValue from "../../utils/default-value";
+import "dayjs/locale/es";
+
+$ const { $conf } = out.global;
+
+$ const format = defaultValue(input.format, $conf.get("date.format"));
+$ const timezone = defaultValue(input.timezone, $conf.get("date.timezone"));
+$ const locale = defaultValue(input.locale, $conf.get("date.locale"));
+$ if (locale && locale !== "en") dayjs.locale(locale);
+
+$ const date = defaultValue(input.value, null, v => dayjs(v).tz(timezone));
+$ const value = date && date.isValid() ? date.format(format) : null;
+
+$ const textInput = {
+  value,
+  tag: input.tag,
+  class: input.class,
+  attrs: input.attrs,
+  link: input.link,
+  renderBody: input.renderBody,
+};
+
+<marko-core-text ...textInput />

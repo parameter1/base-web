@@ -1,6 +1,7 @@
 {
   "taglib-imports": [
     "./document/marko.json",
+    "./elements/marko.json",
     "./page/marko.json"
   ]
 }
