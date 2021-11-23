@@ -93,7 +93,7 @@ module.exports = Joi.object({
     date: Joi.object({
       timezone: Joi.string().trim().default('America/Chicago'),
       format: Joi.string().trim().default('MMM Do, YYYY'),
-      locale: Joi.string().trim().default('en'),
+      locale: Joi.string().trim().allow('en', 'es').default('en'),
     }).default({ timezone: 'America/Chicago', format: 'MMM Do, YYYY', locale: 'en' }),
     language: Joi.object({
       primaryCode: Joi.string().trim().default('en'),
