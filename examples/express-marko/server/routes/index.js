@@ -2,6 +2,7 @@ const { asyncRoute } = require('@parameter1/base-web-marko-server-express/utils'
 const { gql } = require('@parameter1/base-web-graphql-lib/tag');
 const { jsonErrorHandler } = require('@parameter1/base-web-marko-server-express/middleware');
 const index = require('../templates/index.marko');
+const content = require('./content');
 
 const PING = gql`
   query {
@@ -21,4 +22,6 @@ module.exports = (server) => {
   server.get('/error', () => {
     throw new Error('Bad!');
   });
+
+  content(server);
 };
