@@ -24,6 +24,9 @@
     "win32"
   ],
   "dependencies": {
+    "@parameter1/base-web-inflector": "^0.0.0",
+    "@parameter1/base-web-object-path": "^0.0.0",
+    "@parameter1/base-web-utils": "^0.0.0",
     "dayjs": "^1.10.7"
   },
   "publishConfig": {
