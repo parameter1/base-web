@@ -8,10 +8,10 @@ const distLoader = require('./dist-loader');
 const errorRenderer = require('./error-renderer');
 
 module.exports = async ({
-  marko,
+  marko: markoConf,
   config,
 } = {}) => {
-  const $marko = await buildMarkoConfig(marko);
+  const marko = await buildMarkoConfig(markoConf);
   const hooks = getAsObject(config, 'server.hooks');
   const error = getAsObject(config, 'server.error');
 
@@ -35,9 +35,9 @@ module.exports = async ({
           };
           dist.js();
           dist.css();
-          $marko.set('dist', dist);
+          marko.set('dist', dist);
 
-          preRoutes({ server, conf, marko: $marko });
+          preRoutes({ server, conf, marko });
         },
       },
     },

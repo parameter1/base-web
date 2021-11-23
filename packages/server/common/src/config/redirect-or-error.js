@@ -16,20 +16,16 @@ const redirectHeaders = (code) => {
 };
 
 const findRedirect = async ({
-  baseCMSClient,
+  baseCMSGraphQLClient,
   conf,
-  path,
-  cookies,
-  headers,
-  queryParams,
+  request,
   contentPreviewModeEnabled,
-
   customRedirectHandler,
 } = {}) => {
-  const from = path.replace(/\/$/, '');
+  const from = request.path.replace(/\/$/, '');
   const [redirect, contentAlias] = await Promise.all([
-    websiteRedirect({ baseCMSClient, from, queryParams }),
-    contentByAlias({ baseCMSClient, from, previewModeEnabled: contentPreviewModeEnabled }),
+    websiteRedirect({ baseCMSGraphQLClient, from, queryParams: request.query }),
+    contentByAlias({ baseCMSGraphQLClient, from, previewModeEnabled: contentPreviewModeEnabled }),
   ]);
   if (contentAlias) return { to: contentAlias, code: 301, headers: redirectHeaders() };
   if (redirect) return { ...redirect, headers: redirectHeaders(redirect.code) };
@@ -37,21 +33,16 @@ const findRedirect = async ({
   return customRedirectHandler({
     from,
     conf,
-    cookies,
-    headers,
-    baseCMSClient,
-    queryParams,
+    request,
+    baseCMSGraphQLClient,
   });
 };
 
 module.exports = async ({
   error,
   conf,
-  baseCMSClient,
-  path,
-  queryParams,
-  cookies,
-  headers,
+  baseCMSGraphQLClient,
+  request,
   contentPreviewModeEnabled,
   customRedirectHandler,
 } = {}) => {
@@ -59,12 +50,9 @@ module.exports = async ({
   set(err, 'status', err.status || err.statusCode || 500);
   if (err.status === 404) {
     const redirect = await findRedirect({
-      baseCMSClient,
+      baseCMSGraphQLClient,
       conf,
-      path,
-      cookies,
-      headers,
-      queryParams,
+      request,
       contentPreviewModeEnabled,
       customRedirectHandler,
     });

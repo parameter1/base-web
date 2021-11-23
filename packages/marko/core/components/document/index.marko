@@ -1,9 +1,9 @@
 import { getAsObject } from "@parameter1/base-web-object-path";
 
-$ const { $conf, $marko } = out.global;
+$ const { conf, marko } = out.global;
 
 $ const dir = input.dir || "ltr";
-$ const lang = input.lang || $conf.get("site.language.code", "en-us");
+$ const lang = input.lang || conf.get("site.language.code", "en-us");
 $ const viewport = input.viewport || "width=device-width, initial-scale=1, shrink-to-fit=no";
 $ const wrapper = getAsObject(input, "bodyWrapper");
 
@@ -13,7 +13,7 @@ $ const wrapper = getAsObject(input, "bodyWrapper");
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content=viewport>
-    <link rel="stylesheet" href=$marko.get("dist.css")() />
+    <link rel="stylesheet" href=marko.get("dist.css")() />
     <!-- create browser component queue -->
     <script>
       (function(w) {
@@ -42,7 +42,7 @@ $ const wrapper = getAsObject(input, "bodyWrapper");
     <${input.belowWrapper} />
 
     <!-- load browser components lib -->
-    <script src=$marko.get("dist.js")()></script>
+    <script src=marko.get("dist.js")()></script>
     <script>CMSBrowserComponents.init();</script>
   </body>
 </html>

@@ -5,7 +5,7 @@ const { isFunction: isFn } = require('@parameter1/base-web-utils');
  * Provides the Express Apollo middleware.
  *
  * @param {object} params
- * @param {string} [params.prop=$apollo] The Express req/res property to set the client to.
+ * @param {string} [params.prop=$apollo] The Express res property to set the client to.
  * @param {function} [params.contextFn] An optional context function to run on every request.
  *                                      The Express `req` and `res` objects are appended.
  * @param {object} params.config The remaining configuration to the pass to the client factory
@@ -16,7 +16,7 @@ const { isFunction: isFn } = require('@parameter1/base-web-utils');
  * @returns {function}
  */
 module.exports = ({ prop = '$apollo', contextFn, ...config } = {}) => (req, res, next) => {
-  if (req[prop]) throw new Error(`An Apollo GraphQL client (or other value) has already been registered to prop ${prop}`);
+  if (res.locals[prop]) throw new Error(`An Apollo GraphQL client (or other value) has already been registered to prop ${prop}`);
   const client = createApolloClient({
     ...config,
     contextFn: (ctx) => {
@@ -24,6 +24,6 @@ module.exports = ({ prop = '$apollo', contextFn, ...config } = {}) => (req, res,
       return undefined;
     },
   });
-  req[prop] = client;
+  res.locals[prop] = client;
   next();
 };

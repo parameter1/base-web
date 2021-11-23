@@ -2,7 +2,7 @@ const { createError } = require('@parameter1/base-web-server-common/errors');
 const { redirectOrError } = require('@parameter1/base-web-server-common/config');
 const { isFunction: isFn } = require('@parameter1/base-web-utils');
 
-module.exports = ({ server }) => {
+module.exports = ({ server, conf }) => {
   // Force express to throw 404s instead of handling natively.
   // This will move the error into the "standard" error handler.
   server.use((req, res, next) => { // eslint-disable-line no-unused-vars
@@ -10,11 +10,10 @@ module.exports = ({ server }) => {
   });
 
   server.use((err, req, res, next) => {
-    const { $conf } = req.app;
     const renderError = ({ error } = {}) => {
-      const notify = $conf.get('error.notifier');
+      const notify = conf.get('error.notifier');
       if (isFn(notify)) notify(error);
-      const render = $conf.get('error.renderer');
+      const render = conf.get('error.renderer');
       if (isFn(render)) {
         render({ error, req, res });
       } else {
@@ -24,14 +23,11 @@ module.exports = ({ server }) => {
 
     redirectOrError({
       error: err,
-      conf: $conf,
-      baseCMSClient: req.$baseCMSGraphQLClient,
-      path: req.path,
-      cookies: req.cookies,
-      headers: req.headers,
-      queryParams: req.query,
-      contentPreviewModeEnabled: req.$contentPreviewModeEnabled,
-      customRedirectHandler: $conf.get('redirectHandler'),
+      conf,
+      baseCMSGraphQLClient: res.locals.baseCMSGraphQLClient,
+      request: res.locals.request,
+      contentPreviewModeEnabled: res.locals.contentPreviewModeEnabled,
+      customRedirectHandler: conf.get('redirectHandler'),
     }).then(({ redirect, error }) => {
       if (redirect && redirect.to) {
         redirect.headers.forEach(({ key, value }) => {

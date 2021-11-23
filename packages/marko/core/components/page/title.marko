@@ -1,9 +1,9 @@
 import { cleanPath } from "@parameter1/base-web-utils";
 
-$ const { $conf } = out.global;
+$ const { conf } = out.global;
 $ const parts = [
   input.value,
-  $conf.get("site.name"),
+  conf.get("site.name"),
 ];
 $ const concatWith = input.concatWith || "|";
 $ const title = parts.filter(v => v).join(` ${concatWith} `);

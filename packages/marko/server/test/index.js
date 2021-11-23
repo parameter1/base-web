@@ -22,8 +22,8 @@ const serverConfig = {
     server.get('/', (req, res) => res.marko(homeTemplate));
     server.get('/compat', (req, res) => {
       const { app } = req;
-      const { $marko } = app.locals;
-      if (!$marko.get('compat.enabled')) return res.json(null);
+      const { marko } = app.locals;
+      if (!marko.get('compat.enabled')) return res.json(null);
       const toCheck = { app, req, res };
       const check = [
         'app.locals.tenantKey',

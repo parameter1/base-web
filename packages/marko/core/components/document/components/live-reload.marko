@@ -1,8 +1,8 @@
-$ const { $conf } = out.global;
+$ const { conf } = out.global;
 
-$ const isDev = $conf.get("env") === "development";
+$ const isDev = conf.get("env") === "development";
 $ const port = process.env.LIVERELOAD_PORT;
 
 <if(isDev && port)>
-  <script src=`http://${$conf.get("server.exposedHost")}:${port}/livereload.js` async></script>
+  <script src=`http://${conf.get("server.exposedHost")}:${port}/livereload.js` async></script>
 </if>

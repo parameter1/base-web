@@ -17,13 +17,13 @@ const query = gql`
 /**
  *
  * @param {object} params
- * @param {object} params.baseCMSClient The BaseCMS GraphQL client
+ * @param {object} params.baseCMSGraphQLClient The BaseCMS GraphQL client
  * @param {string} params.from The request from path
  * @param {boolean} params.previewModeEnabled Whether contet preview mode is active.
  * @returns {string|null}
  */
 module.exports = async ({
-  baseCMSClient,
+  baseCMSGraphQLClient,
   from,
   previewModeEnabled = false,
 } = {}) => {
@@ -34,6 +34,6 @@ module.exports = async ({
     enabled: previewModeEnabled,
   });
   const variables = { input };
-  const { data } = await baseCMSClient.query({ query, variables });
+  const { data } = await baseCMSGraphQLClient.query({ query, variables });
   return get(data, 'contentAlias.siteContext.path');
 };

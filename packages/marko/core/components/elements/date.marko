@@ -3,11 +3,11 @@ import dayjs from "../../dayjs";
 import defaultValue from "../../utils/default-value";
 import "dayjs/locale/es";
 
-$ const { $conf } = out.global;
+$ const { conf } = out.global;
 
-$ const format = defaultValue(input.format, $conf.get("date.format"));
-$ const timezone = defaultValue(input.timezone, $conf.get("date.timezone"));
-$ const locale = defaultValue(input.locale, $conf.get("date.locale"));
+$ const format = defaultValue(input.format, conf.get("date.format"));
+$ const timezone = defaultValue(input.timezone, conf.get("date.timezone"));
+$ const locale = defaultValue(input.locale, conf.get("date.locale"));
 $ if (locale && locale !== "en") dayjs.locale(locale);
 
 $ const date = defaultValue(input.value, null, v => dayjs(v).tz(timezone));

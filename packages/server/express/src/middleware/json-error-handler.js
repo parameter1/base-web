@@ -14,9 +14,10 @@ const renderNetworkErrorResult = (res, { status, result, showStackTrace }) => {
 
 // eslint-disable-next-line no-unused-vars
 module.exports = () => (err, req, res, next) => {
+  const { conf } = req.app.locals;
   const status = err.statusCode || err.status || 500;
   const { networkError } = err;
-  const showStackTrace = req.app.$conf.get('env') === 'development';
+  const showStackTrace = conf.get('env') === 'development';
 
   if (!networkError) return render(res, { status, err, showStackTrace });
   if (networkError.result) {

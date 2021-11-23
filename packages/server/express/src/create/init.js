@@ -11,6 +11,6 @@ module.exports = async (params = {}) => {
     set(server.locals, path, value);
     return server;
   };
-  server.$conf = conf;
+  server.locals.conf = conf;
   return { server, conf };
 };

@@ -1,7 +1,7 @@
 const possibleTypes = require('@parameter1/base-web-graphql-fragment-types/base-cms');
 
 module.exports = ({ conf }) => ({
-  prop: '$baseCMSGraphQLClient',
+  prop: 'baseCMSGraphQLClient',
   name: conf.get('app.name'),
   version: conf.get('app.version'),
   uri: conf.get('baseCMSGraphQLClient.uri'),

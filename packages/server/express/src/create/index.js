@@ -9,7 +9,7 @@ const helmet = require('./helmet');
 const init = require('./init');
 const pkg = require('../../package.json');
 const redirectsAndErrors = require('./redirects-and-errors');
-const requestOrigin = require('./request-origin');
+const requestInfo = require('./request-info');
 const routes = require('./routes');
 const staticFiles = require('./static-files');
 const versionsHeader = require('./versions-header');
@@ -24,7 +24,7 @@ module.exports = async (params = {}) => {
   baseBrowseGraphql({ server, conf });
   baseCMSGraphql({ server, conf });
   versionsHeader({ server, conf, pkg });
-  requestOrigin({ server });
+  requestInfo({ server });
   contentPreviewMode({ server, conf });
 
   await callHook('preRoutes', { server, conf });

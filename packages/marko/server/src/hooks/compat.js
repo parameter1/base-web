@@ -3,7 +3,6 @@ const { deprecated, removed, deprecatedObject } = require('../deprecate');
 
 module.exports = ({ server, conf, marko }) => {
   if (!marko.get('compat.enabled')) return;
-  const site = conf.getAsObject('site.config');
 
   // @todo emit waning messages anytime these functions are accessed!
   server
@@ -24,28 +23,31 @@ module.exports = ({ server, conf, marko }) => {
       sources: deprecated(() => ([marko.get('dist.js')()]), 'config.sources', "marko.get('dist.js')"),
     });
 
+  const site = conf.getAsObject('site.config');
   const siteConfig = {
     config: site,
     ...wrap(site),
   };
-  siteConfig.get = deprecated(siteConfig.get, 'site.get', '$conf.get(site.[path])');
-  siteConfig.getAsArray = deprecated(siteConfig.getAsArray, 'site.getAsArray', '$conf.getAsArray(site.[path])');
-  siteConfig.getAsObject = deprecated(siteConfig.getAsObject, 'site.getAsObject', '$conf.getAsObject(site.[path])');
+  siteConfig.get = deprecated(siteConfig.get, 'site.get', 'conf.get(site.[path])');
+  siteConfig.getAsArray = deprecated(siteConfig.getAsArray, 'site.getAsArray', 'conf.getAsArray(site.[path])');
+  siteConfig.getAsObject = deprecated(siteConfig.getAsObject, 'site.getAsObject', 'conf.getAsObject(site.[path])');
   server.setToLocals('site', siteConfig);
+
+  // @todo need to find a way to dep properties, especially in marko templates
 
   server.use((req, res, next) => {
     const {
-      $baseBrowseGraphQLClient,
-      $baseCMSGraphQLClient,
-      $requestOrigin,
-    } = req;
-    req.$baseBrowse = deprecatedObject($baseBrowseGraphQLClient, 'req.$baseBrowse', 'req.$baseBrowseGraphQLClient');
-    res.locals.$baseBrowse = deprecatedObject($baseBrowseGraphQLClient, 'res.locals.$baseBrowse', 'req.$baseBrowseGraphQLClient');
+      baseBrowseGraphQLClient,
+      baseCMSGraphQLClient,
+      request,
+    } = res.locals;
+    req.$baseBrowse = deprecatedObject(baseBrowseGraphQLClient, 'req.$baseBrowse', 'baseBrowseGraphQLClient');
+    res.locals.$baseBrowse = deprecatedObject(baseBrowseGraphQLClient, 'res.locals.$baseBrowse', 'baseBrowseGraphQLClient');
 
-    req.apollo = deprecatedObject($baseCMSGraphQLClient, 'req.apollo', 'req.$baseCMSGraphQLClient');
-    res.locals.apollo = deprecatedObject($baseCMSGraphQLClient, 'res.locals.apollo', 'req.$baseCMSGraphQLClient');
+    req.apollo = deprecatedObject(baseCMSGraphQLClient, 'req.apollo', 'baseCMSGraphQLClient');
+    res.locals.apollo = deprecatedObject(baseCMSGraphQLClient, 'res.locals.apollo', 'baseCMSGraphQLClient');
 
-    res.locals.requestOrigin = $requestOrigin;
+    res.locals.requestOrigin = request.origin;
 
     next();
   });

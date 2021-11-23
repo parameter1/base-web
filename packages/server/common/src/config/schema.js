@@ -40,10 +40,10 @@ module.exports = Joi.object({
     }),
   ).default([]).external((v) => {
     const builtIns = [
-      { scope: 'server', name: '$conf' },
-      { scope: 'request', name: '$baseBrowseGraphQLClient' },
-      { scope: 'request', name: '$baseCMSGraphQLClient' },
-      { scope: 'request', name: '$requestOrigin' },
+      { scope: 'server', name: 'conf' },
+      { scope: 'response', name: 'baseBrowseGraphQLClient' },
+      { scope: 'response', name: 'baseCMSGraphQLClient' },
+      { scope: 'response', name: 'request' },
     ];
     return [...builtIns, ...v].reduce((map, o) => {
       if (!map.has(o.scope)) map.set(o.scope, new Set());

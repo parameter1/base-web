@@ -1,8 +1,8 @@
-$ const isDev = process.env.NODE_ENV === "development";
-$ const { $marko } = out.global;
+$ const { marko, conf } = out.global;
+$ const isDev = conf.get("env") === "development";
 $ const { isArray } = Array;
 
-$ const asyncBlockNotifier = $marko.get("error.asyncBlockNotifier");
+$ const asyncBlockNotifier = marko.get("error.asyncBlockNotifier");
 
 <await(input.promise)>
   <@then|resolved|>
