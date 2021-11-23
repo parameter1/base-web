@@ -1,4 +1,5 @@
 const { isFunction: isFn } = require('@parameter1/base-web-utils');
+const { set } = require('@parameter1/base-web-object-path');
 const { contentByAlias, websiteRedirect } = require('../graphql/queries');
 const { formatGraphQLError } = require('../errors');
 
@@ -52,8 +53,8 @@ module.exports = async ({
   customRedirectHandler,
 } = {}) => {
   const err = formatGraphQLError(error);
-  const statusCode = err.status || err.statusCode || 500;
-  if (statusCode === 404) {
+  set(err, 'status', err.status || err.statusCode || 500);
+  if (err.status === 404) {
     const redirect = await findRedirect({
       baseCMSClient,
       conf,
