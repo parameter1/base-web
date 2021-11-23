@@ -28,6 +28,7 @@ module.exports = ({ server }) => {
       baseCMSClient: req.$baseCMSGraphQLClient,
       path: req.path,
       cookies: req.cookies,
+      headers: req.headers,
       queryParams: req.query,
       contentPreviewModeEnabled: req.$contentPreviewModeEnabled,
       customRedirectHandler: $conf.get('redirectHandler'),

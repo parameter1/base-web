@@ -20,6 +20,7 @@ const findRedirect = async ({
   conf,
   path,
   cookies,
+  headers,
   queryParams,
   contentPreviewModeEnabled,
 
@@ -37,6 +38,7 @@ const findRedirect = async ({
     from,
     conf,
     cookies,
+    headers,
     baseCMSClient,
     queryParams,
   });
@@ -49,6 +51,7 @@ module.exports = async ({
   path,
   queryParams,
   cookies,
+  headers,
   contentPreviewModeEnabled,
   customRedirectHandler,
 } = {}) => {
@@ -60,6 +63,7 @@ module.exports = async ({
       conf,
       path,
       cookies,
+      headers,
       queryParams,
       contentPreviewModeEnabled,
       customRedirectHandler,
