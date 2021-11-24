@@ -1,0 +1,32 @@
+{
+  "name": "@parameter1/base-web-graphql-client",
+  "version": "0.0.0",
+  "description": "A basic server-side GraphQL client using Node fetch.",
+  "author": "Jacob Bare <jacob@parameter1.com>",
+  "homepage": "https://github.com/parameter1/base-web/tree/main/packages/graphql/client#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/parameter1/base-web.git",
+    "directory": "packages/graphql/client"
+  },
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint --ext .js ./",
+    "test": "yarn lint"
+  },
+  "dependencies": {
+    "node-fetch": "^2.6.6"
+  },
+  "engines": {
+    "node": ">=14.0"
+  },
+  "os": [
+    "darwin",
+    "linux",
+    "win32"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}
