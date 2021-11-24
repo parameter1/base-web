@@ -2,6 +2,7 @@ const createError = require('http-errors');
 const { extractData } = require('@parameter1/base-web-graphql-lib/fragment');
 const gql = require('@parameter1/base-web-graphql-lib/tag');
 const { isFunction: isFn } = require('@parameter1/base-web-utils');
+const { buildGraphQLOperation: buildConentOperation } = require('../block-loaders/content-from-id');
 const previewModeInput = require('../graphql/input-builders/content-preview-mode');
 const RouteDataNode = require('./-node');
 
@@ -84,7 +85,7 @@ module.exports = async ({
   const node = RouteDataNode({
     baseCMSGraphQLClient,
     variables: { input: buildInput({ id: content.id, previewMode }) },
-    operationBuilder: buildGraphQLOperation,
+    operationBuilder: buildConentOperation,
     fragment: nodeQueryFragment,
     resultField: 'content',
   });
