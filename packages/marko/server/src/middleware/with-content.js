@@ -1,10 +1,8 @@
-const contentFromId = require('./content-from-id');
+const contentFromId = require('../route-handlers/content-from-id');
 const { deprecated } = require('../deprecate');
 
 module.exports = deprecated(({
   template,
-  render,
-
   queryFragment,
   idResolver,
   redirectOnPathMismatch = true,
@@ -14,7 +12,6 @@ module.exports = deprecated(({
   formatResponse,
 } = {}) => contentFromId({
   template,
-  render,
   nodeQueryFragment: queryFragment,
   idResolver,
   redirectOnPathMismatch,
@@ -22,4 +19,4 @@ module.exports = deprecated(({
   redirectToFn,
   canonicalPathFn: pathFn,
   formatResponse,
-}), 'middleware.withContent', 'middleware.contentFromId');
+}), 'middleware.withContent', 'route-handlers.contentFromId');
