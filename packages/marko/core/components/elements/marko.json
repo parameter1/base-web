@@ -1,6 +1,7 @@
 {
   "taglib-imports": [
     "./core/marko.json",
+    "./image/marko.json",
     "./web/marko.json"
   ],
   "<marko-core-array>": {
