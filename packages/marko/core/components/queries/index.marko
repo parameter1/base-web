@@ -1,0 +1,33 @@
+import WebsiteScheduledContent from "./website-scheduled-content";
+
+import shouldCollapse from "../../utils/should-collapse";
+
+$ const map = {
+  "website-scheduled-content": WebsiteScheduledContent,
+};
+
+$ const collapsible = shouldCollapse(input.collapsible);
+$ const Component = map[input.name];
+
+<if(Component)>
+  <${Component}|data| ...input.params>
+    $ const { nodes, node } = data;
+    <if(nodes)>
+      <if(nodes.length || !collapsible)>
+        <${input.renderBody} ...data />
+      </if>
+      <else>
+        <${input.whenEmpty} />
+      </else>
+    </if>
+    <else-if(node || !collapsible)>
+      <${input.renderBody} ...data />
+    </else-if>
+    <else>
+      <${input.whenEmpty} />
+    </else>
+  </>
+</if>
+<else>
+  $ process.emitWarning(`Unable to execute query: no component was found for '${input.name}'`);
+</else>

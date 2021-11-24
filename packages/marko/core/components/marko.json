@@ -3,7 +3,8 @@
     "./document/marko.json",
     "./elements/marko.json",
     "./node-list/marko.json",
-    "./page/marko.json"
+    "./page/marko.json",
+    "./queries/marko.json"
   ],
   "<marko-web-resolve>": {
     "template": "./resolve.marko",

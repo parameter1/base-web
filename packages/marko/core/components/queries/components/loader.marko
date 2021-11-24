@@ -1,0 +1,6 @@
+$ const { baseCMSGraphQLClient } = out.global;
+$ const promise = input.loader(baseCMSGraphQLClient, input);
+
+<marko-web-resolve|{ resolved }| promise=promise>
+  <${input.renderBody} ...resolved />
+</marko-web-resolve>
