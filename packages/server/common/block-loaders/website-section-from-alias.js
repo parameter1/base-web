@@ -8,8 +8,8 @@ const defaultFragment = gql`
   }
 `;
 
-const buildGraphQLOperation = ({ fragment } = {}) => {
-  const { spreadFragmentName, processedFragment } = extractData(fragment);
+const buildGraphQLOperation = ({ queryFragment } = {}) => {
+  const { spreadFragmentName, processedFragment } = extractData(queryFragment);
   return gql`
     query WebsiteSectionAliasBlockLoader($input: WebsiteSectionAliasQueryInput!) {
       section: websiteSectionAlias(input: $input) {

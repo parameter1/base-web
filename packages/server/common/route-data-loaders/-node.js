@@ -3,7 +3,7 @@ const { getAsObject, wrap } = require('@parameter1/base-web-object-path');
 module.exports = ({
   baseCMSGraphQLClient,
   operationBuilder,
-  fragment,
+  queryFragment,
   variables,
   resultField,
 } = {}) => {
@@ -12,7 +12,7 @@ module.exports = ({
   const load = async () => {
     if (!promise) {
       const path = `data.${resultField}`;
-      const query = operationBuilder({ fragment });
+      const query = operationBuilder({ queryFragment });
       promise = baseCMSGraphQLClient.query({ query, variables })
         .then((r) => wrap(getAsObject(r, path)));
     }

@@ -85,12 +85,11 @@ module.exports = async ({
     return signalRedirect({ section, redirectTo: canonicalPath });
   }
 
-  // @todo determine if a second query should be executed.
   const node = RouteDataNode({
     baseCMSGraphQLClient,
     variables: { input: { alias: section.alias } },
     operationBuilder: buildSectionOperation,
-    fragment: nodeQueryFragment,
+    queryFragment: nodeQueryFragment,
     resultField: 'section',
   });
   return { node, section };

@@ -8,8 +8,8 @@ const defaultFragment = gql`
   }
 `;
 
-const buildGraphQLOperation = ({ fragment } = {}) => {
-  const { spreadFragmentName, processedFragment } = extractData(fragment);
+const buildGraphQLOperation = ({ queryFragment } = {}) => {
+  const { spreadFragmentName, processedFragment } = extractData(queryFragment);
   return gql`
     query ContentFromIdBlockLoader($input: ContentQueryInput!) {
       content(input: $input) {
@@ -22,15 +22,14 @@ const buildGraphQLOperation = ({ fragment } = {}) => {
   `;
 };
 
-const executeQuery = async ({
-  baseCMSGraphQLClient,
+const executeQuery = async (baseCMSGraphQLClient, {
   id,
   status = 'any',
-  fragment,
+  queryFragment,
 } = {}) => {
   const input = { id: parseInt(id, 10), status };
   const { data } = await baseCMSGraphQLClient.query({
-    query: buildGraphQLOperation({ fragment }),
+    query: buildGraphQLOperation({ queryFragment }),
     variables: { input },
   });
   return { node: data.content || null };
