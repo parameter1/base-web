@@ -2,7 +2,7 @@ const createError = require('http-errors');
 const { extractData } = require('@parameter1/base-web-graphql-lib/fragment');
 const gql = require('@parameter1/base-web-graphql-lib/tag');
 const { isFunction: isFn } = require('@parameter1/base-web-utils');
-const { buildGraphQLOperation: buildContentOperation } = require('../block-loaders/content-from-id');
+const { buildGraphQLOperation: buildContentOperation } = require('@parameter1/base-web-queries/content-from-id');
 const previewModeInput = require('../graphql/input-builders/content-preview-mode');
 const RouteDataNode = require('./-node');
 

@@ -2,7 +2,7 @@ const createError = require('http-errors');
 const { cleanPath } = require('@parameter1/base-web-utils');
 const gql = require('@parameter1/base-web-graphql-lib/tag');
 const { extractData } = require('@parameter1/base-web-graphql-lib/fragment');
-const { buildGraphQLOperation: buildSectionOperation } = require('../block-loaders/website-section-from-alias');
+const { buildGraphQLOperation: buildSectionOperation } = require('@parameter1/base-web-queries/website-section-from-alias');
 const RouteDataNode = require('./-node');
 
 const defaultFragment = gql`

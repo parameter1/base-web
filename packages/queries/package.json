@@ -1,0 +1,32 @@
+{
+  "name": "@parameter1/base-web-queries",
+  "version": "0.0.0",
+  "description": "GraphQL query operations for BaseCMS websites.",
+  "author": "Jacob Bare <jacob@parameter1.com>",
+  "homepage": "https://github.com/parameter1/base-web/tree/main/packages/queries#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/parameter1/base-web.git",
+    "directory": "packages/queries"
+  },
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint --ext .js ./",
+    "test": "yarn lint"
+  },
+  "engines": {
+    "node": ">=14.0"
+  },
+  "os": [
+    "darwin",
+    "linux",
+    "win32"
+  ],
+  "dependencies": {
+    "@parameter1/base-web-graphql-lib": "^0.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
