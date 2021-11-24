@@ -1,8 +1,9 @@
 const { asyncRoute } = require('@parameter1/base-web-marko-server-express/utils');
 const { gql } = require('@parameter1/base-web-graphql-lib/tag');
 const { jsonErrorHandler } = require('@parameter1/base-web-marko-server-express/middleware');
-const index = require('../templates/index.marko');
 const content = require('./content');
+const home = require('./home');
+const websiteSections = require('./website-section');
 
 const PING = gql`
   query {
@@ -11,7 +12,7 @@ const PING = gql`
 `;
 
 module.exports = (server) => {
-  server.get('/', (_, res) => res.marko(index));
+  home(server);
 
   server.get('/graphql-ping', asyncRoute(async (req, res) => {
     // this will emit a dep warning since `req.apollo` is being used.
@@ -24,4 +25,6 @@ module.exports = (server) => {
   });
 
   content(server);
+
+  websiteSections(server);
 };
