@@ -24,6 +24,40 @@
     "template": "./description.marko",
     "@value": "string"
   },
+  "<marko-web-page-image>": {
+    "template": "./image.marko",
+    "@obj": "object",
+    "@width": {
+      "type": "number",
+      "default-value": 320
+    },
+    "@block-name": {
+      "type": "string",
+      "default-value": "page-image"
+    },
+    "@lazyload": {
+      "type": "boolean",
+      "default-value": true
+    },
+    "@fluid": {
+      "type": "boolean",
+      "default-value": true
+    },
+    "@with-caption": {
+      "type": "boolean",
+      "default-value": true
+    },
+    "@with-credit": {
+      "type": "boolean",
+      "default-value": true
+    },
+    "@with-display-name": {
+      "type": "boolean",
+      "default-value": false
+    },
+    "@options": "object",
+    "@modifiers": "array"
+  },
   "<marko-web-page-rel-canonical>": {
     "template": "./rel-canonical.marko",
     "@path": "string",
