@@ -7,7 +7,7 @@ module.exports = ({ server, conf, marko }) => {
   // @todo emit waning messages anytime these functions are accessed!
   server
     .setToLocals('tenantKey', conf.get('tenant.key'))
-    .setToLocals('onAsyncBlockError', marko.get('hooks.onAsyncBlockError'))
+    .setToLocals('onAsyncBlockError', marko.get('error.asyncBlockNotifier'))
     .setToLocals('document', marko.get('document'))
     .setToLocals('config', {
       setWebsiteContext: removed(() => {}, 'config.setWebsiteContext'),
