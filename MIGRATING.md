@@ -62,7 +62,8 @@
     - [ ] `warn`
 
 - `@parameter1/base-cms-web-common`
-  - [ ] Moved factories and loaders to `@parameter1/loaders` (@todo determine where to move these)
+  - [x] Moved queries to `@parameter1/marko-web-queries`
+    - [x] They are now accesable via the `executeQuery` export (e.g. `const { excuteQuery } = require('@parameter1/queries/website-scheduled-content')`)
   - Utils
     - [x] `extractFragmentData` and `extractFragmentName` moved to `@parameter1/graphql/fragment` as `extractData` and `extractName`
     - [x] The remaining functions were removed (they don't appear to be in use): `elementClassNames`, `linkClassNames`, `modelClassNames`, `objectTypeName`, `sectionPath`
