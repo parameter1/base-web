@@ -1,8 +1,8 @@
 const { isFunction: isFn } = require('@parameter1/base-web-utils');
-// @todo point to the new files and deprecate!
 const { contentFromId } = require('@parameter1/base-web-server-express/route-handlers');
+const { deprecated } = require('../deprecate');
 
-module.exports = ({
+module.exports = deprecated(({
   template,
   render,
 
@@ -24,4 +24,4 @@ module.exports = ({
   loaderQueryFragment,
   redirectToFn,
   canonicalPathFn: pathFn,
-});
+}), 'middleware.withContent', 'middleware.contentFromId');
