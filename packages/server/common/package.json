@@ -24,7 +24,7 @@
     "win32"
   ],
   "dependencies": {
-    "@parameter1/base-web-graphql-fragment-types": "^0.0.0",
+    "@parameter1/base-web-graphql-client": "^0.0.0",
     "@parameter1/base-web-graphql-lib": "^0.0.0",
     "@parameter1/base-web-object-path": "^0.0.0",
     "@parameter1/base-web-queries": "^0.0.0",

@@ -14,8 +14,9 @@ module.exports = ({
   redirectOnPathMismatch = true,
   loaderQueryFragment,
 } = {}) => asyncRoute(async (req, res) => {
+  const { baseCMSGraphQLClient } = req.app.locals;
   const { node, section, redirectTo } = await websiteSectionRouteDataFromAlias({
-    baseCMSGraphQLClient: res.locals.baseCMSGraphQLClient,
+    baseCMSGraphQLClient,
     alias: isFn(aliasResolver) ? await aliasResolver({ req, res }) : req.params.alias,
     request: res.locals.request,
     nodeQueryFragment,

@@ -34,15 +34,17 @@ module.exports = ({ server, conf, marko }) => {
 
   server.use((req, res, next) => {
     const {
-      baseBrowseGraphQLClient,
-      baseCMSGraphQLClient,
       request,
     } = res.locals;
-    req.$baseBrowse = deprecatedObject(baseBrowseGraphQLClient, 'req.$baseBrowse', 'res.locals.baseBrowseGraphQLClient');
-    res.locals.$baseBrowse = deprecatedObject(baseBrowseGraphQLClient, 'res.locals.$baseBrowse', 'res.locals.baseBrowseGraphQLClient');
+    const {
+      baseBrowseGraphQLClient,
+      baseCMSGraphQLClient,
+    } = server.locals;
+    req.$baseBrowse = deprecatedObject(baseBrowseGraphQLClient, 'req.$baseBrowse', 'server.locals.baseBrowseGraphQLClient');
+    res.locals.$baseBrowse = deprecatedObject(baseBrowseGraphQLClient, 'res.locals.$baseBrowse', 'server.locals.baseBrowseGraphQLClient');
 
-    req.apollo = deprecatedObject(baseCMSGraphQLClient, 'req.apollo', 'res.locals.baseCMSGraphQLClient');
-    res.locals.apollo = deprecatedObject(baseCMSGraphQLClient, 'res.locals.apollo', 'res.locals.baseCMSGraphQLClient');
+    req.apollo = deprecatedObject(baseCMSGraphQLClient, 'req.apollo', 'server.locals.baseCMSGraphQLClient');
+    res.locals.apollo = deprecatedObject(baseCMSGraphQLClient, 'res.locals.apollo', 'server.locals.baseCMSGraphQLClient');
 
     res.locals.requestOrigin = request.origin;
 

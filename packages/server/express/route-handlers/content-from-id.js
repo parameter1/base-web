@@ -12,8 +12,9 @@ module.exports = ({
   redirectToFn,
   canonicalPathFn,
 } = {}) => asyncRoute(async (req, res) => {
+  const { baseCMSGraphQLClient } = req.app.locals;
   const { node, content, redirectTo } = await contentRouteDataFromId({
-    baseCMSGraphQLClient: res.locals.baseCMSGraphQLClient,
+    baseCMSGraphQLClient,
     id: isFn(idResolver) ? await idResolver({ req, res }) : req.params.id,
     request: res.locals.request,
     nodeQueryFragment,
