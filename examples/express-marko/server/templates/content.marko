@@ -1,7 +1,4 @@
-$ const {
-  id,
-  type,
-} = input;
+$ const { id, type } = input.routeData;
 $ const { marko } = out.global;
 $ const document = marko.get("document");
 
@@ -12,7 +9,21 @@ $ const document = marko.get("document");
   </@head> -->
   <@container>
     <@page for="content" tag="article" id=id type=type>
-      <h1>Content!</h1>
+      <h1>Content ${id}!</h1>
+
+      <marko-web-query|{ nodes }| name="website-scheduled-content">
+        <@params alias="channel-19" limit=10 />
+        <ul>
+          <for|node| of=nodes>
+            $ const { path } = node.siteContext;
+            <li>
+              <marko-core-link href=path>
+                ${path}
+              </marko-core-link>
+            </li>
+          </for>
+        </ul>
+      </marko-web-query>
     </@page>
   </@container>
 </>
