@@ -1,7 +1,7 @@
 {
   "name": "@parameter1/base-web-html",
   "version": "0.0.0",
-  "description": "HTML utility functions.",
+  "description": "HTML utilities for BaseCMS web projects.",
   "author": "Jacob Bare <jacob@parameter1.com>",
   "homepage": "https://github.com/parameter1/base-web/tree/main/packages/html#readme",
   "repository": {
