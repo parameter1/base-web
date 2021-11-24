@@ -20,6 +20,9 @@
 - `@parameter1/base-cms-html`
   - [x] Renamed to `@parameter1/base-web-html`
   - Default exports are the same
+- `@parameter1/base-cms-image`
+  - [x] Renamed to `@parameter1/base-web-image`
+  - Default exports are the same
 - `@parameter1/base-cms-inflector`
   - [x] Renamed to `@parameter1/base-web-inflector`
   - [x] Exports are the same
