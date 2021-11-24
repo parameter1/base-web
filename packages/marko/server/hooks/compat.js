@@ -4,7 +4,6 @@ const { deprecated, removed, deprecatedObject } = require('../deprecate');
 module.exports = ({ server, conf, marko }) => {
   if (!marko.get('compat.enabled')) return;
 
-  // @todo emit waning messages anytime these functions are accessed!
   server
     .setToLocals('tenantKey', conf.get('tenant.key'))
     .setToLocals('onAsyncBlockError', marko.get('error.asyncBlockNotifier'))
@@ -33,19 +32,17 @@ module.exports = ({ server, conf, marko }) => {
   siteConfig.getAsObject = deprecated(siteConfig.getAsObject, 'site.getAsObject', 'conf.getAsObject(site.[path])');
   server.setToLocals('site', siteConfig);
 
-  // @todo need to find a way to dep properties, especially in marko templates
-
   server.use((req, res, next) => {
     const {
       baseBrowseGraphQLClient,
       baseCMSGraphQLClient,
       request,
     } = res.locals;
-    req.$baseBrowse = deprecatedObject(baseBrowseGraphQLClient, 'req.$baseBrowse', 'baseBrowseGraphQLClient');
-    res.locals.$baseBrowse = deprecatedObject(baseBrowseGraphQLClient, 'res.locals.$baseBrowse', 'baseBrowseGraphQLClient');
+    req.$baseBrowse = deprecatedObject(baseBrowseGraphQLClient, 'req.$baseBrowse', 'res.locals.baseBrowseGraphQLClient');
+    res.locals.$baseBrowse = deprecatedObject(baseBrowseGraphQLClient, 'res.locals.$baseBrowse', 'res.locals.baseBrowseGraphQLClient');
 
-    req.apollo = deprecatedObject(baseCMSGraphQLClient, 'req.apollo', 'baseCMSGraphQLClient');
-    res.locals.apollo = deprecatedObject(baseCMSGraphQLClient, 'res.locals.apollo', 'baseCMSGraphQLClient');
+    req.apollo = deprecatedObject(baseCMSGraphQLClient, 'req.apollo', 'res.locals.baseCMSGraphQLClient');
+    res.locals.apollo = deprecatedObject(baseCMSGraphQLClient, 'res.locals.apollo', 'res.locals.baseCMSGraphQLClient');
 
     res.locals.requestOrigin = request.origin;
 
