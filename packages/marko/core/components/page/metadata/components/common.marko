@@ -1,0 +1,47 @@
+$ const { conf } = out.global;
+$ const {
+  title,
+  canonicalPath,
+  canonicalUrl,
+  imageSrc,
+  description,
+  noIndex,
+} = input;
+
+<!-- Standard Fields -->
+<marko-web-page-title value=title />
+<marko-web-page-description value=description />
+<marko-web-page-rel-canonical path=canonicalPath url=canonicalUrl />
+
+<!-- No Index Directive -->
+<if(noIndex)>
+  <meta name="robots" content="noindex">
+</if>
+
+<!-- Name/Title (OpenGrah, and Schema.org respectively) -->
+<if(title)>
+  <meta property="og:title" item-prop="name" content=title />
+</if>
+
+<if(imageSrc)>
+  <!-- Image (standard, OpenGrah, and Schema.org respectively) -->
+  <meta name="image" property="og:image" item-prop="image" content=imageSrc />
+  <!-- @todo Create a new focal point preview for FB's 1200x630 ratio -->
+</if>
+
+<!-- OpenGraph -->
+<marko-web-page-rel-canonical|{ href }| path=canonicalPath url=canonicalUrl>
+  <meta property="og:url" content=href />
+</marko-web-page-rel-canonical>
+<meta property="og:site_name" content=conf.get("site.name") />
+<meta property="og:locale" content=conf.get("site.language.primaryCode") />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content=title />
+<if(description)>
+  <meta name="twitter:description" content=description />
+</if>
+<if(imageSrc)>
+  <meta name="twitter:image" content=imageSrc />
+</if>

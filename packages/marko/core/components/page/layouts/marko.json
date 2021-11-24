@@ -1,0 +1,16 @@
+{
+  "<marko-web-default-page-layout>": {
+    "template": "./default.marko",
+    "<head>": {},
+    "<foot>": {},
+    "<above-container>": {},
+    "<below-container>": {},
+    "<page>": {},
+    "<above-page>": {},
+    "<below-page>": {},
+    "@type": "string",
+    "@title": "string",
+    "@description": "string",
+    "@attrs": "object"
+  }
+}
