@@ -55,7 +55,7 @@ const patch = (response) => {
       get: (target, prop) => {
         if (!allowedGlobals.has(prop) && typeof prop !== 'symbol' && !hasWarned.has(prop)) {
           hasWarned.add(prop);
-          process.emitWarning(`Accessing out.global.${prop} within templates is deprecated. Remove or use alternative.`, { code: `out.global.${prop}`, type: 'DeprecationWarning' });
+          process.emitWarning(`Accessing out.global.${prop} within templates is deprecated. Remove or use alternative.`, { code: `compat:out.global.${prop}`, type: 'DeprecationWarning' });
         }
         return target[prop];
       },
