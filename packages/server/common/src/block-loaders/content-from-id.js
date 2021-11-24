@@ -22,4 +22,18 @@ const buildGraphQLOperation = ({ fragment } = {}) => {
   `;
 };
 
-module.exports = { defaultFragment, buildGraphQLOperation };
+const executeQuery = async ({
+  baseCMSGraphQLClient,
+  id,
+  status = 'any',
+  fragment,
+} = {}) => {
+  const input = { id: parseInt(id, 10), status };
+  const { data } = await baseCMSGraphQLClient.query({
+    query: buildGraphQLOperation({ fragment }),
+    variables: { input },
+  });
+  return { node: data.content || null };
+};
+
+module.exports = { defaultFragment, buildGraphQLOperation, executeQuery };
