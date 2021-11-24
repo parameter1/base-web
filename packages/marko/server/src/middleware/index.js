@@ -1,5 +1,6 @@
 const { jsonErrorHandler } = require('@parameter1/base-web-server-express/middleware');
-const { contentFromId } = require('@parameter1/base-web-server-express/route-handlers');
+const contentFromId = require('./content-from-id');
+
 const withContent = require('./with-content');
 
 module.exports = {

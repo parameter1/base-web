@@ -1,5 +1,4 @@
-const { isFunction: isFn } = require('@parameter1/base-web-utils');
-const { contentFromId } = require('@parameter1/base-web-server-express/route-handlers');
+const contentFromId = require('./content-from-id');
 const { deprecated } = require('../deprecate');
 
 module.exports = deprecated(({
@@ -14,14 +13,13 @@ module.exports = deprecated(({
   pathFn,
   formatResponse,
 } = {}) => contentFromId({
-  render: isFn(render) ? render : async ({ res, node, content }) => {
-    if (isFn(formatResponse)) await formatResponse({ res, content, pageNode: node });
-    res.marko(template, { ...content, pageNode: node });
-  },
-  idResolver,
+  template,
+  render,
   nodeQueryFragment: queryFragment,
+  idResolver,
   redirectOnPathMismatch,
   loaderQueryFragment,
   redirectToFn,
   canonicalPathFn: pathFn,
+  formatResponse,
 }), 'middleware.withContent', 'middleware.contentFromId');
