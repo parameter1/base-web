@@ -1,4 +1,7 @@
 const contentRouteDataFromId = require('./content-from-id');
-const websiteSectionFromAlias = require('./website-section-from-alias');
+const websiteSectionRouteDataFromAlias = require('./website-section-from-alias');
 
-module.exports = { contentRouteDataFromId, websiteSectionFromAlias };
+module.exports = {
+  contentRouteDataFromId,
+  websiteSectionRouteDataFromAlias,
+};
