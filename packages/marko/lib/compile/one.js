@@ -6,7 +6,6 @@ const stat = require('../utils/stat');
 
 const encoding = 'utf8';
 const { log } = console;
-const { emitWarning } = process;
 
 const needsCompilation = async ({ templateFile, compiledFile, force }) => {
   if (force) return true;
@@ -17,19 +16,8 @@ const needsCompilation = async ({ templateFile, compiledFile, force }) => {
 };
 
 const compile = async ({ templateFile, compilerOptions } = {}) => {
-  try {
-    const templateSrc = await readFile(templateFile, { encoding });
-    return runCompile({ templateSrc, templateFile, compilerOptions });
-  } catch (e) {
-    if (/unrecognized tag/i.test(e.message)) {
-      const [compileError] = e.errors;
-      const message = `Unrecognized tag encountered: ${compileError.node.tagName}`;
-      // @todo determine if this shoudld just throw, or be configurable.
-      emitWarning(`Compilation of ${templateFile} skipped. ${message}`);
-      return null;
-    }
-    throw e;
-  }
+  const templateSrc = await readFile(templateFile, { encoding });
+  return runCompile({ templateSrc, templateFile, compilerOptions });
 };
 
 module.exports = async (templateFile, {
