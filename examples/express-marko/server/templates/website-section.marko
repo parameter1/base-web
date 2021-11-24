@@ -12,7 +12,21 @@ $ const document = marko.get("document");
   </@head> -->
   <@container>
     <@page for="section" id=id type=alias>
-      <h1>Section: ${alias}</h1>
+      <h1>Section: ${alias}!!!!</h1>
+
+      <marko-web-query|{ nodes }| name="website-scheduled-content">
+        <@params alias=alias limit=10 />
+        <ul>
+          <for|node| of=nodes>
+            $ const { path } = node.siteContext;
+            <li>
+              <marko-core-link href=path>
+                ${path}
+              </marko-core-link>
+            </li>
+          </for>
+        </ul>
+      </marko-web-query>
     </@page>
   </@container>
 </>

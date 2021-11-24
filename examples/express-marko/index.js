@@ -20,10 +20,7 @@ bootServer({
           if (error.status > 499) log('Fatal error notifer, send to NR', error);
         },
       },
-      redirectHandler: () => {
-        log({ redirectHandler: true });
-        return null;
-      },
+      redirectHandler: () => null,
       routes,
       robots: {
         directives: [{ agent: '*', value: 'Disallow: /search' }],
@@ -33,12 +30,9 @@ bootServer({
         host: 'www.overdriveonline.com',
         imageHost: 'img.overdriveonline.com',
         assetHost: 'cdn.overdriveonline.com',
-        config: ({ conf }) => {
-          log('site config as a function', conf);
-          return {
-            foo: 'bar',
-          };
-        },
+        config: ({ conf }) => ({
+          foo: conf.get('site.name'),
+        }),
       },
     },
   },
