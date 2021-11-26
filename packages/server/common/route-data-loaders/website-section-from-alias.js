@@ -21,6 +21,7 @@ const buildGraphQLOperation = ({ fragment } = {}) => {
     query WebsiteSectionRouteDataFromAlias($input: WebsiteSectionAliasQueryInput!, $redirect: WebsiteSectionRedirectQueryInput!) {
       section: websiteSectionAlias(input: $input) {
         ...WebsiteSectionRouteDataFromAliasFragment
+        metadata { title description }
         ${spreadFragmentName}
       }
       redirect: websiteSectionRedirect(input: $redirect) {
