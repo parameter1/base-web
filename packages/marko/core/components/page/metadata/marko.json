@@ -5,5 +5,10 @@
     "@description": "string",
     "@canonical-path": "string",
     "@image-src": "string"
+  },
+  "<marko-web-website-section-page-metadata>": {
+    "template": "./website-section.marko",
+    "@route-data": "object",
+    "@alias": "string"
   }
 }

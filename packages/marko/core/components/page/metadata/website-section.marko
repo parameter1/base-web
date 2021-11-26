@@ -1,0 +1,35 @@
+import { get } from "@parameter1/base-web-object-path";
+import queryFragment from "./fragments/website-section";
+
+$ const { marko } = out.global;
+$ const { routeData, alias } = input;
+
+<if(routeData)>
+  <common
+    title=get(routeData, "metadata.title")
+    description=get(routeData, "metadata.description")
+    canonical-path=routeData.canonicalPath
+  />
+  <meta property="og:type" content="website" />
+</if>
+<else-if(alias && marko.get("compat.enabled"))>
+  <marko-web-deprecate
+    code="component.marko-web-website-section-page-metadata.alias"
+    message="Passing the alias input is deprecated. Send routeData instead."
+  />
+  <marko-web-query|{ node }| name="website-section">
+    <@params alias=alias query-fragment=queryFragment />
+    <common
+      title=get(node, "metadata.title")
+      description=get(node, "metadata.description")
+      canonical-path=node.canonicalPath
+    />
+    <meta property="og:type" content="website" />
+    <@when-empty>
+      $ process.emitWarning(`Unable to create website section metadata: no section found for ${alias}.`);
+    </@when-empty>
+  </marko-web-query>
+</else-if>
+<else>
+  $ process.emitWarning('Unable to create website section metadata: no section route data was provided.');
+</else>
