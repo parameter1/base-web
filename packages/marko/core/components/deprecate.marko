@@ -1,0 +1,7 @@
+$ const { code, message } = input;
+$ const hasWarned = new Set();
+
+<if(!hasWarned.has(code))>
+  $ hasWarned.add(code);
+  $ process.emitWarning(message, { code, type: 'DeprecationWarning' });
+</if>
