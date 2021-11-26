@@ -2,31 +2,23 @@ $ const {
   routeData,
 } = input;
 $ const { id, alias, name } = routeData;
-$ const { marko } = out.global;
-$ const document = marko.get("document");
 
-<${document}>
-  <!-- <@head>
-    <marko-web-content-page-metadata id=id />
-    <${head} />
-  </@head> -->
-  <@container>
-    <@page for="section" id=id type=alias>
-      <h1>Section: ${name}</h1>
+<marko-web-website-section-page-layout route-data=routeData>
+  <@page>
+    <h1>Section: ${name}</h1>
 
-      <marko-web-query|{ nodes }| name="website-scheduled-content">
-        <@params alias=alias limit=10 />
-        <ul>
-          <for|node| of=nodes>
-            $ const { path } = node.siteContext;
-            <li>
-              <marko-core-link href=path>
-                ${path}
-              </marko-core-link>
-            </li>
-          </for>
-        </ul>
-      </marko-web-query>
-    </@page>
-  </@container>
-</>
+    <marko-web-query|{ nodes }| name="website-scheduled-content">
+      <@params alias=alias limit=10 />
+      <ul>
+        <for|node| of=nodes>
+          $ const { path } = node.siteContext;
+          <li>
+            <marko-core-link href=path>
+              ${path}
+            </marko-core-link>
+          </li>
+        </for>
+      </ul>
+    </marko-web-query>
+  </@page>
+</marko-web-website-section-page-layout>
