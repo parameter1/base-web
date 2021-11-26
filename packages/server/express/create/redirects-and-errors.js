@@ -20,11 +20,12 @@ module.exports = ({ server, conf }) => {
         next(error);
       }
     };
+    const { baseCMSGraphQLClient } = req.app.locals;
 
     redirectOrError({
       error: err,
       conf,
-      baseCMSGraphQLClient: res.locals.baseCMSGraphQLClient,
+      baseCMSGraphQLClient,
       request: res.locals.request,
       contentPreviewModeEnabled: res.locals.contentPreviewModeEnabled,
       customRedirectHandler: conf.get('redirectHandler'),
