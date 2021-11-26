@@ -1,0 +1,39 @@
+import { get, getAsObject } from "@parameter1/base-web-object-path";
+
+$ const {
+  routeData,
+  id: legacyId,
+  alias: legacyAlias,
+  name: legacyName,
+
+  head,
+  abovePage,
+  belowPage,
+  page,
+  attrs,
+  ...rest
+} = input;
+$ const { marko } = out.global;
+$ const document = marko.get("document");
+
+$ const id = routeData ? routeData.id : legacyId;
+$ const alias = routeData ? routeData.alias : legacyAlias;
+$ const name = routeData ? routeData.name : legacyName;
+
+<!-- $ const withRss = input.withRss != null ? input.withRss : true; -->
+
+<${document} ...rest>
+  <@head>
+    <marko-web-website-section-page-metadata route-data=routeData alias=(routeData ? undefined : legacyAlias) />
+    <!-- <if(withRss)>
+      <marko-web-website-section-rss query-name="website-scheduled-content" query-params={ sectionAlias: alias } name=name />
+    </if> -->
+    <${head} />
+  </@head>
+  <!-- Note: camelcased vars due to nest input of dynamic document. perhaps a marko bug -->
+  <@container abovePage=abovePage belowPage=belowPage>
+    <@page for="website-section" id=id attrs=attrs>
+      <${page} />
+    </@page>
+  </@container>
+</>

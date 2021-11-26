@@ -12,5 +12,24 @@
     "@title": "string",
     "@description": "string",
     "@attrs": "object"
+  },
+  "<marko-web-website-section-page-layout>": {
+    "template": "./website-section.marko",
+    "<head>": {},
+    "<foot>": {},
+    "<above-container>": {},
+    "<below-container>": {},
+    "<page>": {},
+    "<above-page>": {},
+    "<below-page>": {},
+    "@route-data": "object",
+    "@id": "object",
+    "@alias": "string",
+    "@name": "string",
+    "@with-rss": {
+      "type": "boolean",
+      "default-value": true
+    },
+    "@attrs": "object"
   }
 }
