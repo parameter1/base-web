@@ -61,6 +61,16 @@ module.exports = (obj) => ({
   getAsSet: (path) => getAsSet(obj, path),
 
   /**
+   *
+   * @param {string} path The dot-notated path.
+   * @returns {array}
+   */
+  getEdgeNodesFor: (path) => getAsArray(`${path}.edges`).reduce((arr, edge) => {
+    if (edge && edge.node) arr.push(edge.node);
+    return arr;
+  }, {}),
+
+  /**
    * Sets an object path value (via dot-notation).
    */
   set: (path, value) => {
