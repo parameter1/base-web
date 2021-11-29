@@ -2,7 +2,8 @@
   "taglib-imports": [
     "./core/marko.json",
     "./image/marko.json",
-    "./web/marko.json"
+    "./web/marko.json",
+    "./website-section/marko.json"
   ],
   "<marko-core-array>": {
     "template": "./array.marko",
