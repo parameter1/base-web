@@ -26,6 +26,7 @@ log('Serving...');
     compileDirs: ['../../packages/marko'],
     additionalWatchDirs: [
       '../../packages/marko/server',
+      '../../packages/marko/components',
       '../../packages/marko/core',
       '../../packages/server/common',
       '../../packages/server/express',
