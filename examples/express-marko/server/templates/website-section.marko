@@ -1,3 +1,5 @@
+import listFragment from "../graphql/fragments/section-list-block";
+
 $ const {
   routeData,
 } = input;
@@ -8,17 +10,23 @@ $ const { id, alias, name } = routeData;
     <h1>Section: ${name}</h1>
 
     <marko-web-query|{ nodes }| name="website-scheduled-content">
-      <@params section-alias=alias limit=10 />
-      <ul>
-        <for|node| of=nodes>
-          $ const { path } = node.siteContext;
-          <li>
-            <marko-core-link href=path>
-              ${path}
-            </marko-core-link>
-          </li>
-        </for>
-      </ul>
+      <@params section-alias=alias limit=10 query-fragment=listFragment />
+      <marko-web-node-list>
+        <@nodes nodes=nodes>
+          <@slot|{ node }|>
+            $ const { path } = node.siteContext;
+            <marko-web-node>
+              <@body>
+                <@title tag="h5">
+                  <marko-core-link href=path>
+                    ${node.shortName}
+                  </marko-core-link>
+                </@title>
+              </@body>
+            </marko-web-node>
+          </@slot>
+        </@nodes>
+      </marko-web-node-list>
     </marko-web-query>
   </@page>
 </marko-web-website-section-page-layout>
