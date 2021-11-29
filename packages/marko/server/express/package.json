@@ -20,10 +20,8 @@
     "@parameter1/base-web-marko-lib": "^0.0.0",
     "@parameter1/base-web-marko-server-common": "^0.0.0",
     "@parameter1/base-web-object-path": "^0.0.0",
-    "@parameter1/base-web-server-common": "^0.0.0",
     "@parameter1/base-web-server-express": "^0.0.0",
     "@parameter1/base-web-utils": "^0.0.0",
-    "@parameter1/joi": "^1.2.10",
     "pretty": "^2.0.0"
   },
   "publishConfig": {

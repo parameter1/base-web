@@ -3,7 +3,7 @@ const bootServer = require('@parameter1/base-web-server-express');
 const { getAsObject } = require('@parameter1/base-web-object-path');
 const { isFunction: isFn } = require('@parameter1/base-web-utils');
 const distLoader = require('@parameter1/base-web-marko-server-common/dist-loader');
-const buildMarkoConfig = require('./config/build');
+const buildMarkoConfig = require('@parameter1/base-web-marko-server-common/config/build');
 const { preRoutes } = require('./hooks');
 const errorRenderer = require('./error-renderer');
 
