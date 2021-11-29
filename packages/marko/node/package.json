@@ -1,13 +1,13 @@
 {
-  "name": "@parameter1/base-web-marko-core",
+  "name": "@parameter1/base-web-marko-node-components",
   "version": "0.0.0",
-  "description": "BaseCMS + Marko core website components.",
+  "description": "BaseCMS + Marko website node components.",
   "author": "Jacob Bare <jacob@parameter1.com>",
-  "homepage": "https://github.com/parameter1/base-web/tree/main/packages/marko/core#readme",
+  "homepage": "https://github.com/parameter1/base-web/tree/main/packages/marko/node#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/parameter1/base-web.git",
-    "directory": "packages/marko/core"
+    "directory": "packages/marko/node"
   },
   "license": "MIT",
   "main": "index.js",
@@ -24,13 +24,9 @@
     "win32"
   ],
   "dependencies": {
-    "@parameter1/base-web-graphql-lib": "^0.0.0",
-    "@parameter1/base-web-inflector": "^0.0.0",
-    "@parameter1/base-web-marko-query": "^0.0.0",
+    "@parameter1/base-web-marko-element-components": "^0.0.0",
     "@parameter1/base-web-marko-utils": "^0.0.0",
-    "@parameter1/base-web-object-path": "^0.0.0",
-    "@parameter1/base-web-utils": "^0.0.0",
-    "vue": "^2.6.14"
+    "@parameter1/base-web-object-path": "^0.0.0"
   },
   "publishConfig": {
     "access": "public"
