@@ -1,6 +1,6 @@
 import defaultValue from "@parameter1/base-web-marko-utils/default-value";
 
-$ const tag = defaultValue(input.tag, "div");
+$ const tag = input.tag === undefined ? "div" : input.tag;
 $ const value = defaultValue(input.value, null, v => `${v}`.trim());
 
 $ const textInput = {
