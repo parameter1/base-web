@@ -1,0 +1,24 @@
+{
+  "name": "@parameter1/base-web-marko-server-common",
+  "version": "0.0.0",
+  "description": "BaseCMS + Marko common server functions.",
+  "author": "Jacob Bare <jacob@parameter1.com>",
+  "homepage": "https://github.com/parameter1/base-web/tree/main/packages/server/common#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/parameter1/base-web.git",
+    "directory": "packages/server/common"
+  },
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint --ext .js ./",
+    "test": "yarn lint"
+  },
+  "dependencies": {
+    "@parameter1/base-web-utils": "^0.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

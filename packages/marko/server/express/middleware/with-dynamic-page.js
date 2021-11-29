@@ -1,5 +1,5 @@
+const { deprecated } = require('@parameter1/base-web-marko-server-common/deprecate');
 const dynamicPageFromAlias = require('../route-handlers/dynamic-page-from-alias');
-const { deprecated } = require('../deprecate');
 
 module.exports = deprecated(({
   template,

@@ -1,5 +1,5 @@
+const { deprecated } = require('@parameter1/base-web-marko-server-common/deprecate');
 const websiteSectionFromAlias = require('../route-handlers/website-section-from-alias');
-const { deprecated } = require('../deprecate');
 
 module.exports = deprecated(({
   template,

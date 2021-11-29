@@ -1,5 +1,5 @@
 const { wrap } = require('@parameter1/base-web-object-path');
-const { deprecated, removed, deprecatedObject } = require('../deprecate');
+const { deprecated, removed, deprecatedObject } = require('@parameter1/base-web-marko-server-common/deprecate');
 
 module.exports = ({ server, conf, marko }) => {
   if (!marko.get('compat.enabled')) return;

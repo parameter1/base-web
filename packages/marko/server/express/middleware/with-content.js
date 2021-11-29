@@ -1,5 +1,5 @@
+const { deprecated } = require('@parameter1/base-web-marko-server-common/deprecate');
 const contentFromId = require('../route-handlers/content-from-id');
-const { deprecated } = require('../deprecate');
 
 module.exports = deprecated(({
   template,
