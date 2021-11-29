@@ -31,5 +31,6 @@ log('Serving...');
       '../../packages/server/express',
     ],
     watchIgnore: ['./cli/**/*.js'],
+    cleanCompiledFiles: true,
   });
 })().catch(immediatelyThrow);

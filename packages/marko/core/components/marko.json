@@ -3,17 +3,6 @@
     "./document/marko.json",
     "./elements/marko.json",
     "./node-list/marko.json",
-    "./page/marko.json",
-    "./queries/marko.json"
-  ],
-  "<marko-web-deprecate>": {
-    "template": "./deprecate.marko",
-    "@code": "string",
-    "@message": "string"
-  },
-  "<marko-web-resolve>": {
-    "template": "./resolve.marko",
-    "@promise": "object",
-    "@on-error": "function"
-  }
+    "./page/marko.json"
+  ]
 }
