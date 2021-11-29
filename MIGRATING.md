@@ -53,6 +53,7 @@
     - [ ] `getDefaultContentTypes`
     - [ ] `getDefaultTaxonomyTypes`
     - [ ] `getPublishedContentCriteria`
+    - [x] `randomElementId` to `@parameter1/base-web-marko-utils/random-element-id`
   - Still need a home
     - [ ] `asyncRoute` (should likely move to express server as a single export)
     - [ ] `bem`
@@ -61,7 +62,6 @@
     - [ ] `parseBooleanHeader`
     - [ ] `parseDelimitedString`
     - [ ] `profiler`
-    - [ ] `randomElementId`
     - [ ] `warn`
 
 - `@parameter1/base-cms-web-common`
