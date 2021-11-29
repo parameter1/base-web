@@ -6,6 +6,11 @@
     "@canonical-path": "string",
     "@image-src": "string"
   },
+  "<marko-web-dynamic-page-metadata>": {
+    "template": "./dynamic-page.marko",
+    "@route-data": "object",
+    "@alias": "string"
+  },
   "<marko-web-website-section-page-metadata>": {
     "template": "./website-section.marko",
     "@route-data": "object",
