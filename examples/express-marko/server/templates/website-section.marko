@@ -17,10 +17,13 @@ $ const { id, alias, name } = routeData;
             $ const { path } = node.siteContext;
             <marko-web-node>
               <@body>
+                <@header>
+                  <@left|{ blockName }|>
+                    <marko-web-website-section-name block-name=blockName obj=node.primarySection link=true />
+                  </@left>
+                </@header>
                 <@title tag="h5">
-                  <marko-core-link href=path>
-                    ${node.shortName}
-                  </marko-core-link>
+                  <marko-web-content-short-name tag=null obj=node link=true />
                 </@title>
               </@body>
             </marko-web-node>
