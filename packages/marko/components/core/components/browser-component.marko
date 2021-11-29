@@ -1,0 +1,30 @@
+import defaultValue from "@parameter1/base-web-marko-utils/default-value";
+import randomElementId from "@parameter1/base-web-marko-utils/random-element-id";
+<!-- import renderComponent from "../utils/render-ssr-component"; -->
+
+$ const renderComponent = () => {
+  throw new Error("Rendering SSR components is NYI.");
+};
+
+$ const id = randomElementId({ prefix: "vue" });
+$ const tag = defaultValue(input.tag, "div");
+$ const { name } = input;
+$ const ssr = defaultValue(input.ssr, false);
+$ const hydrate = ssr ? true : defaultValue(input.hydrate, false);
+$ const props = JSON.stringify(input.props || {});
+$ const contents = `CMSBrowserComponents.load({ el: '#${id}', name: '${name}', props: ${props}, hydrate: ${hydrate} });`;
+
+<if(ssr)>
+  $ const { compiledVueComponents } = out.global;
+  $ const Component = compiledVueComponents[name];
+  $ if (!Component) throw new Error(`No compiled Vue template found for ${name}. Unable to render server-side.`);
+  <marko-web-resolve|{ resolved: html }| promise=renderComponent(Component, { id, props: input.props })>
+    $!{html}
+  </marko-web-resolve>
+</if>
+<else>
+  <${tag} ...input.attrs id=id class=input.class>
+    <${input.renderBody} />
+  </>
+</else>
+<script>$!{contents}</script>
