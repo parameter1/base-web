@@ -1,6 +1,0 @@
-{
-  "taglib-id": "@parameter1/base-web-marko-core",
-  "taglib-imports": [
-    "./components/marko.json"
-  ]
-}

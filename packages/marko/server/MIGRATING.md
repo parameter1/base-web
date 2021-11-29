@@ -66,6 +66,14 @@ Enabling compatibility mode (via `config.server.compat.enabled` or the `COMPAT_E
 CSS and JS asset loading has changed. Use the `marko.get("dist.css")()` and `marko.get("dist.js")()` function calls instead. Compat mode will still support the `config.styles()` and `config.sources()` calls.
 
 ## Marko Components
+Generally speaking, to get the same component access as `@parameter1/base-cms-marko-web` and `@parameter1/base-cms-marko-core` the following component packages must be installed
+  - `@parameter1/base-web-marko-components-core`
+  - `@parameter1/base-web-marko-components-query`
+  - `@parameter1/base-web-marko-components-element`
+  - `@parameter1/base-web-marko-components-node`
+
+### Page / Document
+- To use, the `@parameter1/base-web-marko-components-core` package must be installed
 ### Query
 - To use, the `@parameter1/base-web-marko-components-query` package must be installed
 - `<marko-web-query-*>` components names have stayed the same

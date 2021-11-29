@@ -1,6 +1,6 @@
 const markoMiddleware = require('@parameter1/base-web-marko-lib/express');
-const document = require('@parameter1/base-web-marko-core/components/document/index.marko');
-const errorTemplate = require('@parameter1/base-web-marko-core/components/document/components/error.marko');
+const document = require('@parameter1/base-web-marko-components-core/components/document/index.marko');
+const errorTemplate = require('@parameter1/base-web-marko-components-core/components/document/components/error.marko');
 const compat = require('./compat');
 
 module.exports = ({ server, conf, marko }) => {

@@ -1,13 +1,13 @@
 {
-  "name": "@parameter1/base-web-marko-core",
+  "name": "@parameter1/base-web-marko-components-core",
   "version": "0.0.0",
   "description": "BaseCMS + Marko core website components.",
   "author": "Jacob Bare <jacob@parameter1.com>",
-  "homepage": "https://github.com/parameter1/base-web/tree/main/packages/marko/core#readme",
+  "homepage": "https://github.com/parameter1/base-web/tree/main/packages/marko/components/core#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/parameter1/base-web.git",
-    "directory": "packages/marko/core"
+    "directory": "packages/marko/components/core"
   },
   "license": "MIT",
   "main": "index.js",
