@@ -15,6 +15,7 @@
     "packages/apollo-ssr/*",
     "packages/graphql/*",
     "packages/marko/*",
+    "packages/marko/components/*",
     "packages/server/*"
   ],
   "devDependencies": {

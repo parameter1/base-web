@@ -25,8 +25,8 @@
   ],
   "dependencies": {
     "@parameter1/base-web-graphql-lib": "^0.0.0",
-    "@parameter1/base-web-inflector": "^0.0.0",
-    "@parameter1/base-web-marko-query": "^0.0.0",
+    "@parameter1/base-web-marko-components-element": "^0.0.0",
+    "@parameter1/base-web-marko-components-query": "^0.0.0",
     "@parameter1/base-web-marko-utils": "^0.0.0",
     "@parameter1/base-web-object-path": "^0.0.0",
     "@parameter1/base-web-utils": "^0.0.0",

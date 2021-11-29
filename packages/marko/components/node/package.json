@@ -1,13 +1,13 @@
 {
-  "name": "@parameter1/base-web-marko-node-components",
+  "name": "@parameter1/base-web-marko-components-node",
   "version": "0.0.0",
   "description": "BaseCMS + Marko website node components.",
   "author": "Jacob Bare <jacob@parameter1.com>",
-  "homepage": "https://github.com/parameter1/base-web/tree/main/packages/marko/node#readme",
+  "homepage": "https://github.com/parameter1/base-web/tree/main/packages/marko/components/node#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/parameter1/base-web.git",
-    "directory": "packages/marko/node"
+    "directory": "packages/marko/components/node"
   },
   "license": "MIT",
   "main": "index.js",
@@ -24,7 +24,7 @@
     "win32"
   ],
   "dependencies": {
-    "@parameter1/base-web-marko-element-components": "^0.0.0",
+    "@parameter1/base-web-marko-components-element": "^0.0.0",
     "@parameter1/base-web-marko-utils": "^0.0.0",
     "@parameter1/base-web-object-path": "^0.0.0"
   },

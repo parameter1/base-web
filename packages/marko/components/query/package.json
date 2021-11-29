@@ -1,13 +1,13 @@
 {
-  "name": "@parameter1/base-web-marko-query",
+  "name": "@parameter1/base-web-marko-components-query",
   "version": "0.0.0",
   "description": "BaseCMS + Marko query components.",
   "author": "Jacob Bare <jacob@parameter1.com>",
-  "homepage": "https://github.com/parameter1/base-web/tree/main/packages/marko/query#readme",
+  "homepage": "https://github.com/parameter1/base-web/tree/main/packages/marko/components/query#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/parameter1/base-web.git",
-    "directory": "packages/marko/query"
+    "directory": "packages/marko/components/query"
   },
   "license": "MIT",
   "main": "index.js",
