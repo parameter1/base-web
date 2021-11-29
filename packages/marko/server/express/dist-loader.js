@@ -1,8 +1,6 @@
 const path = require('path');
 const { readFileSync } = require('fs');
 
-const isDevelopment = process.env.NODE_ENV === 'development';
-
 const loadFromManifest = ({ conf, type }) => {
   const cwd = conf.get('cwd');
   const file = path.resolve(cwd, 'dist', type, 'manifest.json');
@@ -16,6 +14,7 @@ const loadFromManifest = ({ conf, type }) => {
 
 module.exports = ({ conf, type }) => {
   let file;
+  const isDevelopment = conf.get('env') === 'development';
   return () => {
     // when on dev, always return the file from the manifest
     // as it may have changed during build.
