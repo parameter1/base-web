@@ -8,7 +8,7 @@ $ const { id, alias, name } = routeData;
     <h1>Section: ${name}</h1>
 
     <marko-web-query|{ nodes }| name="website-scheduled-content">
-      <@params alias=alias limit=10 />
+      <@params section-alias=alias limit=10 />
       <ul>
         <for|node| of=nodes>
           $ const { path } = node.siteContext;

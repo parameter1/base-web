@@ -12,7 +12,7 @@ $ const document = marko.get("document");
       <h1>Content ${id}!</h1>
 
       <marko-web-query|{ nodes }| name="website-scheduled-content">
-        <@params alias="channel-19" limit=10 />
+        <@params section-alias="channel-19" limit=10 />
         <ul>
           <for|node| of=nodes>
             $ const { path } = node.siteContext;
