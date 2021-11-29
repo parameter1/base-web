@@ -1,0 +1,27 @@
+import { getAsObject } from "@parameter1/base-web-object-path";
+import extractRenderBody from "@parameter1/base-web-marko-utils/extract-render-body";
+
+$ const { parseEmbeddedMedia } = out.global;
+
+<marko-web-obj-array|{ value }|
+  type="content"
+  block-name=input.blockName
+  obj=input.obj
+  field="sidebars"
+  tag=input.tag
+  class=input.class
+  modifiers=input.modifiers
+  attrs=input.attrs
+>
+  $ const v = value == null ? "" : `${value}`.trim();
+  $ const embedOptions = getAsObject(input, "embedOptions");
+  $ const obj = { sidebar: parseEmbeddedMedia(v, embedOptions) };
+  <marko-web-obj-text
+    type="content"
+    block-name=input.blockName
+    obj=obj
+    field="sidebar"
+    html=true
+    ...extractRenderBody(input)
+  />
+</marko-web-obj-array>

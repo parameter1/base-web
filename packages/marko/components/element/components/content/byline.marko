@@ -1,0 +1,14 @@
+import extractRenderBody from "@parameter1/base-web-marko-utils/extract-render-body";
+
+<marko-web-obj-text
+  type="content"
+  block-name=input.blockName
+  obj=input.obj
+  field="byline"
+  tag=input.tag
+  class=input.class
+  modifiers=input.modifiers
+  attrs=input.attrs
+  link=input.link
+  ...extractRenderBody(input)
+/>
