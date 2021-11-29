@@ -11,6 +11,9 @@
     - `cacheConfig` is now `cache`
     - `linkConfig` is now `link`
     - `config` is now `...rest`
+- `@parameter1/base-cms-embedded-media`
+  - [x] Renamed to `@parameter1/base-web-embedded-media`
+  - Default exports are the same
 - `@parameter1/base-cms-express-apollo`
   - [x] Renamed to `@parameter1/base-web-apollo-ssc-express`
   - API shape is completely new: now only exports the Express middleware
