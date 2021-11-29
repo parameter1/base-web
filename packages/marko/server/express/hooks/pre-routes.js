@@ -1,6 +1,7 @@
 const markoMiddleware = require('@parameter1/base-web-marko-lib/express');
 const document = require('@parameter1/base-web-marko-components-core/components/document/index.marko');
 const errorTemplate = require('@parameter1/base-web-marko-components-core/components/document/components/error.marko');
+const cleanMarkoResponse = require('../middleware/clean-marko-response');
 const compat = require('./compat');
 
 module.exports = ({ server, conf, marko }) => {
@@ -14,4 +15,5 @@ module.exports = ({ server, conf, marko }) => {
   compat({ server, conf, marko });
   // install the marko middleware
   server.use(markoMiddleware());
+  server.use(cleanMarkoResponse());
 };
