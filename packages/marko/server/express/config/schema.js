@@ -6,9 +6,19 @@ module.exports = Joi.object({
   }).default({ enabled: false }),
   components: Joi.object().unknown().external((v) => (v || {})),
   document: Joi.any(),
+  embeddedMedia: Joi.object({
+    handlers: Joi.object({
+      image: Joi.function(),
+      invalid: Joi.function(),
+      oembed: Joi.function(),
+    }),
+  }),
   error: Joi.object({
     template: Joi.any(),
     asyncBlockNotifier: Joi.function(),
   }),
   fragments: Joi.object().unknown().external((v) => (v || {})),
+  oembed: Joi.object({
+    mountPoint: Joi.string().trim().default('/__oembed'),
+  }).default({ mountPoint: '/__oembed' }),
 }).required();
