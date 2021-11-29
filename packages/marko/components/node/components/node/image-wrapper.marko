@@ -1,0 +1,34 @@
+import { getAsArray } from "@parameter1/base-web-object-path";
+import imageValues from "./utils/image-values";
+
+$ const usePlaceholder = input.usePlaceholder == null ? true : input.usePlaceholder;
+$ const hasImage = Boolean(input.src);
+$ const { width, height } = imageValues(input);
+
+$ const style = [];
+$ if (width) {
+  style.push(`width: ${input.width}px;`);
+  // Add min-width for IE11
+  style.push(`min-width: ${input.width}px;`);
+}
+$ if (height) style.push(`height: ${height}px;`);
+
+$ const { header, body, align } = input;
+$ delete input.header;
+$ delete input.body;
+$ delete input.align;
+
+$ const modifiers = [];
+$ if (align) modifiers.push(`align-${align}`);
+
+<if(hasImage || usePlaceholder)>
+  <marko-web-node-element name="image-wrapper" block-name=input.blockName attrs={ style } modifiers=modifiers>
+    <marko-web-node-image-inner-wrapper ...input />
+    <if(header)>
+      <marko-web-node-header ...header modifiers=["overlay", ...getAsArray(header, "modifiers")] />
+    </if>
+    <if(body)>
+      <marko-web-node-body ...body modifiers=["overlay", ...getAsArray(header, "modifiers")] />
+    </if>
+  </marko-web-node-element>
+</if>
