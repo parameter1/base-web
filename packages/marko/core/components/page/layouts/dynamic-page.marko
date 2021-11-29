@@ -1,0 +1,32 @@
+$ const {
+  routeData,
+  id: legacyId,
+  alias: legacyAlias,
+
+  head,
+  abovePage,
+  belowPage,
+  page,
+  attrs,
+  ...rest
+} = input;
+
+
+$ const { marko } = out.global;
+$ const document = marko.get("document");
+
+$ const id = routeData ? routeData.id : legacyId;
+$ const alias = routeData ? routeData.alias : legacyAlias;
+
+<${document} ...rest>
+  <@head>
+    <marko-web-dynamic-page-metadata route-data=routeData alias=(routeData ? undefined : legacyAlias) />
+    <${head} />
+  </@head>
+  <!-- Note: camelcased vars due to nest input of dynamic document. perhaps a marko bug -->
+  <@container abovePage=abovePage belowPage=belowPage>
+    <@page for="dynamic-page" id=id attrs=attrs>
+      <${page} />
+    </@page>
+  </@container>
+</>

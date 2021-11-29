@@ -13,6 +13,20 @@
     "@description": "string",
     "@attrs": "object"
   },
+  "<marko-web-dynamic-page-layout>": {
+    "template": "./dynamic-page.marko",
+    "<head>": {},
+    "<foot>": {},
+    "<above-container>": {},
+    "<below-container>": {},
+    "<page>": {},
+    "<above-page>": {},
+    "<below-page>": {},
+    "@route-data": "object",
+    "@id": "string",
+    "@alias": "string",
+    "@attrs": "object"
+  },
   "<marko-web-website-section-page-layout>": {
     "template": "./website-section.marko",
     "<head>": {},
