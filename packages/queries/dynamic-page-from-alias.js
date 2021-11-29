@@ -13,7 +13,7 @@ const buildGraphQLOperation = ({ queryFragment } = {}) => {
   return gql`
     query DynamicPageFromAliasBlockLoader($input: ContentPageQueryInput!) {
       page: contentPage(input: $input) {
-        ...DyanmicPageBlockLoaderFragment
+        ...DyanmicPageFromAliasBlockLoaderFragment
         ${spreadFragmentName}
       }
     }
