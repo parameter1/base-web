@@ -65,13 +65,21 @@ Enabling compatibility mode (via `config.server.compat.enabled` or the `COMPAT_E
 ## Custom Root Document
 CSS and JS asset loading has changed. Use the `marko.get("dist.css")()` and `marko.get("dist.js")()` function calls instead. Compat mode will still support the `config.styles()` and `config.sources()` calls.
 
-## Marko Core/Web Components
-Some duplicate components existed in both `base-cms-marko-core` and `base-cms-marko-web`
-- `elements`
-  - Both the `<marko-web->` and `<marko-core->` components still exist
-  - Some were merged (but both component names still exist)
-    - array
-    - date
-    - link
-    - text
-  - Otherwise the others were kept under sub-folders `web` and `core` respectively
+## Marko Components
+### Query
+- To use, the `@parameter1/base-web-marko-components-query` package must be installed
+- `<marko-web-query-*>` components names have stayed the same
+
+### Core/Web Block/Elements
+- Some duplicate components existed in both `base-cms-marko-core` and `base-cms-marko-web`
+- To use, the `@parameter1/base-web-marko-components-element` package must be installed
+- Both the `<marko-web->` and `<marko-core->` components still exist
+- Some were merged (but both component names still exist)
+  - array
+  - date
+  - link
+  - text
+- Otherwise the others were kept under sub-folders `web` and `core` respectively
+
+## Node / Node List
+- To use, the `@parameter1/base-web-marko-components-node` package must be installed
