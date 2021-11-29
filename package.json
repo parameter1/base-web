@@ -16,6 +16,7 @@
     "packages/graphql/*",
     "packages/marko/*",
     "packages/marko/components/*",
+    "packages/marko/server/*",
     "packages/server/*"
   ],
   "devDependencies": {
