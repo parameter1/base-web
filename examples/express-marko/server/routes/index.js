@@ -2,6 +2,7 @@ const { asyncRoute } = require('@parameter1/base-web-marko-server-express/utils'
 const { gql } = require('@parameter1/base-web-graphql-lib/tag');
 const { jsonErrorHandler } = require('@parameter1/base-web-marko-server-express/middleware');
 const content = require('./content');
+const dynamicPage = require('./dynamic-page');
 const home = require('./home');
 const websiteSections = require('./website-section');
 
@@ -23,6 +24,8 @@ module.exports = (server) => {
   server.get('/error', () => {
     throw new Error('Bad!');
   });
+
+  dynamicPage(server);
 
   content(server);
 

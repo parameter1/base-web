@@ -1,0 +1,15 @@
+$ const { id, type } = input.routeData;
+$ const { marko } = out.global;
+$ const document = marko.get("document");
+
+<${document}>
+  <!-- <@head>
+    <marko-web-content-page-metadata id=id />
+    <${head} />
+  </@head> -->
+  <@container>
+    <@page for="content" tag="article" id=id type=type>
+      <h1>Page ${id}!</h1>
+    </@page>
+  </@container>
+</>
