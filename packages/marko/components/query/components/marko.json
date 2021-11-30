@@ -39,6 +39,9 @@
   "<marko-web-query-magazine-publications>": {
     "template": "./magazine-publications.marko"
   },
+  "<marko-web-query-magazine-scheduled-content>": {
+    "template": "./magazine-scheduled-content.marko"
+  },
   "<marko-web-query-website-section>": {
     "template": "./website-section.marko"
   },

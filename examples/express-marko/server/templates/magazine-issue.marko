@@ -1,3 +1,5 @@
+import listFragment from "../graphql/fragments/section-list-block";
+
 $ const {
   routeData,
 } = input;
@@ -6,5 +8,17 @@ $ const { id } = routeData;
 <marko-web-magazine-issue-page-layout route-data=routeData>
   <@page>
     <h1>Magazine Issue: ${id}</h1>
+
+    <marko-web-query|{ nodes }| name="magazine-scheduled-content">
+      <@params issue-id=id limit=10 query-fragment=listFragment />
+      <marko-web-node-list>
+        <@header>In This Issue</@header>
+        <@nodes nodes=nodes>
+          <@slot|{ node }|>
+            <marko-web-content-short-name obj=node link=true />
+          </@slot>
+        </@nodes>
+      </marko-web-node-list>
+    </marko-web-query>
   </@page>
 </marko-web-magazine-issue-page-layout>
