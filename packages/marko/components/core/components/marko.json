@@ -2,18 +2,5 @@
   "taglib-imports": [
     "./document/marko.json",
     "./page/marko.json"
-  ],
-  "<marko-web-browser-component>": {
-    "template": "./browser-component.marko",
-    "@name": {
-      "type": "string",
-      "required": true
-    },
-    "@hydrate": "boolean",
-    "@ssr": "boolean",
-    "@tag": "string",
-    "@class": "string",
-    "@attrs": "object",
-    "@props": "object"
-  }
+  ]
 }

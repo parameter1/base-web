@@ -1,4 +1,4 @@
-const BrowserComponent = require('@parameter1/base-web-marko-components-core/components/browser-component.marko');
+const BrowserComponent = require('@parameter1/base-web-marko-utils/components/browser-component.marko');
 
 module.exports = ({ marko, $global }) => (tag) => {
   const props = {

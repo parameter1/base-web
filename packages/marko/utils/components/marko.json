@@ -1,4 +1,17 @@
 {
+  "<marko-web-browser-component>": {
+    "template": "./browser-component.marko",
+    "@name": {
+      "type": "string",
+      "required": true
+    },
+    "@hydrate": "boolean",
+    "@ssr": "boolean",
+    "@tag": "string",
+    "@class": "string",
+    "@attrs": "object",
+    "@props": "object"
+  },
   "<marko-web-deprecate>": {
     "template": "./deprecate.marko",
     "@code": "string",
