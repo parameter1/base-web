@@ -8,6 +8,10 @@ const defaultFragment = gql`
   fragment MagazineIssueRouteDataFromIdFragment on MagazineIssue {
     id
     canonicalPath
+    publication {
+      id
+      name
+    }
     metadata {
       title
       description
