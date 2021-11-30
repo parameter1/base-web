@@ -9,6 +9,17 @@ $ const { id } = routeData;
   <@page>
     <h1>Magazine Publication: ${id}</h1>
 
+    <marko-web-query|{ nodes }| name="magazine-publications">
+      <marko-web-node-list>
+        <@header>All Publications</@header>
+        <@nodes nodes=nodes>
+          <@slot|{ node }|>
+            <marko-web-magazine-publication-name obj=node link=true />
+          </@slot>
+        </@nodes>
+      </marko-web-node-list>
+    </marko-web-query>
+
     <marko-web-query|{ nodes }| name="magazine-active-issues">
       <@params publication-id=id limit=10 query-fragment=listFragment />
       <marko-web-node-list>
