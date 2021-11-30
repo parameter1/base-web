@@ -3,52 +3,57 @@ import listFragment from "../graphql/fragments/section-list-block";
 $ const { routeData, pageNode } = input;
 $ const { id, type } = routeData;
 
-$ const { marko } = out.global;
-$ const document = marko.get("document");
+<marko-web-content-page-layout id=id type=type>
+  <@page for="content" tag="article" id=id type=type>
+    <h1>Content ${type} ${id}</h1>
+    $ const bodyId = `content-body-${id}`;
+    <marko-web-resolve-page|{ data: content, resolved }| node=pageNode>
+      $ const primarySection = resolved.getAsObject("primarySection");
 
-<${document}>
-  <!-- <@head>
-    <marko-web-content-page-metadata id=id />
-    <${head} />
-  </@head> -->
-  <@container>
-    <@page for="content" tag="article" id=id type=type>
-      <h1>Content ${type} ${id}</h1>
-      $ const bodyId = `content-body-${id}`;
-      <marko-web-resolve-page|{ data: content, resolved }| node=pageNode>
-        $ const primarySection = resolved.getAsObject("primarySection");
+      <if(content.embedCode)>
+        <marko-web-content-embed-code obj=content />
+      </if>
 
-        <if(content.embedCode)>
-          <marko-web-content-embed-code obj=content />
-        </if>
+      <marko-web-content-body obj=content attrs={ id: bodyId } />
 
-        <marko-web-content-body obj=content attrs={ id: bodyId } />
+      <marko-web-query|{ node }| name="content">
+        <@params id=id query-fragment=listFragment />
+        <p>From `content` query: ${node.siteContext.path}</p>
+      </marko-web-query>
 
-        <marko-web-query|{ node }| name="content">
-          <@params id=id query-fragment=listFragment />
-          <p>From `content` query: ${node.siteContext.path}</p>
+      <if(primarySection.id)>
+        <marko-web-query|{ nodes }| name="all-published-content">
+          <@params section-id=primarySection.id limit=10 query-fragment=listFragment />
+          <marko-web-node-list>
+            <@header>More Published Content in ${primarySection.name}</@header>
+            <@nodes nodes=nodes>
+              <@slot|{ node }|>
+                <marko-web-content-short-name obj=node link=true />
+              </@slot>
+            </@nodes>
+          </marko-web-node-list>
         </marko-web-query>
+      </if>
 
-        <if(primarySection.id)>
-          <marko-web-query|{ nodes }| name="all-published-content">
-            <@params section-id=primarySection.id limit=10 query-fragment=listFragment />
-            <marko-web-node-list>
-              <@header>More Published Content in ${primarySection.name}</@header>
-              <@nodes nodes=nodes>
-                <@slot|{ node }|>
-                  <marko-web-content-short-name obj=node link=true />
-                </@slot>
-              </@nodes>
-            </marko-web-node-list>
-          </marko-web-query>
-        </if>
+    </marko-web-resolve-page>
 
-      </marko-web-resolve-page>
+    <marko-web-query|{ nodes }| name="related-published-content">
+      <@params content-id=id limit=10 query-fragment=listFragment />
+      <marko-web-node-list>
+        <@header>Related Stories</@header>
+        <@nodes nodes=nodes>
+          <@slot|{ node }|>
+            <marko-web-content-short-name obj=node link=true />
+          </@slot>
+        </@nodes>
+      </marko-web-node-list>
+    </marko-web-query>
 
-      <marko-web-query|{ nodes }| name="related-published-content">
-        <@params content-id=id limit=10 query-fragment=listFragment />
+    <if(type === "contact")>
+      <marko-web-query|{ nodes }| name="all-author-content">
+        <@params contact-id=id limit=10 query-fragment=listFragment />
         <marko-web-node-list>
-          <@header>Related Stories</@header>
+          <@header>More From this Author</@header>
           <@nodes nodes=nodes>
             <@slot|{ node }|>
               <marko-web-content-short-name obj=node link=true />
@@ -56,34 +61,20 @@ $ const document = marko.get("document");
           </@nodes>
         </marko-web-node-list>
       </marko-web-query>
+    </if>
 
-      <if(type === "contact")>
-        <marko-web-query|{ nodes }| name="all-author-content">
-          <@params contact-id=id limit=10 query-fragment=listFragment />
-          <marko-web-node-list>
-            <@header>More From this Author</@header>
-            <@nodes nodes=nodes>
-              <@slot|{ node }|>
-                <marko-web-content-short-name obj=node link=true />
-              </@slot>
-            </@nodes>
-          </marko-web-node-list>
-        </marko-web-query>
-      </if>
-
-      <if(type === "company")>
-        <marko-web-query|{ nodes }| name="all-company-content">
-          <@params company-id=id limit=10 query-fragment=listFragment />
-          <marko-web-node-list>
-            <@header>More Content from this Company</@header>
-            <@nodes nodes=nodes>
-              <@slot|{ node }|>
-                <marko-web-content-short-name obj=node link=true />
-              </@slot>
-            </@nodes>
-          </marko-web-node-list>
-        </marko-web-query>
-      </if>
-    </@page>
-  </@container>
-</>
+    <if(type === "company")>
+      <marko-web-query|{ nodes }| name="all-company-content">
+        <@params company-id=id limit=10 query-fragment=listFragment />
+        <marko-web-node-list>
+          <@header>More Content from this Company</@header>
+          <@nodes nodes=nodes>
+            <@slot|{ node }|>
+              <marko-web-content-short-name obj=node link=true />
+            </@slot>
+          </@nodes>
+        </marko-web-node-list>
+      </marko-web-query>
+    </if>
+  </@page>
+</marko-web-content-page-layout>

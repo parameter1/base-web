@@ -6,6 +6,12 @@
     "@canonical-path": "string",
     "@image-src": "string"
   },
+  "<marko-web-content-page-metadata>": {
+    "template": "./content.marko",
+    "@id": "number",
+    "@structured-data-query-fragment": "string",
+    "@build-structured-data": "function"
+  },
   "<marko-web-dynamic-page-metadata>": {
     "template": "./dynamic-page.marko",
     "@route-data": "object",

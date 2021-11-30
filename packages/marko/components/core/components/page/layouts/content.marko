@@ -1,0 +1,34 @@
+$ const {
+  id,
+  type,
+
+  structuredDataQueryFragment,
+  buildStructuredData,
+
+  head,
+  abovePage,
+  belowPage,
+  page,
+  attrs,
+  ...rest
+} = input;
+
+$ const { marko } = out.global;
+$ const document = marko.get("document");
+
+<${document} ...rest>
+  <@head>
+    <marko-web-content-page-metadata
+      id=id
+      structured-data-query-fragment=structuredDataQueryFragment
+      build-structured-data=buildStructuredData
+    />
+    <${head} />
+  </@head>
+  <!-- Note: camelcased vars due to nest input of dynamic document. perhaps a marko bug -->
+  <@container abovePage=abovePage belowPage=belowPage>
+    <@page for="content" tag="article" id=id type=type attrs=attrs>
+      <${page} />
+    </@page>
+  </@container>
+</>
