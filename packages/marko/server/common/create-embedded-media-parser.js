@@ -23,7 +23,7 @@ module.exports = ({ marko }) => {
       const pattern = tag.getRegExp();
       const replacement = handlers[type](tag, {
         ...options,
-        ...(tag.type === 'oembed' && { renderer: createOembedRenderer({ $global }) }),
+        ...(tag.type === 'oembed' && { renderer: createOembedRenderer({ $global, marko }) }),
       });
       if (!replacement) throw new Error(`Unable to get an embedded value for tag type ${tag.type} with ID ${tag.id}`);
       return { pattern, replacement };
