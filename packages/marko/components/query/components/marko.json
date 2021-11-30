@@ -24,6 +24,9 @@
   "<marko-web-query-dynamic-page>": {
     "template": "./dynamic-page.marko"
   },
+  "<marko-web-query-magazine-active-issues>": {
+    "template": "./magazine-active-issues.marko"
+  },
   "<marko-web-query-magazine-issue>": {
     "template": "./magazine-issue.marko"
   },
