@@ -3,6 +3,7 @@ const cleanMarkoResponse = require('./clean-marko-response');
 
 const withContent = require('./with-content');
 const withDynamicPage = require('./with-dynamic-page');
+const withMagazineIssue = require('./with-magazine-issue');
 const withWebsiteSection = require('./with-website-section');
 
 module.exports = {
@@ -11,5 +12,6 @@ module.exports = {
   // deprecated
   withContent,
   withDynamicPage,
+  withMagazineIssue,
   withWebsiteSection,
 };
