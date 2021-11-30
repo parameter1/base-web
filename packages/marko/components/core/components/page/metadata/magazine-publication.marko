@@ -1,0 +1,35 @@
+import { get } from "@parameter1/base-web-object-path";
+import queryFragment from "./fragments/magazine-publication";
+
+$ const { marko } = out.global;
+$ const { routeData, id } = input;
+
+<if(routeData)>
+  <common
+    title=get(routeData, "metadata.title")
+    description=get(routeData, "metadata.description")
+    canonical-path=routeData.canonicalPath
+  />
+  <meta property="og:type" content="website" />
+</if>
+<else-if(id && marko.get("compat.enabled"))>
+  <marko-web-deprecate
+    code="component.marko-web-magazine-publication-metadata.id"
+    message="Passing the id input is deprecated. Send routeData instead."
+  />
+  <marko-web-query|{ node }| name="magazine-publication">
+    <@params id=id query-fragment=queryFragment />
+    <common
+      title=get(node, "metadata.title")
+      description=get(node, "metadata.description")
+      canonical-path=node.canonicalPath
+    />
+    <meta property="og:type" content="website" />
+    <@when-empty>
+      $ process.emitWarning(`Unable to create magazine publication metadata: no page found for ${id}.`);
+    </@when-empty>
+  </marko-web-query>
+</else-if>
+<else>
+  $ process.emitWarning('Unable to create magazine publication metadata: no publication route data was provided.');
+</else>
