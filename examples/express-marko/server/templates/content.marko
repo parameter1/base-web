@@ -1,4 +1,6 @@
-$ const { id, type } = input.routeData;
+$ const { routeData, pageNode } = input;
+$ const { id, type } = routeData;
+
 $ const { marko } = out.global;
 $ const document = marko.get("document");
 
@@ -10,20 +12,10 @@ $ const document = marko.get("document");
   <@container>
     <@page for="content" tag="article" id=id type=type>
       <h1>Content ${id}!</h1>
-
-      <marko-web-query|{ nodes }| name="website-scheduled-content">
-        <@params section-alias="channel-19" limit=10 />
-        <ul>
-          <for|node| of=nodes>
-            $ const { path } = node.siteContext;
-            <li>
-              <marko-core-link href=path>
-                ${path}
-              </marko-core-link>
-            </li>
-          </for>
-        </ul>
-      </marko-web-query>
+      $ const bodyId = `content-body-${id}`;
+      <marko-web-resolve-page|{ data: content }| node=pageNode>
+        <marko-web-content-body obj=content attrs={ id: bodyId } />
+      </marko-web-resolve-page>
     </@page>
   </@container>
 </>
