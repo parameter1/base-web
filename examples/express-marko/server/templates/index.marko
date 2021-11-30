@@ -1,5 +1,20 @@
+import listFragment from "../graphql/fragments/section-list-block";
+
 <marko-web-default-page-layout title="Home">
   <@page>
     <h1>Home</h1>
+
+    <marko-web-query|{ nodes }| name="most-popular-content">
+      <@params limit=10 query-fragment=listFragment />
+      <marko-web-node-list>
+        <@header>Most Popular Content</@header>
+        <@nodes nodes=nodes>
+          <@slot|{ node }|>
+            <marko-web-content-short-name obj=node.content link=true />
+            <div>Unique Users: ${node.uniqueUsers}, Views: ${node.views}</div>
+          </@slot>
+        </@nodes>
+      </marko-web-node-list>
+    </marko-web-query>
   </@page>
 </marko-web-default-page-layout>

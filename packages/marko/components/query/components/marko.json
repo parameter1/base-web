@@ -42,6 +42,9 @@
   "<marko-web-query-magazine-scheduled-content>": {
     "template": "./magazine-scheduled-content.marko"
   },
+  "<marko-web-query-most-popular-content>": {
+    "template": "./most-popular-content.marko"
+  },
   "<marko-web-query-website-section>": {
     "template": "./website-section.marko"
   },
