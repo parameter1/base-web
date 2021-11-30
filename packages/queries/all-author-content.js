@@ -1,5 +1,6 @@
 const gql = require('@parameter1/base-web-graphql-lib/tag');
 const { extractData } = require('@parameter1/base-web-graphql-lib/fragment');
+const date = require('./utils/date');
 
 const defaultFragment = gql`
   fragment AllAuthorContentBlockLoaderFragment on Content {
@@ -32,8 +33,6 @@ const buildGraphQLOperation = ({ queryFragment } = {}) => {
     ${processedFragment}
   `;
 };
-
-const date = (v) => (v instanceof Date ? v.valueOf() : v);
 
 const executeQuery = async (baseCMSGraphQLClient, {
   limit,
