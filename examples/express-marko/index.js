@@ -26,14 +26,23 @@ bootServer({
         directives: [{ agent: '*', value: 'Disallow: /search' }],
       },
       site: {
-        name: 'Overdrive',
-        host: 'www.overdriveonline.com',
-        imageHost: 'img.overdriveonline.com',
-        assetHost: 'cdn.overdriveonline.com',
+        name: 'For Construction Pros',
+        host: 'www.forconstructionpros.com',
+        imageHost: 'img.forconstructionpros.com',
+        assetHost: 'cdn.base.parameter1.com',
         config: ({ conf }) => ({
           foo: conf.get('site.name'),
         }),
       },
+      // site: {
+      //   name: 'Overdrive',
+      //   host: 'www.overdriveonline.com',
+      //   imageHost: 'img.overdriveonline.com',
+      //   assetHost: 'cdn.overdriveonline.com',
+      //   config: ({ conf }) => ({
+      //     foo: conf.get('site.name'),
+      //   }),
+      // },
     },
   },
 });
