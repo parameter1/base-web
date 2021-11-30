@@ -5,6 +5,7 @@ const allowedGlobals = new Set([
   'baseCMSGraphQLClient',
   'request',
   'contentPreviewModeEnabled',
+  'parseEmbeddedMedia',
 
   // internals
   'runtimeId',
