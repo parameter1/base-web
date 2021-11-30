@@ -15,6 +15,9 @@
   "<marko-web-query-all-company-content>": {
     "template": "./all-company-content.marko"
   },
+  "<marko-web-query-all-published-content>": {
+    "template": "./all-published-content.marko"
+  },
   "<marko-web-query-dynamic-page>": {
     "template": "./dynamic-page.marko"
   },

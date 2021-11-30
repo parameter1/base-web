@@ -15,8 +15,29 @@ $ const document = marko.get("document");
     <@page for="content" tag="article" id=id type=type>
       <h1>Content ${type} ${id}</h1>
       $ const bodyId = `content-body-${id}`;
-      <marko-web-resolve-page|{ data: content }| node=pageNode>
+      <marko-web-resolve-page|{ data: content, resolved }| node=pageNode>
+        $ const primarySection = resolved.getAsObject("primarySection");
+
+        <if(content.embedCode)>
+          <marko-web-content-embed-code obj=content />
+        </if>
+
         <marko-web-content-body obj=content attrs={ id: bodyId } />
+
+        <if(primarySection.id)>
+          <marko-web-query|{ nodes }| name="all-published-content">
+            <@params section-id=primarySection.id limit=10 query-fragment=listFragment />
+            <marko-web-node-list>
+              <@header>More Published Content in ${primarySection.name}</@header>
+              <@nodes nodes=nodes>
+                <@slot|{ node }|>
+                  <marko-web-content-short-name obj=node link=true />
+                </@slot>
+              </@nodes>
+            </marko-web-node-list>
+          </marko-web-query>
+        </if>
+
       </marko-web-resolve-page>
 
       <if(type === "contact")>
