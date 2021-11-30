@@ -1,3 +1,5 @@
+import listFragment from "../graphql/fragments/section-list-block";
+
 $ const { routeData, pageNode } = input;
 $ const { id, type } = routeData;
 
@@ -11,11 +13,25 @@ $ const document = marko.get("document");
   </@head> -->
   <@container>
     <@page for="content" tag="article" id=id type=type>
-      <h1>Content ${id}!</h1>
+      <h1>Content ${type} ${id}</h1>
       $ const bodyId = `content-body-${id}`;
       <marko-web-resolve-page|{ data: content }| node=pageNode>
         <marko-web-content-body obj=content attrs={ id: bodyId } />
       </marko-web-resolve-page>
+
+      <if(type === "contact")>
+        <marko-web-query|{ nodes }| name="all-author-content">
+          <@params contact-id=id limit=10 query-fragment=listFragment />
+          <marko-web-node-list>
+            <@header>More From this Author</@header>
+            <@nodes nodes=nodes>
+              <@slot|{ node }|>
+                <marko-web-content-short-name obj=node link=true />
+              </@slot>
+            </@nodes>
+          </marko-web-node-list>
+        </marko-web-query>
+      </if>
     </@page>
   </@container>
 </>
