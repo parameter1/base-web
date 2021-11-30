@@ -1,0 +1,6 @@
+{
+  "taglib-id": "@parameter1/base-web-marko-plugin-social-sharing",
+  "taglib-imports": [
+    "./components/marko.json"
+  ]
+}

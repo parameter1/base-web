@@ -1,0 +1,25 @@
+import { cleanPath } from "@parameter1/base-web-utils";
+
+$ const { request } = out.global;
+
+$ const path = input.path || request.path;
+$ const url = input.url || `${request.origin}/${cleanPath(path)}`;
+
+$ let printUrl;
+$ if (input.printUrl) {
+  printUrl = input.printUrl;
+} else if (input.printPath) {
+  printUrl = `${request.origin}/${cleanPath(input.printPath)}`;
+}
+
+$ const props = {
+  url,
+  printUrl,
+  providers: input.providers,
+  title: input.title,
+  description: input.description,
+  media: input.media,
+  showAction: input.showAction,
+}
+
+<marko-web-browser-component name="PluginSocialSharing" props=props />

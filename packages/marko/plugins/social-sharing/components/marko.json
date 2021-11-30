@@ -1,0 +1,14 @@
+{
+  "<marko-web-social-sharing>": {
+    "template": "./social-sharing.marko",
+    "@url": "string",
+    "@path": "string",
+    "@providers": "array",
+    "@title": "string",
+    "@description": "string",
+    "@media": "string",
+    "@print-url": "string",
+    "@print-path": "string",
+    "@show-action": "boolean"
+  }
+}
