@@ -2,6 +2,9 @@
 @import "../../../../node_modules/@parameter1/base-web-marko-components-node/scss/node";
 @import "../../../../node_modules/@parameter1/base-web-marko-components-node/scss/node-list";
 
-body {
-  color: blue;
+.node-list {
+  &__header {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
 }

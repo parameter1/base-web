@@ -48,6 +48,9 @@
   "<marko-web-query-newsletter-scheduled-content>": {
     "template": "./newsletter-scheduled-content.marko"
   },
+  "<marko-web-query-related-published-content>": {
+    "template": "./related-published-content.marko"
+  },
   "<marko-web-query-website-section>": {
     "template": "./website-section.marko"
   },

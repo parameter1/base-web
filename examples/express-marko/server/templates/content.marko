@@ -45,6 +45,18 @@ $ const document = marko.get("document");
 
       </marko-web-resolve-page>
 
+      <marko-web-query|{ nodes }| name="related-published-content">
+        <@params content-id=id limit=10 query-fragment=listFragment />
+        <marko-web-node-list>
+          <@header>Related Stories</@header>
+          <@nodes nodes=nodes>
+            <@slot|{ node }|>
+              <marko-web-content-short-name obj=node link=true />
+            </@slot>
+          </@nodes>
+        </marko-web-node-list>
+      </marko-web-query>
+
       <if(type === "contact")>
         <marko-web-query|{ nodes }| name="all-author-content">
           <@params contact-id=id limit=10 query-fragment=listFragment />
