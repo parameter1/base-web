@@ -31,6 +31,7 @@
     "@parameter1/base-web-marko-components-element": "^0.0.0",
     "@parameter1/base-web-marko-components-node": "^0.0.0",
     "@parameter1/base-web-marko-components-query": "^0.0.0",
+    "@parameter1/base-web-marko-plugin-social-sharing": "^0.0.0",
     "@parameter1/base-web-marko-server-express": "^0.0.0",
     "@parameter1/base-web-utils": "^0.0.0"
   }

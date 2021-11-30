@@ -2,6 +2,7 @@ import listFragment from "../graphql/fragments/section-list-block";
 
 $ const { routeData, pageNode } = input;
 $ const { id, type } = routeData;
+$ const displaySocialShare = ["contact"].includes(type) ? false : true;
 
 <marko-web-content-page-layout id=id type=type>
   <@page for="content" tag="article" id=id type=type>
@@ -15,6 +16,13 @@ $ const { id, type } = routeData;
       </if>
 
       <marko-web-content-body obj=content attrs={ id: bodyId } />
+
+      <if(displaySocialShare)>
+        <marko-web-social-sharing
+          path=resolved.get("siteContext.path")
+          providers=["facebook", "linkedin", "twitter", "pinterest"]
+        />
+      </if>
 
       <marko-web-query|{ node }| name="content">
         <@params id=id query-fragment=listFragment />
