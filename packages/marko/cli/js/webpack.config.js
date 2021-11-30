@@ -2,6 +2,7 @@ const path = require('path');
 const { VueLoaderPlugin } = require('vue-loader');
 const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const sass = require('sass');
 
 const absoluteRuntime = path.dirname(require.resolve('@babel/runtime/package.json'));
 const imagePattern = /\.(png|svg|jpg|gif|webp)$/;
@@ -81,6 +82,57 @@ const browser = ({ cwd, entry }) => ({
         use: [
           require.resolve('vue-style-loader'),
           require.resolve('css-loader'),
+        ],
+      },
+      // experimental scss file loading....
+      {
+        test: /\.scss$/,
+        use: [
+          {
+            loader: require.resolve('style-loader'),
+          },
+          {
+            loader: require.resolve('css-loader'),
+            options: {
+              importLoaders: 2,
+            },
+          },
+          {
+            loader: require.resolve('postcss-loader'),
+            options: {
+              postcssOptions: {
+                plugins: [
+                  [
+                    require.resolve('autoprefixer'),
+                    {
+                      overrideBrowserslist: [
+                        '>= 1%',
+                        'not dead',
+                        'last 1 major version',
+                        'Chrome >= 45',
+                        'Firefox >= 38',
+                        'Edge >= 12',
+                        'Explorer >= 11',
+                        'iOS >= 9',
+                        'Safari >= 9',
+                        'Android >= 4.4',
+                        'Opera >= 30',
+                      ],
+                    },
+                  ],
+                ],
+              },
+            },
+          },
+          {
+            loader: require.resolve('sass-loader'),
+            options: {
+              implementation: sass,
+              sassOptions: {
+                quietDeps: true,
+              },
+            },
+          },
         ],
       },
       {
