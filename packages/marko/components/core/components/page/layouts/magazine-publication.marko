@@ -1,0 +1,29 @@
+$ const {
+  routeData,
+  id: legacyId,
+
+  head,
+  abovePage,
+  belowPage,
+  page,
+  attrs,
+  ...rest
+} = input;
+
+$ const { marko } = out.global;
+$ const document = marko.get("document");
+
+$ const id = routeData ? routeData.id : legacyId;
+
+<${document} ...rest>
+  <@head>
+    <marko-web-magazine-publication-page-metadata route-data=routeData id=(routeData ? undefined : legacyId) />
+    <${head} />
+  </@head>
+  <!-- Note: camelcased vars due to nest input of dynamic document. perhaps a marko bug -->
+  <@container abovePage=abovePage belowPage=belowPage>
+    <@page for="magazine-publication" id=id attrs=attrs>
+      <${page} />
+    </@page>
+  </@container>
+</>
