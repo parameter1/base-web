@@ -51,6 +51,9 @@
   "<marko-web-query-related-published-content>": {
     "template": "./related-published-content.marko"
   },
+  "<marko-web-query-website-optioned-content>": {
+    "template": "./website-optioned-content.marko"
+  },
   "<marko-web-query-website-section>": {
     "template": "./website-section.marko"
   },

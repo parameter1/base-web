@@ -1,5 +1,7 @@
 import listFragment from "../graphql/fragments/section-list-block";
 
+$ const { conf } = out.global;
+
 <marko-web-default-page-layout title="Home">
   <@page>
     <h1>Home</h1>
@@ -16,5 +18,19 @@ import listFragment from "../graphql/fragments/section-list-block";
         </@nodes>
       </marko-web-node-list>
     </marko-web-query>
+
+    <if(conf.get("tenant.key") === "acbm_fcp")>
+      <marko-web-query|{ nodes }| name="website-optioned-content">
+        <@params option-name="Recommended" limit=3 query-fragment=listFragment />
+        <marko-web-node-list>
+          <@header>Recommended Content</@header>
+          <@nodes nodes=nodes>
+            <@slot|{ node }|>
+              <marko-web-content-short-name obj=node link=true />
+            </@slot>
+          </@nodes>
+        </marko-web-node-list>
+      </marko-web-query>
+    </if>
   </@page>
 </marko-web-default-page-layout>
