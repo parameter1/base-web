@@ -5,6 +5,6 @@ $ const node = getAsObject(input, "node");
 
 <if(isFunction(node.load))>
   <marko-web-resolve|{ resolved }| promise=node.load()>
-    <${input.renderBody} resolved=resolved data=resolved.data />
+    <${input.renderBody} resolved=resolved data=resolved.unwrap() />
   </marko-web-resolve>
 </if>
