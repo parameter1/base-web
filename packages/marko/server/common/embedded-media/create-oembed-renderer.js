@@ -2,7 +2,7 @@ const BrowserComponent = require('@parameter1/base-web-marko-components-core/com
 
 module.exports = ({ marko, $global }) => (tag) => {
   const props = {
-    mountPoint: marko.get('oembed.mountPoint'),
+    serviceUri: marko.get('oembed.uri'),
     url: tag.id,
     attrs: tag.attrs,
   };

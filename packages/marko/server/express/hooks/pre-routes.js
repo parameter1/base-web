@@ -2,7 +2,6 @@ const markoMiddleware = require('@parameter1/base-web-marko-lib/express');
 const document = require('@parameter1/base-web-marko-components-core/components/document/index.marko');
 const errorTemplate = require('@parameter1/base-web-marko-components-core/components/document/components/error.marko');
 const cleanMarkoResponse = require('../middleware/clean-marko-response');
-const oembedProxy = require('./oembed-proxy');
 const parseEmbeddedMedia = require('./parse-embedded-media');
 const compat = require('./compat');
 
@@ -19,6 +18,5 @@ module.exports = ({ server, conf, marko }) => {
   server.use(markoMiddleware());
   server.use(cleanMarkoResponse());
   // set embedded media parsing
-  oembedProxy({ server, marko });
   parseEmbeddedMedia({ server, marko });
 };

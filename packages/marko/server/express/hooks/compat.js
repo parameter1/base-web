@@ -14,7 +14,7 @@ module.exports = ({ server, conf, marko }) => {
       locale: deprecated(() => conf.get('site.language.code'), 'config.locale', "conf.get('site.language.code')"),
       lazyloadImages: removed(() => true, 'config.lazyloadImages'),
       fallbackImage: removed(() => null, 'config.fallbackImage'),
-      oembedMountPoint: deprecated(() => marko.get('oembed.mountPoint'), 'config.oembedMountPoint', "marko.get('oembed.mountPoint')"),
+      oembedMountPoint: removed(() => null, 'config.oembedMountPoint'),
       siteName: deprecated(() => conf.get('site.name'), 'config.siteName', "conf.get('site.name')"),
       get: deprecated((path, def) => conf.get(path, def), 'config.get', 'conf.get'),
       getAsArray: deprecated((path, def) => conf.getAsArray(path, def), 'config.getAsArray', 'conf.getAsArray'),

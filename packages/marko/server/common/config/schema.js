@@ -19,7 +19,6 @@ module.exports = Joi.object({
   }),
   fragments: Joi.object().unknown().external((v) => (v || {})),
   oembed: Joi.object({
-    mountPoint: Joi.string().trim().default('/__oembed'),
     uri: Joi.string().trim().required(),
   }).default(),
 }).required();

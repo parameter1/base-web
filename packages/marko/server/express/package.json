@@ -22,7 +22,6 @@
     "@parameter1/base-web-object-path": "^0.0.0",
     "@parameter1/base-web-server-express": "^0.0.0",
     "@parameter1/base-web-utils": "^0.0.0",
-    "express-http-proxy": "^1.6.3",
     "pretty": "^2.0.0"
   },
   "publishConfig": {

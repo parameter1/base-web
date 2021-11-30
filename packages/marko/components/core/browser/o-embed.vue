@@ -43,7 +43,7 @@ export default {
       type: Object,
       default: () => ({}),
     },
-    mountPoint: {
+    serviceUri: {
       type: String,
       required: true,
     },
@@ -107,7 +107,7 @@ export default {
     },
     async load() {
       this.loading = true;
-      const href = `${this.mountPoint}?url=${encodeURIComponent(this.url)}`;
+      const href = `${this.serviceUri}?url=${encodeURIComponent(this.url)}`;
       try {
         const r = await fetch(href, { credentials: 'same-origin' });
         const {
