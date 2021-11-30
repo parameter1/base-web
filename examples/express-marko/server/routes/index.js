@@ -4,6 +4,7 @@ const { jsonErrorHandler } = require('@parameter1/base-web-marko-server-express/
 const content = require('./content');
 const dynamicPage = require('./dynamic-page');
 const home = require('./home');
+const magazine = require('./magazine');
 const websiteSections = require('./website-section');
 
 const PING = gql`
@@ -26,6 +27,8 @@ module.exports = (server) => {
   });
 
   dynamicPage(server);
+
+  magazine(server);
 
   content(server);
 
