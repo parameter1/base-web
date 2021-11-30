@@ -15,6 +15,9 @@
   "<marko-web-query-magazine-issue>": {
     "template": "./magazine-issue.marko"
   },
+  "<marko-web-query-magazine-publication>": {
+    "template": "./magazine-publication.marko"
+  },
   "<marko-web-query-website-section>": {
     "template": "./website-section.marko"
   },
