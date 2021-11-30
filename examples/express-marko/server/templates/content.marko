@@ -32,6 +32,20 @@ $ const document = marko.get("document");
           </marko-web-node-list>
         </marko-web-query>
       </if>
+
+      <if(type === "company")>
+        <marko-web-query|{ nodes }| name="all-company-content">
+          <@params company-id=id limit=10 query-fragment=listFragment />
+          <marko-web-node-list>
+            <@header>More Content from this Company</@header>
+            <@nodes nodes=nodes>
+              <@slot|{ node }|>
+                <marko-web-content-short-name obj=node link=true />
+              </@slot>
+            </@nodes>
+          </marko-web-node-list>
+        </marko-web-query>
+      </if>
     </@page>
   </@container>
 </>
