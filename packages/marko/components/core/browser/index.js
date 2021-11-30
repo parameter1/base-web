@@ -4,6 +4,8 @@ import Vue from 'vue';
 // import Components from './components';
 import EventBus from './event-bus';
 
+const CoreOEmbed = () => import(/* webpackChunkName: "core-o-embed" */ './o-embed.vue');
+
 // const apollo = () => import(/* webpackChunkName: "apollo" */ './apollo');
 
 const components = {};
@@ -46,6 +48,7 @@ const register = async (name, Component, { provide, withApollo, on } = {}) => {
 /**
  * Register built-in components.
  */
+register('CoreOEmbed', CoreOEmbed);
 // Components({ register, EventBus });
 
 const methods = {
