@@ -32,5 +32,17 @@ $ const { conf } = out.global;
         </marko-web-node-list>
       </marko-web-query>
     </if>
+
+    <marko-web-query|{ nodes }| name="website-sections">
+      <@params root-only=true sort={ field: "name", order: "asc" } />
+      <marko-web-node-list>
+        <@header>Sections</@header>
+        <@nodes nodes=nodes>
+          <@slot|{ node }|>
+            <marko-web-website-section-name obj=node link=true />
+          </@slot>
+        </@nodes>
+      </marko-web-node-list>
+    </marko-web-query>
   </@page>
 </marko-web-default-page-layout>

@@ -5,6 +5,8 @@ const defaultFragment = gql`
   fragment WebsiteSectionAliasBlockLoaderFragment on WebsiteSection {
     id
     alias
+    name
+    canonicalPath
   }
 `;
 

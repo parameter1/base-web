@@ -54,10 +54,13 @@
   "<marko-web-query-website-optioned-content>": {
     "template": "./website-optioned-content.marko"
   },
+  "<marko-web-query-website-scheduled-content>": {
+    "template": "./website-scheduled-content.marko"
+  },
   "<marko-web-query-website-section>": {
     "template": "./website-section.marko"
   },
-  "<marko-web-query-website-scheduled-content>": {
-    "template": "./website-scheduled-content.marko"
+  "<marko-web-query-website-sections>": {
+    "template": "./website-sections.marko"
   }
 }
