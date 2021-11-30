@@ -12,6 +12,10 @@ module.exports = async (params = {}) => {
       ...params.compat,
       ...(fromEnv({ enabled: 'COMPAT_ENABLED' })),
     },
+    oembed: {
+      ...params.oembed,
+      ...(fromEnv({ uri: 'OEMBED_URI' })),
+    },
   });
   const conf = wrap(validated);
   if (conf.get('compat.enabled')) {
