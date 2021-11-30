@@ -9,6 +9,9 @@
       "default-value": true
     }
   },
+  "<marko-web-query-all-author-content>": {
+    "template": "./all-author-content.marko"
+  },
   "<marko-web-query-dynamic-page>": {
     "template": "./dynamic-page.marko"
   },
