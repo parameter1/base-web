@@ -24,6 +24,11 @@ $ const document = marko.get("document");
 
         <marko-web-content-body obj=content attrs={ id: bodyId } />
 
+        <marko-web-query|{ node }| name="content">
+          <@params id=id query-fragment=listFragment />
+          <p>From `content` query: ${node.siteContext.path}</p>
+        </marko-web-query>
+
         <if(primarySection.id)>
           <marko-web-query|{ nodes }| name="all-published-content">
             <@params section-id=primarySection.id limit=10 query-fragment=listFragment />
