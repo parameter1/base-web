@@ -11,6 +11,11 @@
     "@route-data": "object",
     "@alias": "string"
   },
+  "<marko-web-magazine-issue-page-metadata>": {
+    "template": "./magazine-issue.marko",
+    "@route-data": "object",
+    "@id": "number"
+  },
   "<marko-web-website-section-page-metadata>": {
     "template": "./website-section.marko",
     "@route-data": "object",
