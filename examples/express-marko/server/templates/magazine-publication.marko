@@ -20,5 +20,18 @@ $ const { id } = routeData;
         </@nodes>
       </marko-web-node-list>
     </marko-web-query>
+
+
+    <marko-web-query|{ node }| name="magazine-latest-issue">
+      <@params publication-id=id />
+      <marko-web-node-list>
+        <@header>Latest Issue</@header>
+        <@nodes nodes=[node]>
+          <@slot|{ node }|>
+            <marko-web-magazine-issue-name obj=node link=true />
+          </@slot>
+        </@nodes>
+      </marko-web-node-list>
+    </marko-web-query>
   </@page>
 </marko-web-magazine-publication-page-layout>

@@ -30,6 +30,9 @@
   "<marko-web-query-magazine-issue>": {
     "template": "./magazine-issue.marko"
   },
+  "<marko-web-query-magazine-latest-issue>": {
+    "template": "./magazine-latest-issue.marko"
+  },
   "<marko-web-query-magazine-publication>": {
     "template": "./magazine-publication.marko"
   },
