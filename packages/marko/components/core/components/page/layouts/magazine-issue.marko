@@ -17,7 +17,7 @@ $ const id = routeData ? routeData.id : legacyId;
 
 <${document} ...rest>
   <@head>
-    <marko-web-magazine-issue-page-metadata id=id />
+    <marko-web-magazine-issue-page-metadata route-data=routeData id=(routeData ? undefined : legacyId) />
     <${head} />
   </@head>
   <!-- Note: camelcased vars due to nest input of dynamic document. perhaps a marko bug -->
